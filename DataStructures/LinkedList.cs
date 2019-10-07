@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures
 {
+
     class LinkedList
     {
         //this linked list will be a group of objects within the LinkedList object. Each LinkedListItem node will have a value, and a pointer to the next item.
@@ -13,12 +14,8 @@ namespace DataStructures
         //The firstItem is just an arbitrary item chosen as the "first" for access purposes. It can be changed at any time, to any item contained within the linkedList.
         //if the firstItem is removed, a new firstItem (the next item in the linkedlist) will be set by default.
         //this object has: addItem method, removeItem method, findItem method, and lastItem method.
+        public Node head = null;
 
-
-        public int length { get; set; }
-        public node head = null;
-
-        public node firstItem { get; set; }
         //each item has a value, and a pointer to the next value
         internal class Node
         {
@@ -29,13 +26,43 @@ namespace DataStructures
                 data = d;
                 next = null;
             }
+        }
+        public void addNode(int newData)
+        {
+            if (head == null)
+            {
+                head = new Node(newData);
             }
-    }
-    //public string thisItem { get; set; }
-    //public string nextItem { get; set; }
+            else
+            {
+                
+            Node currentNode = head;
+            while (currentNode.next != null)
+            {
+                //make the next value of the currentnode into the current node itself
+                currentNode = currentNode.next;
+            }
+            Node newNode = new DataStructures.LinkedList.Node(newData);
+            currentNode.next = newNode;
+            }
 
-    internal class SingleLinkedList {
-        internal Node next;
+        }
+        public void printNodes()
+        {
+            Node currentNode = head;
+            do
+            {
+                Console.WriteLine("First number is " + printNode(currentNode));
+
+            }
+            while (currentNode.next != null);
+
+        }
+        public int printNode(Node toPrint)
+        {
+            return toPrint.data;
+        }
+
     }
 }
 

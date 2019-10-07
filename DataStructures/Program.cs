@@ -10,6 +10,14 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+            LinkedList myTestList = new LinkedList();
+            myTestList.addNode(13);
+
+
+            myTestList.printNodes();
+
+
+            Console.ReadKey();
         }
     }
 }
