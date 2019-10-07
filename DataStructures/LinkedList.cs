@@ -35,7 +35,7 @@ namespace DataStructures
             }
             else
             {
-                
+
             Node currentNode = head;
             while (currentNode.next != null)
             {
@@ -53,9 +53,11 @@ namespace DataStructures
             do
             {
                 Console.WriteLine("First number is " + printNode(currentNode));
+                currentNode = currentNode.next;
 
             }
             while (currentNode.next != null);
+            Console.WriteLine("The last number is " + printNode(currentNode));
 
         }
         public int printNode(Node toPrint)

@@ -12,6 +12,7 @@ namespace DataStructures
         {
             LinkedList myTestList = new LinkedList();
             myTestList.addNode(13);
+            myTestList.addNode(34);
 
 
             myTestList.printNodes();
