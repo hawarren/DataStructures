@@ -19,18 +19,20 @@ namespace DataStructures
         //each item has a value, and a pointer to the next value
         internal class Node
         {
-            internal int data;
+            internal string data;
             internal Node next;
-            public Node(int d)
+            public Node(string d)
             {
                 data = d;
                 next = null;
             }
         }
-        public void addNode(int newData)
+        //adds to the end of the linkedlist
+        public void addNode(string newData)
         {
             if (head == null)
             {
+                //if node added would be the only node
                 head = new Node(newData);
             }
             else
@@ -47,6 +49,15 @@ namespace DataStructures
             }
 
         }
+        public void addHead(string newData)
+        {
+            //get the head, create new node with pointer to old head, then assign that node to new head
+            Node newHead = new Node(newData);
+            newHead.next = head;
+            head = newHead;
+
+        }
+
         public void printNodes()
         {
             Node currentNode = head;
@@ -60,7 +71,7 @@ namespace DataStructures
             Console.WriteLine("The last number is " + printNode(currentNode));
 
         }
-        public int printNode(Node toPrint)
+        public string printNode(Node toPrint)
         {
             return toPrint.data;
         }

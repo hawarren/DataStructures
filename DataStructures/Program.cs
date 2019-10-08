@@ -11,14 +11,17 @@ namespace DataStructures
         static void Main(string[] args)
         {
             LinkedList myTestList = new LinkedList();
-            myTestList.addNode(13);
-            myTestList.addNode(34);
+            myTestList.addNode("13");
+            myTestList.addNode("34");
 
 
             myTestList.printNodes();
 
 
             Console.ReadKey();
+            myTestList.addHead("First in Line!");
+            myTestList.printNodes();
+                Console.ReadKey();
         }
     }
 }
