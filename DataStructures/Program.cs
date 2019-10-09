@@ -21,7 +21,35 @@ namespace DataStructures
             Console.ReadKey();
             myTestList.addHead("First in Line!");
             myTestList.printNodes();
-                Console.ReadKey();
+            Console.ReadKey();
+            bool keepRunning = true;
+
+            while (keepRunning)
+            {
+                Console.WriteLine("Now add your own array. 'printNodes', 'Add node'");
+                string response = Console.ReadLine().ToLower();
+                if (response.ToLower().Equals("q"))
+                {
+                    keepRunning = false;
+                }
+                int number;
+                switch (response)
+                {
+                    case "addnode":
+                        Console.WriteLine("enter a number to add");
+                        response = Console.ReadLine();
+                        //TODO: actually pass in numbers not strings
+                        bool isGoodInput = int.TryParse(response, out number);
+                        myTestList.addNode(response);
+                        Console.WriteLine("You have added {0} to the linkedlist", response);
+                        myTestList.printNodes();
+                        break;
+                }
+            }
+
+
         }
+
     }
 }
+
