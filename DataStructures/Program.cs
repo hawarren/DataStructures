@@ -26,14 +26,14 @@ namespace DataStructures
 
             while (keepRunning)
             {
-                Console.WriteLine("Now add your own array. 'printNodes', 'Add node'");
+                Console.WriteLine("Now add your own array. 'printNodes', 'addanode'");
                 string response = Console.ReadLine().ToLower();
                 if (response.ToLower().Equals("q"))
                 {
                     keepRunning = false;
                 }
                 int number;
-                switch (response)
+                switch (response.ToLower())
                 {
                     case "addnode":
                         Console.WriteLine("enter a number to add");
@@ -44,6 +44,10 @@ namespace DataStructures
                         Console.WriteLine("You have added {0} to the linkedlist", response);
                         myTestList.printNodes();
                         break;
+                    case "printNodes":
+                        myTestList.printNodes();
+                        break;
+
                 }
             }
 

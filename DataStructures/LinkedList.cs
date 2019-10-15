@@ -61,13 +61,15 @@ namespace DataStructures
         public void printNodes()
         {
             Node currentNode = head;
-            do
+            Console.WriteLine("The first number is " + printNode(currentNode));
+            currentNode = currentNode.next;
+            while (currentNode.next != null)
             {
-                Console.WriteLine("First number is " + printNode(currentNode));
+
+                Console.WriteLine("The next number is " + printNode(currentNode));
                 currentNode = currentNode.next;
 
             }
-            while (currentNode.next != null);
             Console.WriteLine("The last number is " + printNode(currentNode));
 
         }
