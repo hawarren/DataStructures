@@ -17,16 +17,17 @@ namespace DataStructures
 
             myTestList.printNodes();
 
-
+            Console.WriteLine("Press any key to see an example node added");
             Console.ReadKey();
             myTestList.addHead("First in Line!");
+
             myTestList.printNodes();
-            Console.ReadKey();
+            //Console.ReadKey();
             bool keepRunning = true;
 
             while (keepRunning)
             {
-                Console.WriteLine("Now add your own array. 'printNodes', 'addanode'");
+                Console.WriteLine("Now add your own array. Type the name or the number 'printNodes', 'addnode'");
                 string response = Console.ReadLine().ToLower();
                 if (response.ToLower().Equals("q"))
                 {
@@ -35,7 +36,8 @@ namespace DataStructures
                 int number;
                 switch (response.ToLower())
                 {
-                    case "addnode":
+                    case "1":
+                    case "addnode" :
                         Console.WriteLine("enter a number to add");
                         response = Console.ReadLine();
                         //TODO: actually pass in numbers not strings
@@ -44,7 +46,8 @@ namespace DataStructures
                         Console.WriteLine("You have added {0} to the linkedlist", response);
                         myTestList.printNodes();
                         break;
-                    case "printNodes":
+                    case "2":
+                    case "printnodes":
                         myTestList.printNodes();
                         break;
 
