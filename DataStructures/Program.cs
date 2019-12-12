@@ -50,6 +50,11 @@ namespace DataStructures
                     case "printnodes":
                         myTestList.printNodes();
                         break;
+                    //case "3":
+                    //case "removenode":
+                        
+                    //    myTestList.removeNode();
+                        
 
                 }
             }
