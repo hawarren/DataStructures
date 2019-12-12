@@ -15,6 +15,7 @@ namespace DataStructures
         //if the firstItem is removed, a new firstItem (the next item in the linkedlist) will be set by default.
         //this object has: addItem method, removeItem method, findItem method, and lastItem method.
         public Node head = null;
+        public int nodeLength = 0; //counter to keep track of the total length
 
         //each item has a value, and a pointer to the next value
         internal class Node
@@ -45,6 +46,7 @@ namespace DataStructures
                 currentNode = currentNode.next;
             }
             Node newNode = new DataStructures.LinkedList.Node(newData);
+                nodeLength++;
             currentNode.next = newNode;
             }
 
@@ -55,6 +57,26 @@ namespace DataStructures
             Node newHead = new Node(newData);
             newHead.next = head;
             head = newHead;
+
+        }
+        //remove Node at specified index
+        public void removeNode(int index)
+        {
+
+            //traverse the node up to the the specified index (grab that and the prior)
+            Node currentNode = head; //grab the head of the linkedlist
+            Node tempNode = null;
+            for (int i = 0; i < index; i++)
+            {
+                tempNode = currentNode; //this is the node pointing to the next node we want to delete
+                currentNode = currentNode.next;
+            }
+
+            tempNode.next = currentNode.next; //save the next pointer for the deleted node
+            currentNode = tempNode;
+            tempNode = null;
+
+
 
         }
 
