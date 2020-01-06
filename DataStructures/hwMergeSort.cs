@@ -41,39 +41,39 @@ namespace DataStructures
             int[] lArray = new int[n1]; //to hold split arrays
             int[] rArray = new int[n2];
 
-            int[] mergedArray = new int[n1 + n2]; //placeholder for merged array
+
             int k = l; //to iterate merged array, start at the low index
 
+            int i = 0; int j = 0;
 
 
             for (int ii = 0; ii < m; ii++)
                 lArray[ii] = arr[ii];
             for (int jj = 0; jj < r; jj++)
                 rArray[jj] = arr[m + 1 + j]; //right array starts at the middle plus 1, but it's 0 indexed in the new rArray
-            int i = 0; int j = 0;
             while (i < n1 && j < n2)//keep running until one of the split arrays runs out of cells
             {
                 //if left array is greater or equal, add it to the new array. Else add the rarray index
                 if (lArray[i] >= rArray[j])
                 {
-                    mergedArray[k] = lArray[i];
+                    arr[k] = lArray[i];
                     i++;
                     k++;
                 }
                 else {
-                    mergedArray[k] = rArray[j];
+                    arr[k] = rArray[j];
                     j++;
                     k++;
                 }
 
                 while (i < n1) //add the leftovers from this array (only one of the arrays will be empty)
                 {
-                    mergedArray[k] = lArray[i];
+                    arr[k] = lArray[i];
                     k++;
                 }
                 while (j < n2)
                 {
-                    mergedArray[k] = rArray[k];
+                    arr[k] = rArray[k];
                     k++;
                 }
 
