@@ -11,17 +11,17 @@ namespace DataStructures
         static void Main(string[] args)
         {
             hwMergeSort myMergelist = new hwMergeSort();
-            int[] testArray = { 9, 1, 5, 4, 3, 8, 7 };
+            int[] testArray = { 9,7, 2, 5, 4, 3, 6, 1, 8 };
             Console.WriteLine("Starting node list is");
-                for (int i = 0; i > testArray.Length; i++)
+                for (int i = 0; i < testArray.Length; i++)
             {
                 Console.WriteLine(testArray[i]);
 
             }
-
+            Console.WriteLine("Sorting the array now");
             myMergelist.MergeSort(testArray, 0, testArray.Length - 1);
             Console.WriteLine("The newly merge sorted array is");
-                for (int i = 0; i > testArray.Length; i++)
+                for (int i = 0; i < testArray.Length; i++)
             {
                 Console.WriteLine(testArray[i]);
 
@@ -69,6 +69,7 @@ namespace DataStructures
                     case "printnodes":
                         myTestList.printNodes();
                         break;
+                        
                     //case "3":
                     //case "removenode":
 
