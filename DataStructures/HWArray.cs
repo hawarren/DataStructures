@@ -14,13 +14,14 @@ namespace DataStructures
 
         private int?[] internalArray { get; set; } //allow null values
         private int internalSize { get; set; }
+        int lastIndex { get; set; }
         private bool isEmpty { get; set; }
 
         public HWArray()
         {
             internalArray = new int?[1];
             internalSize = 0;
-
+            lastIndex = 0; 
 
         }
         public void print()
@@ -33,27 +34,28 @@ namespace DataStructures
         public void insert(int newvalue)
         {
 
-
-            for (int i = 0; i <= internalArray.Length - 1; i++)
-
-            {
-                if (internalArray[i] != null)
+            internalArray[lastIndex] = newvalue;
+                    internalSize++;
+            lastIndex++; 
+            
+                /*if (internalArray[i] != null)
                 {
                     continue;
 
                 }
-                else if (internalArray[i] == null)
+                else if (internalArray[i] == lastIndex)
                 {
                     internalArray[i] = newvalue;
                     i = internalArray.Length;
 
-                    internalSize++;
+                    
                 }
+                */
 
 
 
 
-            }
+            
                     if (internalSize == internalArray.Length)
                     {
                         int?[] bigArray = new int?[internalSize * 2]; //new array double the array size
@@ -86,6 +88,7 @@ namespace DataStructures
 
                 }
                 internalSize--;
+                lastIndex--;
                 Console.WriteLine("removed {0}", tempDeleted);
             }
             else
