@@ -10,6 +10,14 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+
+            HWArray myDynamicArray = new HWArray();
+            myDynamicArray.insert(1);
+            myDynamicArray.insert(4);
+            Console.WriteLine("myDynamicArray's value is ");
+                myDynamicArray.print();
+
+
             hwMergeSort myMergelist = new hwMergeSort();
             int[] testArray = { 9,7, 2, 5, 4, 3, 6, 1, 8 };
             Console.WriteLine("Starting node list is");
@@ -69,7 +77,7 @@ namespace DataStructures
                     case "printnodes":
                         myTestList.printNodes();
                         break;
-                        
+
                     //case "3":
                     //case "removenode":
 
