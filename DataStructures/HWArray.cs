@@ -40,7 +40,7 @@ namespace DataStructures
                 if (internalArray[i] != null)
                 {
                     continue;
-                    
+
                 }
                 else if (internalArray[i] == null)
                 {
@@ -65,6 +65,33 @@ namespace DataStructures
                     }
 
 
+        }
+
+
+        public void removeAt(int thisIndex)
+        {
+            if (thisIndex < internalSize)
+            {
+                int? tempDeleted;
+                tempDeleted = internalArray[thisIndex];
+                internalArray[thisIndex] = null;
+                for (int i = 0; i < internalSize; i++)
+                {
+                    if (internalArray[i] == null)
+                    {
+                        internalArray[i] = internalArray[i + 1];
+
+                        internalArray[i+1] = null;
+                    }
+
+                }
+                internalSize--;
+                Console.WriteLine("removed {0}", tempDeleted);
+            }
+            else
+            {
+                Console.WriteLine("That index was out of bounds, dude");
+            }
         }
     }
 

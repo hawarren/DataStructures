@@ -14,9 +14,16 @@ namespace DataStructures
             HWArray myDynamicArray = new HWArray();
             myDynamicArray.insert(1);
             myDynamicArray.insert(4);
+            myDynamicArray.insert(3);
+            myDynamicArray.insert(2);
+
             Console.WriteLine("myDynamicArray's value is ");
                 myDynamicArray.print();
 
+            myDynamicArray.removeAt(3);
+
+            Console.WriteLine("myDynamicArray's value is ");
+            myDynamicArray.print();
 
             hwMergeSort myMergelist = new hwMergeSort();
             int[] testArray = { 9,7, 2, 5, 4, 3, 6, 1, 8 };
