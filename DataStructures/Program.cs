@@ -29,7 +29,13 @@ namespace DataStructures
             myDynamicArray.indexOf(25);
             Console.WriteLine("The largest value in the array is {0}", myDynamicArray.max());
             Console.ReadKey();
-
+            HWArray otherArray = new HWArray(new int[] { 7, 18, 9, 6, 8 });
+            Console.WriteLine("Now printing the second array");
+            otherArray.print();
+            Console.WriteLine("press any key to see the common items in the array");
+                       Console.ReadKey();
+            Console.WriteLine("the common items in the array are... ");
+            myDynamicArray.intersect(otherArray).print();
 
             hwMergeSort myMergelist = new hwMergeSort();
             int[] testArray = { 9,7, 2, 5, 4, 3, 6, 1, 8 };
