@@ -21,7 +21,7 @@ namespace DataStructures
         {
             internalArray = new int?[1];
             internalSize = 0;
-            lastIndex = 0; 
+            lastIndex = 0;
 
         }
         public void print()
@@ -35,36 +35,36 @@ namespace DataStructures
         {
 
             internalArray[lastIndex] = newvalue;
-                    internalSize++;
-            lastIndex++; 
-            
-                /*if (internalArray[i] != null)
-                {
-                    continue;
+            internalSize++;
+            lastIndex++;
 
-                }
-                else if (internalArray[i] == lastIndex)
-                {
-                    internalArray[i] = newvalue;
-                    i = internalArray.Length;
+            /*if (internalArray[i] != null)
+            {
+                continue;
 
-                    
-                }
-                */
+            }
+            else if (internalArray[i] == lastIndex)
+            {
+                internalArray[i] = newvalue;
+                i = internalArray.Length;
 
 
+            }
+            */
 
 
-            
-                    if (internalSize == internalArray.Length)
-                    {
-                        int?[] bigArray = new int?[internalSize * 2]; //new array double the array size
 
-                        for (int j = 0; j < internalArray.Length; j++)
-                        { bigArray[j] = internalArray[j]; }
 
-                        internalArray = bigArray;
-                    }
+
+            if (internalSize == internalArray.Length)
+            {
+                int?[] bigArray = new int?[internalSize * 2]; //new array double the array size
+
+                for (int j = 0; j < internalArray.Length; j++)
+                { bigArray[j] = internalArray[j]; }
+
+                internalArray = bigArray;
+            }
 
 
         }
@@ -83,7 +83,7 @@ namespace DataStructures
                     {
                         internalArray[i] = internalArray[i + 1];
 
-                        internalArray[i+1] = null;
+                        internalArray[i + 1] = null;
                     }
 
                 }
@@ -95,6 +95,30 @@ namespace DataStructures
             {
                 Console.WriteLine("That index was out of bounds, dude");
             }
+        }
+        public void indexOf(int item)
+        {
+            int thisIndex =-1;
+            for (int i = 0; i<internalSize; i++)
+            {
+
+                if (internalArray[i] == item)
+                {
+                    thisIndex = i;
+                    i = internalSize;
+
+                }
+            }
+                if (thisIndex == -1)
+                {
+                    Console.Write("Could not find this item in the array");
+                }
+                else
+                Console.WriteLine("The index of {0} is {1}", item, thisIndex);
+
+
+
+
         }
     }
 

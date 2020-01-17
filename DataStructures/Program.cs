@@ -13,17 +13,22 @@ namespace DataStructures
 
             HWArray myDynamicArray = new HWArray();
             myDynamicArray.insert(1);
-            myDynamicArray.insert(4);
-            myDynamicArray.insert(3);
-            myDynamicArray.insert(2);
+            myDynamicArray.insert(8);
+            myDynamicArray.insert(5);
+            myDynamicArray.insert(25);
+            myDynamicArray.insert(7);
 
-            Console.WriteLine("myDynamicArray's value is ");
-                myDynamicArray.print();
+            Console.WriteLine("myDynamicArray's values are ");
 
-            myDynamicArray.removeAt(3);
+            myDynamicArray.print();
+            myDynamicArray.indexOf(25);
+            myDynamicArray.removeAt(2);
 
             Console.WriteLine("myDynamicArray's value is ");
             myDynamicArray.print();
+            myDynamicArray.indexOf(25);
+            Console.ReadKey();
+
 
             hwMergeSort myMergelist = new hwMergeSort();
             int[] testArray = { 9,7, 2, 5, 4, 3, 6, 1, 8 };
@@ -42,7 +47,7 @@ namespace DataStructures
 
             }
 
-            Console.ReadKey();
+
 
             LinkedList myTestList = new LinkedList();
             myTestList.addNode("13");
