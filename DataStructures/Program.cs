@@ -13,7 +13,7 @@ namespace DataStructures
 
             HWArray myDynamicArray = new HWArray();
             myDynamicArray.insert(1);
-            myDynamicArray.insert(8);
+            myDynamicArray.insert(37);
             myDynamicArray.insert(5);
             myDynamicArray.insert(25);
             myDynamicArray.insert(7);
@@ -27,6 +27,7 @@ namespace DataStructures
             Console.WriteLine("myDynamicArray's value is ");
             myDynamicArray.print();
             myDynamicArray.indexOf(25);
+            Console.WriteLine("The largest value in the array is {0}", myDynamicArray.max());
             Console.ReadKey();
 
 

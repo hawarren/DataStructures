@@ -26,7 +26,7 @@ namespace DataStructures
         }
         public void print()
         {
-            for (int h = 0; h <= internalSize; h++)
+            for (int h = 0; h < internalSize; h++)
             {
                 Console.WriteLine(internalArray[h]);
             }
@@ -38,28 +38,9 @@ namespace DataStructures
             internalSize++;
             lastIndex++;
 
-            /*if (internalArray[i] != null)
-            {
-                continue;
-
-            }
-            else if (internalArray[i] == lastIndex)
-            {
-                internalArray[i] = newvalue;
-                i = internalArray.Length;
-
-
-            }
-            */
-
-
-
-
-
             if (internalSize == internalArray.Length)
             {
                 int?[] bigArray = new int?[internalSize * 2]; //new array double the array size
-
                 for (int j = 0; j < internalArray.Length; j++)
                 { bigArray[j] = internalArray[j]; }
 
@@ -77,7 +58,7 @@ namespace DataStructures
                 int? tempDeleted;
                 tempDeleted = internalArray[thisIndex];
                 internalArray[thisIndex] = null;
-                for (int i = 0; i < internalSize; i++)
+                for (int i = 0; i < internalSize -1; i++)
                 {
                     if (internalArray[i] == null)
                     {
@@ -87,8 +68,8 @@ namespace DataStructures
                     }
 
                 }
-                internalSize--;
-                lastIndex--;
+                --internalSize;
+                --lastIndex;
                 Console.WriteLine("removed {0}", tempDeleted);
             }
             else
@@ -115,11 +96,27 @@ namespace DataStructures
                 }
                 else
                 Console.WriteLine("The index of {0} is {1}", item, thisIndex);
-
-
-
-
         }
+        /*
+         * Array Exercise 1
+         Extend the Array class and add a new method to return the largest number. What is the runtime complexity of this method reverse the array.
+         */
+         //This method takes O(n) time to run, because it needs to iterate through the entire array to compare each item to the current largest value
+        public int max()
+        {
+            int? largest = -1;
+            //select the 1st value as the largest, then iterate, switching out new largest values if found
+            for (int i = 0; i < internalSize; i++)
+            {
+                if (internalArray[i] > largest)
+                {
+                    largest = internalArray[i];
+                }
+            }
+                return (int)largest;
+        }
+
+
     }
 
 
