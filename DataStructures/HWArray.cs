@@ -43,6 +43,7 @@ namespace DataStructures
 
         public void print()
         {
+            Console.Write("\r\nThe array is as follows:");
             for (int h = 0; h < internalSize; h++)
             {
                 Console.Write(internalArray[h]);
@@ -197,6 +198,26 @@ namespace DataStructures
                 internalArray[i] = swapper; //take the last value and put in place of the vacated first value
             }
             print();
+        }
+        /*4- Extend the array class and add a new method to insert an item at a given index
+         * Solution: move item at internalsize -1 to internal size, and then the move the next, if we reach the insertion index, add the value
+         */
+        public void insertAt(int item, int index)
+        {
+            if (index < internalSize)
+            {
+                Console.Write("\r\nInserting {0} at index {1} ", item, index);
+
+                for (int i = internalSize; i > index; i--)//start at end of array and work backwards, moving each index value to the right
+                {
+                    internalArray[i] = internalArray[i - 1];
+
+                }
+                internalArray[index] = item; //once we've made room, add the item
+                internalSize++; //make sure to increment the size once we've added the item
+            }
+            else
+                Console.WriteLine("Can't insert at {0}. This array is only {1} items long!", index, internalSize);
         }
     }
 

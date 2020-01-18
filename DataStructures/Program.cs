@@ -17,6 +17,11 @@ namespace DataStructures
             myDynamicArray.insert(5);
             myDynamicArray.insert(25);
             myDynamicArray.insert(7);
+            myDynamicArray.insert(41);
+            myDynamicArray.insert(52);
+            myDynamicArray.insert(99);
+            myDynamicArray.insert(8);
+            myDynamicArray.insert(6);
 
             Console.WriteLine("\r\nmyDynamicArray's values are ");
 
@@ -40,7 +45,14 @@ namespace DataStructures
             Console.ReadKey();
             Console.Write("\r\nNow reversing the array... ");
             myDynamicArray.reverse();
+            myDynamicArray.insertAt(38, 3);
 
+            myDynamicArray.print();
+            
+
+
+
+            Console.ReadKey();
             Console.WriteLine("\r\nNow testing a mergesorted array");
             hwMergeSort myMergelist = new hwMergeSort();
             int[] testArray = { 9, 7, 2, 5, 4, 3, 6, 1, 8 };
