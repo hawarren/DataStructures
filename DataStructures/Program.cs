@@ -18,41 +18,46 @@ namespace DataStructures
             myDynamicArray.insert(25);
             myDynamicArray.insert(7);
 
-            Console.WriteLine("myDynamicArray's values are ");
+            Console.WriteLine("\r\nmyDynamicArray's values are ");
 
             myDynamicArray.print();
-            myDynamicArray.indexOf(25);
+            Console.Write("The Index of {0} is {1}",25, myDynamicArray.indexOf(25)) ;
+            Console.Write("\r\n Now removing the 3rd item (aka index 2)...");
             myDynamicArray.removeAt(2);
 
-            Console.WriteLine("myDynamicArray's value is ");
+            Console.Write("\r\nmyDynamicArray's value is ");
             myDynamicArray.print();
             myDynamicArray.indexOf(25);
-            Console.WriteLine("The largest value in the array is {0}", myDynamicArray.max());
+            Console.WriteLine("\r\nThe largest value in the array is {0}", myDynamicArray.max());
             Console.ReadKey();
             HWArray otherArray = new HWArray(new int[] { 7, 18, 9, 6, 8 });
-            Console.WriteLine("Now printing the second array");
+            Console.WriteLine("\r\nNow printing the second array...");
             otherArray.print();
-            Console.WriteLine("press any key to see the common items in the array");
-                       Console.ReadKey();
-            Console.WriteLine("the common items in the array are... ");
+            Console.WriteLine(" (press any key to see the common items in the array)");
+            Console.ReadKey();
+            Console.Write("\r\nthe common items in the array are... ");
             myDynamicArray.intersect(otherArray).print();
+            Console.ReadKey();
 
+            Console.WriteLine("\r\nNow testing a mergesorted array");
             hwMergeSort myMergelist = new hwMergeSort();
-            int[] testArray = { 9,7, 2, 5, 4, 3, 6, 1, 8 };
-            Console.WriteLine("Starting node list is");
-                for (int i = 0; i < testArray.Length; i++)
+            int[] testArray = { 9, 7, 2, 5, 4, 3, 6, 1, 8 };
+            Console.WriteLine("\r\nStarting node list is");
+            for (int i = 0; i < testArray.Length; i++)
             {
                 Console.WriteLine(testArray[i]);
 
             }
-            Console.WriteLine("Sorting the array now");
+            Console.WriteLine("\r\nSorting the array now");
             myMergelist.MergeSort(testArray, 0, testArray.Length - 1);
-            Console.WriteLine("The newly merge sorted array is");
-                for (int i = 0; i < testArray.Length; i++)
+            Console.WriteLine("\r\nThe newly merge sorted array is");
+            for (int i = 0; i < testArray.Length; i++)
             {
                 Console.WriteLine(testArray[i]);
 
             }
+
+
 
 
 
@@ -63,9 +68,9 @@ namespace DataStructures
 
             myTestList.printNodes();
 
-            Console.WriteLine("Press any key to see an example node added");
+            Console.WriteLine("\r\nPress any key to see an example node added");
             Console.ReadKey();
-            myTestList.addHead("First in Line!");
+            myTestList.addHead("\r\nFirst in Line!");
 
             myTestList.printNodes();
             //Console.ReadKey();
@@ -73,7 +78,7 @@ namespace DataStructures
 
             while (keepRunning)
             {
-                Console.WriteLine("Now add your own array. Type the name or the number 'printNodes', 'addnode'");
+                Console.WriteLine("\r\nNow add your own array. Type the name or the number 'printNodes', 'addnode', 'myArrayTest', (press 'q' to quit");
                 string response = Console.ReadLine().ToLower();
                 if (response.ToLower().Equals("q"))
                 {
@@ -83,7 +88,7 @@ namespace DataStructures
                 switch (response.ToLower())
                 {
                     case "1":
-                    case "addnode" :
+                    case "addnode":
                         Console.WriteLine("enter a number to add");
                         response = Console.ReadLine();
                         //TODO: actually pass in numbers not strings
@@ -96,19 +101,23 @@ namespace DataStructures
                     case "printnodes":
                         myTestList.printNodes();
                         break;
+                        //                case "myarraytest":
+                        //    myArrayTest();
+                        //break;
 
-                    //case "3":
-                    //case "removenode":
+                        //case "3":
+                        //case "removenode":
 
-                    //    myTestList.removeNode();
+                        //    myTestList.removeNode();
 
 
                 }
+
+
+
             }
 
-
         }
-
     }
 }
 

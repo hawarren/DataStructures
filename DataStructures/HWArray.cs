@@ -21,14 +21,14 @@ namespace DataStructures
         {
             internalArray = new int?[1];
             internalSize = 0;
-           // lastIndex = 0;
+            // lastIndex = 0;
 
         }
         public HWArray(int size)
         {
             internalArray = new int?[size];
             internalSize = 0;
-           // lastIndex = 0;
+            // lastIndex = 0;
 
         }
         public HWArray(int[] newArray)
@@ -45,7 +45,9 @@ namespace DataStructures
         {
             for (int h = 0; h < internalSize; h++)
             {
-                Console.WriteLine(internalArray[h]);
+                Console.Write(internalArray[h]);
+                if (h+1 != internalSize)
+                    Console.Write(", ");
             }
         }
         public void insert(int newvalue)
@@ -58,10 +60,10 @@ namespace DataStructures
 
                 internalArray = bigArray;
             }
-            if (internalSize < internalArray.Length )
+            if (internalSize < internalArray.Length)
             {
-            internalArray[internalSize] = newvalue;
-            internalSize++;
+                internalArray[internalSize] = newvalue;
+                internalSize++;
 
             }
 
@@ -83,7 +85,7 @@ namespace DataStructures
                 int? tempDeleted;
                 tempDeleted = internalArray[thisIndex];
                 internalArray[thisIndex] = null;
-                for (int i = 0; i < internalSize -1; i++)
+                for (int i = 0; i < internalSize - 1; i++) //stop 1 before last index
                 {
                     if (internalArray[i] == null)
                     {
@@ -110,8 +112,8 @@ namespace DataStructures
         }
         public int indexOf(int item) //returns the index (location) of a given value
         {
-            int thisIndex =-1;
-            for (int i = 0; i<internalSize; i++)
+            int thisIndex = -1;
+            for (int i = 0; i < internalSize; i++)
             {
 
                 if (internalArray[i] == item)
@@ -121,20 +123,20 @@ namespace DataStructures
 
                 }
             }
-                if (thisIndex == -1)
-                {
-                    Console.Write("Could not find this item in the array");
-                }
-                else
-                Console.WriteLine("The index of {0} is {1}", item, thisIndex);
+            //if (thisIndex == -1)
+            //{
+            //    Console.Write("\r\nError:Could not find this item in the array");
+            //}
+            //else
+            //    Console.WriteLine("\r\nThe index of {0} is {1}", item, thisIndex);
 
-            return thisIndex;
+            return thisIndex; //-1 if the value isn't in this array
         }
         /*
          * Array Exercise 1
          Extend the Array class and add a new method to return the largest number. What is the runtime complexity of this method reverse the array.
          */
-         //This method takes O(n) time to run, because it needs to iterate through the entire array to compare each item to the current largest value
+        //This method takes O(n) time to run, because it needs to iterate through the entire array to compare each item to the current largest value
         public int max()
         {
             int? largest = -1;
@@ -146,7 +148,7 @@ namespace DataStructures
                     largest = internalArray[i];
                 }
             }
-                return (int)largest;
+            return (int)largest;
         }
         /*Extend the array class and add a method to return the common items in this array and another array.*/
         /*This method runs in O(n*m) time, where n is the size of the first array and M is the size of the second array)
@@ -158,18 +160,18 @@ namespace DataStructures
             if (internalSize < secondArray.sizeOf())
             {
 
-                 commonArray = new HWArray(secondArray.sizeOf());
+                commonArray = new HWArray(secondArray.sizeOf());
             }
             else
             {
-                 commonArray = new HWArray(internalSize);
+                commonArray = new HWArray(internalSize);
             }
 
             for (int i = 0; i < internalSize; i++)
             {
-                if (secondArray.indexOf((int)internalArray[i]) != -1 )
+                if (secondArray.indexOf((int)internalArray[i]) != -1)
                 {
-                        commonArray.insert((int)internalArray[i]);
+                    commonArray.insert((int)internalArray[i]);
 
 
                 }
