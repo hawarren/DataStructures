@@ -38,6 +38,8 @@ namespace DataStructures
             Console.Write("\r\nthe common items in the array are... ");
             myDynamicArray.intersect(otherArray).print();
             Console.ReadKey();
+            Console.Write("\r\nNow reversing the array... ");
+            myDynamicArray.reverse();
 
             Console.WriteLine("\r\nNow testing a mergesorted array");
             hwMergeSort myMergelist = new hwMergeSort();

@@ -46,7 +46,7 @@ namespace DataStructures
             for (int h = 0; h < internalSize; h++)
             {
                 Console.Write(internalArray[h]);
-                if (h+1 != internalSize)
+                if (h + 1 != internalSize)
                     Console.Write(", ");
             }
         }
@@ -181,8 +181,23 @@ namespace DataStructures
             return commonArray;
         }
 
-
-
+        /*3-Extend the Array class and add a method to reverse the array. For example, if the array includes [1,2,3,4], after reversing and printing it, we should see [4,3,2,1].
+         * Solution Array.reverse()
+         * Sort in place: Starting at index 0, swap with value at array.length
+         * The space complexity is O(n) linear time if swapping the values
+         * The time complexity is O(n) linear time as well
+         */
+        public void reverse()
+        {
+            int swapper;
+            for (int i = 0; i < internalSize / 2; i++)
+            {
+                swapper = (int)internalArray[(internalSize - 1) - i]; //save the value before taking it out, internalsize index is null, so 1 before that 1
+                internalArray[(internalSize - 1) - i] = internalArray[i]; //put the first value in place of the vacated last value
+                internalArray[i] = swapper; //take the last value and put in place of the vacated first value
+            }
+            print();
+        }
     }
 
 
