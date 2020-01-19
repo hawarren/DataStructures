@@ -146,7 +146,7 @@ namespace DataStructures
         }
         private Node getPrevious(Node node)
         {
-                var trav = first; //set trav to the first node
+            var trav = first; //set trav to the first node
             if (first != node)
             {
                 while (trav.next != node)
@@ -164,21 +164,24 @@ namespace DataStructures
         {
             if (!isEmpty())
             {
-                Node currentNode = first;
 
-                while (currentNode.next != null)
+                Node currentNode = first;
+                if (first != last)
                 {
-                    if (currentNode != last)
+                    while (currentNode != last)
                     {
+
                         Console.WriteLine("The number at index {0} is {1}, ", indexOf((int)currentNode.data), printNode(currentNode));
+
+                        currentNode = currentNode.next;
                     }
-                    else
-                    {
-                        Console.WriteLine("The last number is at index {0} and value is {1}", indexOf((int)currentNode.data), printNode(currentNode));
-                    }
-                    currentNode = currentNode.next;
+                    Console.WriteLine("The last number is at index {0} and value is {1}", indexOf((int)currentNode.data), printNode(currentNode));
+
                 }
-                Console.WriteLine("The last number is " + printNode(currentNode));
+                else
+                {
+                    Console.WriteLine("The first, last, and only number is" + printNode(currentNode));
+                }
             }
 
         }
@@ -186,7 +189,32 @@ namespace DataStructures
         {
             return (int)toPrint.data;
         }
+        /* Exercise (16): Reversing a linked list
+         * solution "create" a linkedlist by borrowing the head of the original list to be the tail
+         * , use 2 markers to hold the newtail (what was the old head) and the new head (the next item in the linkedlist)
+         * set first to last (this is the last time we touch the new "last node"
+         * set trav1 = first
+         * set trav2 first.next (save the node for when the link is broken
+         * set trav1.next to first
+         * set first to trav1
+         * set trav1 to trav2 (move up a node)
+         * when trav2.next is null, stop and declare
+            */
+        public void reverse()
+        {
+            Node trav1 = first;
+            Node trav2 = first; //move up for later
+            last = first; //the head is the new tail of our reversed linked list
 
+            while (trav1 != null) //stop iterating when there isn't another node to move on to
+            {
+                if (trav2 != null) //trav 2 reaches end 1 round before trav1
+                    trav2 = trav2.next; //move up for later
+                trav1.next = first; //link to head
+                first = trav1; //new head
+                trav1 = trav2; // move up to our saved spot
+            }
+        }
 
 
 

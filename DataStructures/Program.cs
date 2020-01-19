@@ -23,8 +23,13 @@ namespace DataStructures
             list.deleteFirst();
             list.deleteLast();
             Console.ReadKey();
+            list.addLast(32);
+            list.addLast(64);
             list.printNodes();
+            Console.WriteLine("\r\n Now to reverse the nodes and print");
             Console.ReadKey();
+            list.reverse();
+            list.printNodes();
 
             HWArray myDynamicArray = new HWArray();
             myDynamicArray.insert(1);
@@ -85,12 +90,7 @@ namespace DataStructures
                 Console.WriteLine(testArray[i]);
 
             }
-            /* Exercise (16): Reversing a linked list
-             */
-             public void reverse()
-        {
 
-        }
 
 
 
