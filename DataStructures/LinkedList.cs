@@ -6,7 +6,200 @@ using System.Threading.Tasks;
 
 namespace DataStructures
 {
+    /*
+     Mosh Coding Challenge:
+     Build a linkedlist with: addFirst(), addLast(), deleteFirst(), deleteLast(), contains(), indexOf()
+         */
+    public class hwLinkedList
+    {
 
+        private class Node
+        {
+            public int? data { get; set; }
+            public Node next { get; set; }
+
+            public Node(int newData)
+            {
+                data = newData;
+                next = null;
+            }
+        }
+        private Node first { get; set; }
+        private Node last { get; set; }
+        public hwLinkedList()
+        {
+            first = null;
+            last = null;
+        }
+        public hwLinkedList(int data)
+        {
+            first = new Node(data);
+            last = null;
+        }
+
+
+        public bool isEmpty()
+        {
+            if (first == null)
+                return true;
+            else
+                return false;
+        }
+        public void addFirst(int data)
+        {
+            Console.WriteLine("\r\nAdding {0} to the head of the linkedlist", data);
+            if (isEmpty())
+            {
+                first = new Node(data);
+                last = first;
+            }
+            else
+            {
+                Node newFirst = new Node(data);
+                var trav = first;
+                newFirst.next = first; // attach the head to the new first node
+                first = newFirst;//the new node is now the head
+            }
+        }
+        public void addLast(int data)
+        {
+            Console.WriteLine("\r\nAdding {0} to the end of the linkedlist", data);
+            if (!isEmpty())
+            {
+                var trav = first;
+                Node newNode = new Node(data);
+                while (trav.next != null)
+                {
+                    trav = trav.next;
+                }
+                trav.next = newNode;//attach it at the end
+                last = trav.next; //update our last node
+            }
+            else
+                addFirst(data);
+
+        }
+        public void deleteFirst()
+        {
+            Console.WriteLine("\r\ndeleting {0} from the head of the linkedlist", indexOf((int)first.data));
+            if (!isEmpty())
+            {
+                first = first.next; //overwrite the old first with the next node in the chain
+            }
+            else
+                Console.WriteLine("Linkedlist is already empty");
+        }
+        public void deleteLast()
+        {
+            if (!isEmpty())
+            {
+                Console.WriteLine("\r\ndeleting {0} (index {1}) from the end of the linkedlist", last.data, indexOf((int)last.data));
+                Node trav = getPrevious(last);
+
+                trav.next = null; //we're at the 2m end, delete that value
+                last = trav;
+
+            }
+        }
+        public bool contains(int data)
+        {
+            Node trav = first;
+            while (trav != null && trav.data != data)
+            {
+                trav = trav.next;
+            }
+            if (trav == null)
+            {
+                return false; //we reached the end without finding our value
+            }
+            else
+                return true;
+        }
+        /*
+         traverse the linkedlist starting from head
+         -if the current value is not the one we want, move to the next and increment counter
+
+             */
+
+        public int indexOf(int data)
+        {
+            Node trav = first;
+            int index = -1;
+            int counter = -1; //will increment every time we move through linkedlist
+            while (trav != null) //go until we reach the value or reach the end
+            {
+                counter++; //we're checking the next index
+                if (trav.data != data)
+                {
+                    trav = trav.next;
+                }
+                else
+                {
+                    index = counter;
+                    break;//we found our value so let's get out of the loop
+                }
+            }
+            if (index == -1) //should probably throw an exception here
+                Console.WriteLine("Value {0} not located in this linkedlist", data);
+
+            return index;
+        }
+        private Node getPrevious(Node node)
+        {
+                var trav = first; //set trav to the first node
+            if (first != node)
+            {
+                while (trav.next != node)
+                {
+                    if (trav == null)
+                        throw new System.Data.DataException();
+                    trav = trav.next;
+                }
+            }
+            return trav; //we're just before the node we want to remove
+
+
+        }
+        public void printNodes()
+        {
+            if (!isEmpty())
+            {
+                Node currentNode = first;
+
+                while (currentNode.next != null)
+                {
+                    if (currentNode != last)
+                    {
+                        Console.WriteLine("The number at index {0} is {1}, ", indexOf((int)currentNode.data), printNode(currentNode));
+                    }
+                    else
+                    {
+                        Console.WriteLine("The last number is at index {0} and value is {1}", indexOf((int)currentNode.data), printNode(currentNode));
+                    }
+                    currentNode = currentNode.next;
+                }
+                Console.WriteLine("The last number is " + printNode(currentNode));
+            }
+
+        }
+        private int printNode(Node toPrint)
+        {
+            return (int)toPrint.data;
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    /*
     class LinkedList
     {
         //this linked list will be a group of objects within the LinkedList object. Each LinkedListItem node will have a value, and a pointer to the next item.
@@ -101,5 +294,6 @@ namespace DataStructures
         }
 
     }
+*/
 }
 

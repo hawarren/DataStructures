@@ -10,6 +10,21 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+            var list = new hwLinkedList();
+            list.addFirst(8);
+            list.addLast(16);
+            list.addFirst(24);
+            list.printNodes();
+            Console.ReadKey();
+            list.indexOf(16);
+            list.indexOf(24);
+            list.indexOf(8);
+            list.indexOf(9);
+            list.deleteFirst();
+            list.deleteLast();
+            Console.ReadKey();
+            list.printNodes();
+            Console.ReadKey();
 
             HWArray myDynamicArray = new HWArray();
             myDynamicArray.insert(1);
@@ -26,7 +41,7 @@ namespace DataStructures
             Console.WriteLine("\r\nmyDynamicArray's values are ");
 
             myDynamicArray.print();
-            Console.Write("The Index of {0} is {1}",25, myDynamicArray.indexOf(25)) ;
+            Console.Write("The Index of {0} is {1}", 25, myDynamicArray.indexOf(25));
             Console.Write("\r\n Now removing the 3rd item (aka index 2)...");
             myDynamicArray.removeAt(2);
 
@@ -48,7 +63,7 @@ namespace DataStructures
             myDynamicArray.insertAt(38, 3);
 
             myDynamicArray.print();
-            
+
 
 
 
@@ -70,68 +85,72 @@ namespace DataStructures
                 Console.WriteLine(testArray[i]);
 
             }
-
-
-
-
-
-            LinkedList myTestList = new LinkedList();
-            myTestList.addNode("13");
-            myTestList.addNode("34");
-
-
-            myTestList.printNodes();
-
-            Console.WriteLine("\r\nPress any key to see an example node added");
-            Console.ReadKey();
-            myTestList.addHead("\r\nFirst in Line!");
-
-            myTestList.printNodes();
-            //Console.ReadKey();
-            bool keepRunning = true;
-
-            while (keepRunning)
-            {
-                Console.WriteLine("\r\nNow add your own array. Type the name or the number 'printNodes', 'addnode', 'myArrayTest', (press 'q' to quit");
-                string response = Console.ReadLine().ToLower();
-                if (response.ToLower().Equals("q"))
-                {
-                    keepRunning = false;
-                }
-                int number;
-                switch (response.ToLower())
-                {
-                    case "1":
-                    case "addnode":
-                        Console.WriteLine("enter a number to add");
-                        response = Console.ReadLine();
-                        //TODO: actually pass in numbers not strings
-                        bool isGoodInput = int.TryParse(response, out number);
-                        myTestList.addNode(response);
-                        Console.WriteLine("You have added {0} to the linkedlist", response);
-                        myTestList.printNodes();
-                        break;
-                    case "2":
-                    case "printnodes":
-                        myTestList.printNodes();
-                        break;
-                        //                case "myarraytest":
-                        //    myArrayTest();
-                        //break;
-
-                        //case "3":
-                        //case "removenode":
-
-                        //    myTestList.removeNode();
-
-
-                }
-
-
-
-            }
+            /* Exercise (16): Reversing a linked list
+             */
+             public void reverse()
+        {
 
         }
+
+
+
+        //LinkedList myTestList = new LinkedList();
+        //myTestList.addNode("13");
+        //myTestList.addNode("34");
+
+
+        //myTestList.printNodes();
+
+        //Console.WriteLine("\r\nPress any key to see an example node added");
+        //Console.ReadKey();
+        //myTestList.addHead("\r\nFirst in Line!");
+
+        //myTestList.printNodes();
+        ////Console.ReadKey();
+        //bool keepRunning = true;
+
+        //while (keepRunning)
+        //{
+        //    Console.WriteLine("\r\nNow add your own array. Type the name or the number 'printNodes', 'addnode', 'myArrayTest', (press 'q' to quit");
+        //    string response = Console.ReadLine().ToLower();
+        //    if (response.ToLower().Equals("q"))
+        //    {
+        //        keepRunning = false;
+        //    }
+        //    int number;
+        //    switch (response.ToLower())
+        //    {
+        //        case "1":
+        //        case "addnode":
+        //            Console.WriteLine("enter a number to add");
+        //            response = Console.ReadLine();
+        //            //TODO: actually pass in numbers not strings
+        //            bool isGoodInput = int.TryParse(response, out number);
+        //            myTestList.addNode(response);
+        //            Console.WriteLine("You have added {0} to the linkedlist", response);
+        //            myTestList.printNodes();
+        //            break;
+        //        case "2":
+        //        case "printnodes":
+        //            myTestList.printNodes();
+        //            break;
+        //            //                case "myarraytest":
+        //            //    myArrayTest();
+        //            //break;
+
+        //            //case "3":
+        //            //case "removenode":
+
+        //            //    myTestList.removeNode();
+
+
+        //    }
+
+
+
+        //}
+
     }
+}
 }
 
