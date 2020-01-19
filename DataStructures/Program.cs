@@ -25,11 +25,15 @@ namespace DataStructures
             Console.ReadKey();
             list.addLast(32);
             list.addLast(64);
+            list.addLast(128);
+            list.addLast(256);
             list.printNodes();
             Console.WriteLine("\r\n Now to reverse the nodes and print");
             Console.ReadKey();
             list.reverse();
             list.printNodes();
+            list.getKthFromtheEnd(4);
+            Console.ReadKey();
 
             HWArray myDynamicArray = new HWArray();
             myDynamicArray.insert(1);

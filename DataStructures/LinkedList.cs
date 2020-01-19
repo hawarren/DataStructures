@@ -81,7 +81,7 @@ namespace DataStructures
         }
         public void deleteFirst()
         {
-            Console.WriteLine("\r\ndeleting {0} from the head of the linkedlist", indexOf((int)first.data));
+            Console.WriteLine("\r\ndeleting {0} from the head of the linkedlist", (int)first.data);
             if (!isEmpty())
             {
                 first = first.next; //overwrite the old first with the next node in the chain
@@ -202,21 +202,48 @@ namespace DataStructures
             */
         public void reverse()
         {
+            if (isEmpty())
+            {
+                return;
+            }
             Node trav1 = first;
             Node trav2 = first; //move up for later
             last = first; //the head is the new tail of our reversed linked list
-
-            while (trav1 != null) //stop iterating when there isn't another node to move on to
+            //last.next = null;
+            while (trav1.next != null) //stop iterating when there isn't another node to move on to
             {
-                if (trav2 != null) //trav 2 reaches end 1 round before trav1
+                 //trav 2 reaches end 1 round before trav1
+
                     trav2 = trav2.next; //move up for later
                 trav1.next = first; //link to head
                 first = trav1; //new head
                 trav1 = trav2; // move up to our saved spot
+
             }
         }
+        /*Get kthFromtheEnd(k) : Get the kth value from the end in only 1 pass
+         * solution: use 2 pointers, k-1 nodes apart (it's k-1 because the last pointer is on the last node, not after that
+         *
+         */
+
+        public void getKthFromtheEnd(int k)
+        {
+            Node trav1 = first;
+            Node trav2 = first;
+            for (int i = 0; i < k; i++) //move trav 2 up k-1 times
+            {
+                if(trav2 != null )   //stop if trav2 reaches the end of the LL, because the LL is less than K nodes long
+                trav2 = trav2.next;
+            }
+            while (trav2 != last)
+            {
+                trav2 = trav2.next; //move over 1
+                trav1 = trav1.next; //move over 1 to stay k-1 distance away from trav2
+            }
 
 
+            Console.WriteLine("The {0} Node from the end is {1}", k, (int)trav1.data);
+        }
 
 
     }
