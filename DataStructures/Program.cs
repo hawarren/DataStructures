@@ -33,6 +33,12 @@ namespace DataStructures
             list.reverse();
             list.printNodes();
             list.getKthFromtheEnd(4);
+            list.PrintMiddle();
+            list.createLoop(3);
+            Console.ReadKey();
+            Console.WriteLine("Does this list have a loop: {0}",list.hasLoop()); 
+            Console.ReadKey();
+            Console.WriteLine("\r\n Next up are dynamic array tests");
             Console.ReadKey();
 
             HWArray myDynamicArray = new HWArray();

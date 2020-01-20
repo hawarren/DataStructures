@@ -13,7 +13,7 @@ namespace DataStructures
     public class hwLinkedList
     {
 
-        private class Node
+        public class Node
         {
             public int? data { get; set; }
             public Node next { get; set; }
@@ -41,7 +41,10 @@ namespace DataStructures
         public bool isEmpty()
         {
             if (first == null)
+            {
+                Console.WriteLine("\r\nWarning: The list is empty");
                 return true;
+            }
             else
                 return false;
         }
@@ -93,6 +96,7 @@ namespace DataStructures
         {
             if (!isEmpty())
             {
+
                 Console.WriteLine("\r\ndeleting {0} (index {1}) from the end of the linkedlist", last.data, indexOf((int)last.data));
                 Node trav = getPrevious(last);
 
@@ -149,15 +153,19 @@ namespace DataStructures
             var trav = first; //set trav to the first node
             if (first != node)
             {
-                while (trav.next != node)
+                while (trav.next != node && trav.next != last)
                 {
                     if (trav == null)
                         throw new System.Data.DataException();
                     trav = trav.next;
                 }
             }
-            return trav; //we're just before the node we want to remove
+            else
+            {
+                return first; //there's only 1 node so first is also the last
 
+            }
+            return trav; //we're just before the node we want to remove
 
         }
         public void printNodes()
@@ -206,149 +214,130 @@ namespace DataStructures
             {
                 return;
             }
-            Node trav1 = first;
-            Node trav2 = first; //move up for later
-            last = first; //the head is the new tail of our reversed linked list
-            //last.next = null;
-            while (trav1.next != null) //stop iterating when there isn't another node to move on to
+            Node previous = first; //previous is the node we'll be attaching behind
+            Node current = first.next; //move up for later (first link to be changed is doing the 2nd node and pointing to first
+
+
+            while (current != null) //stop iterating when there isn't another node to move on to
             {
-                 //trav 2 reaches end 1 round before trav1
+                //trav 2 reaches end 1 round before trav1
 
-                    trav2 = trav2.next; //move up for later
-                trav1.next = first; //link to head
-                first = trav1; //new head
-                trav1 = trav2; // move up to our saved spot
-
+                Node next = current.next; //move up for later (need to do it before we break that link)
+                current.next = previous; // connect to the previous node (this will be the temporary head right now)
+                previous = current; // current become the new prior node (basically the temporary head)
+                current = next; //the new current node is the placeholder that we made to keep going; (basically the new head of the original (unreversed but broken) linkedlist
             }
+            last = first; //the head's data will become the new tail data of our reversed linked list
+            last.next = null; //clean up the new tail, it still had the old head's pointer
+            first = previous; //finished reversing, make sure to take care of the next
+
+            //second approach. smh just call add first to all
         }
         /*Get kthFromtheEnd(k) : Get the kth value from the end in only 1 pass
          * solution: use 2 pointers, k-1 nodes apart (it's k-1 because the last pointer is on the last node, not after that
          *
          */
 
-        public void getKthFromtheEnd(int k)
+        public Node getKthFromtheEnd(int k)
+        {
+            if (!isEmpty())
+            {
+                Node trav1 = first;
+                Node trav2 = first;
+                for (int i = 0; i < k; i++) //move trav 2 up k-1 times
+                {
+                    trav2 = trav2.next;
+                    if (trav2 == null)   //stop if trav2 reaches the end of the LL, because the LL is less than K nodes long
+                    {
+                        throw new System.ArgumentException("k is larger than linkedlist size", "trav2");
+
+                    }
+                }
+                while (trav2 != last)
+                {
+                    trav2 = trav2.next; //move over 1
+                    trav1 = trav1.next; //move over 1 to stay k-1 distance away from trav2
+                }
+
+                Console.WriteLine("The {0} Node from the end is {1}", k, (int)trav1.data);
+                return trav1; //in case we need to pass it to another variable
+            }
+            else
+                throw new System.ArgumentOutOfRangeException("value is higher than this list length", "getKthFromtheEnd");
+
+        }
+
+        /*
+         20. Exercise: Find the middle of a linkedlist in one pass. If the list has an even number of nodes, there would be 2 middle nodes. (Note: Assume that you don't know the size ahead of time)
+            Solution: use 2 pointer, make 1 go 1 node at a time, but the other go 2 nodes at a time.
+            When the fast pointer reaches the end and tries (and fails to jump 2), the slow node is moved up and that's the middle value (the slow pointer will have moved 1 more time than the fast pointer)
+            If the fast pointer's last jump only goes up  1 node, the slow pointer moves 1, but the middle is also the next 1
+            if the middle pointer can only move up 1, the the
+         */
+        public void PrintMiddle()
+        {
+            if (!isEmpty())
+            {
+                Node trav1 = first; //Start both nodes at the first index
+                Node trav2 = first;
+                int? firstMiddle = null;
+                int? secondMiddle = null; //there will be at most 2 middle values
+
+                while (trav2.next != null)//stop when trav2 can't jump forward 2 nodes
+                {
+                    trav2 = trav2.next;
+                    if (trav2.next != null)
+                    {
+                        trav2 = trav2.next; //jump 2nd time if possible
+                    }
+                    trav1 = trav1.next; //jump 1
+                    //jump 2
+                }
+
+                firstMiddle = (int)trav1.data; //middle always has at least 1 value
+                if (trav2.next != null)
+                {
+                    secondMiddle = (int)trav1.next.data;// because the list is even numbered so it has 2 middle values
+                    Console.WriteLine("The middle values are {0} and {1}", firstMiddle, secondMiddle);
+                }
+                else
+                {
+                    Console.WriteLine("The middle value is  {0}", firstMiddle);
+                }
+            }
+
+        }
+
+
+        //this method breaks my linkedlist by adding a loop to it (connect the last node to the loopIndex node
+        public void createLoop(int loopIndex)
+        {
+            Node loopNode = first;
+            last.next = getKthFromtheEnd(loopIndex); //link the end to some other node to create a loop
+            Console.WriteLine("\r\n Adding a loop from the last to the {0} node", indexOf((int)last.next.data));
+
+        }
+        /*Check if a linkedlist has a loop
+         */
+        public bool hasLoop()
         {
             Node trav1 = first;
             Node trav2 = first;
-            for (int i = 0; i < k; i++) //move trav 2 up k-1 times
+            bool hasLoop = false;
+            while (trav2 != null)
             {
-                if(trav2 != null )   //stop if trav2 reaches the end of the LL, because the LL is less than K nodes long
+                trav1 = trav1.next; //move up a step
                 trav2 = trav2.next;
+                if (trav2 != null)
+                    trav2 = trav2.next;
+                if (trav1 == trav2)
+                {
+                    hasLoop = true; //the nodes ended up at the same place, should be impossible unless 1 is caught in a loop
+                    return hasLoop;
+                }
             }
-            while (trav2 != last)
-            {
-                trav2 = trav2.next; //move over 1
-                trav1 = trav1.next; //move over 1 to stay k-1 distance away from trav2
-            }
-
-
-            Console.WriteLine("The {0} Node from the end is {1}", k, (int)trav1.data);
+            return hasLoop;
         }
-
-
     }
-
-
-
-
-
-
-
-    /*
-    class LinkedList
-    {
-        //this linked list will be a group of objects within the LinkedList object. Each LinkedListItem node will have a value, and a pointer to the next item.
-        //Upon initialization, there will be no firstItem. The firstItem will automatically be the first node.
-        //The firstItem is just an arbitrary item chosen as the "first" for access purposes. It can be changed at any time, to any item contained within the linkedList.
-        //if the firstItem is removed, a new firstItem (the next item in the linkedlist) will be set by default.
-        //this object has: addItem method, removeItem method, findItem method, and lastItem method.
-        public Node head = null;
-        public int nodeLength = 0; //counter to keep track of the total length
-
-        //each item has a value, and a pointer to the next value
-        internal class Node
-        {
-            internal string data;
-            internal Node next;
-            public Node(string d)
-            {
-                data = d;
-                next = null;
-            }
-        }
-        //adds to the end of the linkedlist
-        public void addNode(string newData)
-        {
-            if (head == null)
-            {
-                //if node added would be the only node
-                head = new Node(newData);
-            }
-            else
-            {
-
-            Node currentNode = head;
-            while (currentNode.next != null)
-            {
-                //make the next value of the currentnode into the current node itself
-                currentNode = currentNode.next;
-            }
-            Node newNode = new DataStructures.LinkedList.Node(newData);
-                nodeLength++;
-            currentNode.next = newNode;
-            }
-
-        }
-        public void addHead(string newData)
-        {
-            //get the head, create new node with pointer to old head, then assign that node to new head
-            Node newHead = new Node(newData);
-            newHead.next = head;
-            head = newHead;
-
-        }
-        //remove Node at specified index
-        public void removeNode(int index)
-        {
-
-            //traverse the node up to the the specified index (grab that and the prior)
-            Node currentNode = head; //grab the head of the linkedlist
-            Node tempNode = null;
-            for (int i = 0; i < index; i++)
-            {
-                tempNode = currentNode; //this is the node pointing to the next node we want to delete
-                currentNode = currentNode.next;
-            }
-
-            tempNode.next = currentNode.next; //save the next pointer for the deleted node
-            currentNode = tempNode;
-            tempNode = null;
-
-
-
-        }
-
-        public void printNodes()
-        {
-            Node currentNode = head;
-            Console.WriteLine("The first number is " + printNode(currentNode));
-            currentNode = currentNode.next;
-            while (currentNode.next != null)
-            {
-
-                Console.WriteLine("The next number is " + printNode(currentNode));
-                currentNode = currentNode.next;
-
-            }
-            Console.WriteLine("The last number is " + printNode(currentNode));
-
-        }
-        public string printNode(Node toPrint)
-        {
-            return toPrint.data;
-        }
-
-    }
-*/
 }
 
