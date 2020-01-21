@@ -10,12 +10,33 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+            //check brackets
+            string str = "(1 + 1) )";
+
+            Expression exp = new Expression();
+            Console.WriteLine(exp.isBalanced(str));
+            Console.ReadKey();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             Stack demoStack = new Stack();
             Console.WriteLine("Now adding 'abcd' to the stack");
             demoStack.push("abcd");
             Console.WriteLine("The reversed string is {0}", demoStack.pop());
-
+            StringReverser tryIt = new StringReverser("efgh");
+            Console.WriteLine("The reverse of efgh is {0}", tryIt.newString);
 
             Console.ReadKey();
             //linkedlist

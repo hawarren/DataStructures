@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expression.cs" />
     <Compile Include="HWArray.cs" />
     <Compile Include="hwMergeSort.cs" />
     <Compile Include="LinkedListv1 - Copy.cs" />

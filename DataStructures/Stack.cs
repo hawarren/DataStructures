@@ -51,8 +51,8 @@ namespace DataStructures
             string popChar = "";
             while (first != null)
             {
-            popChar += first.data;
-            first = first.next;
+                popChar += first.data;
+                first = first.next;
             }
 
 
@@ -61,4 +61,27 @@ namespace DataStructures
         }
 
     }
+    //method to reverse a string (exercise 5)
+    class StringReverser
+    {
+        public string newString { get; set; }
+        public StringReverser(string thisString)
+        {
+            Stack<Char> stack = new Stack<Char>();
+            char[] charString = thisString.ToCharArray();
+            foreach (var item in charString)
+            {
+                stack.Push(item);
+            }
+            string newString = "";
+            while (stack.Count != 0)
+            { newString +=  stack.Pop(); }
+            Console.WriteLine("constructing {0}", newString);
+
+        }
+
+
+    }
+
+
 }
