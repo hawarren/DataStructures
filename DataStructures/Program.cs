@@ -10,6 +10,15 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+
+            Stack demoStack = new Stack();
+            Console.WriteLine("Now adding 'abcd' to the stack");
+            demoStack.push("abcd");
+            Console.WriteLine("The reversed string is {0}", demoStack.pop());
+
+
+            Console.ReadKey();
+            //linkedlist
             var list = new hwLinkedList();
             list.addFirst(8);
             list.addLast(16);
@@ -36,7 +45,7 @@ namespace DataStructures
             list.PrintMiddle();
             list.createLoop(3);
             Console.ReadKey();
-            Console.WriteLine("Does this list have a loop: {0}",list.hasLoop()); 
+            Console.WriteLine("Does this list have a loop: {0}",list.hasLoop());
             Console.ReadKey();
             Console.WriteLine("\r\n Next up are dynamic array tests");
             Console.ReadKey();
