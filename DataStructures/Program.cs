@@ -8,8 +8,77 @@ namespace DataStructures
 {
     class Program
     {
+
+        public static void reverse(Queue<int> queue)
+        {//reverse the queue using only
+         //add (enqueue)
+         //remove (dequeue)
+         //isEmpty (.count ==0)
+         //Solution:  put queue in array the size of the queue. enqueue from the back of th array to the front
+            int[] tempQueue = new int[queue.Count];
+            while (queue.Count != 0)
+            {
+                tempQueue[queue.Count - 1] = queue.Dequeue(); //dequeue from front, but replace in back of array
+
+            }
+            foreach (int item in tempQueue)
+            {
+                queue.Enqueue(item);
+            }
+
+        }
+        public static void reverse2(Queue<int> queue)
+        {//reverse the queue using only
+         //add (enqueue)
+         //remove (dequeue)
+         //isEmpty (.count ==0)
+         //Solution:  put queue in array the size of the queue. enqueue from the back of th array to the front
+            Stack<int> stack = new Stack<int>();
+
+            while (queue.Count != 0)
+            {
+                stack.Push(queue.Dequeue()); //dequeue from front, but replace in back of array
+
+            }
+            while (stack.Count != 0)
+            {
+                queue.Enqueue(stack.Pop());
+            }
+
+        }
+
         static void Main(string[] args)
         {
+            //my own queue implementation (exercise 6)
+            hwQueue myOwnQueue = new hwQueue(5);
+            myOwnQueue.enqueue(5);
+            myOwnQueue.enqueue(10);
+            myOwnQueue.enqueue(15);
+            myOwnQueue.enqueue(20);
+            myOwnQueue.enqueue(25);
+            myOwnQueue.enqueue(30); //should fail
+            myOwnQueue.dequeue(); //remove 25
+               
+                Console.WriteLine("Now printing the queue, which should have 5,10,15, and 20 \r\n");
+            while (myOwnQueue.isEmpty() == false)
+            {
+                Console.WriteLine(myOwnQueue.dequeue());
+            }
+            Console.ReadKey();
+
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(10);
+            queue.Enqueue(20);
+            queue.Enqueue(30);
+            queue.Enqueue(40);
+            reverse2(queue);
+            Console.WriteLine("The reversed queue is " );
+            while(queue.Count != 0)
+            {
+            Console.Write(" {0}, ", queue.Dequeue());
+            }
+            Console.ReadKey();
+            /*stack implementation*/
             //check brackets
             string str = "(1 + 1) )";
 
@@ -66,7 +135,7 @@ namespace DataStructures
             list.PrintMiddle();
             list.createLoop(3);
             Console.ReadKey();
-            Console.WriteLine("Does this list have a loop: {0}",list.hasLoop());
+            Console.WriteLine("Does this list have a loop: {0}", list.hasLoop());
             Console.ReadKey();
             Console.WriteLine("\r\n Next up are dynamic array tests");
             Console.ReadKey();
@@ -134,63 +203,63 @@ namespace DataStructures
 
 
 
-        //LinkedList myTestList = new LinkedList();
-        //myTestList.addNode("13");
-        //myTestList.addNode("34");
+            //LinkedList myTestList = new LinkedList();
+            //myTestList.addNode("13");
+            //myTestList.addNode("34");
 
 
-        //myTestList.printNodes();
+            //myTestList.printNodes();
 
-        //Console.WriteLine("\r\nPress any key to see an example node added");
-        //Console.ReadKey();
-        //myTestList.addHead("\r\nFirst in Line!");
+            //Console.WriteLine("\r\nPress any key to see an example node added");
+            //Console.ReadKey();
+            //myTestList.addHead("\r\nFirst in Line!");
 
-        //myTestList.printNodes();
-        ////Console.ReadKey();
-        //bool keepRunning = true;
+            //myTestList.printNodes();
+            ////Console.ReadKey();
+            //bool keepRunning = true;
 
-        //while (keepRunning)
-        //{
-        //    Console.WriteLine("\r\nNow add your own array. Type the name or the number 'printNodes', 'addnode', 'myArrayTest', (press 'q' to quit");
-        //    string response = Console.ReadLine().ToLower();
-        //    if (response.ToLower().Equals("q"))
-        //    {
-        //        keepRunning = false;
-        //    }
-        //    int number;
-        //    switch (response.ToLower())
-        //    {
-        //        case "1":
-        //        case "addnode":
-        //            Console.WriteLine("enter a number to add");
-        //            response = Console.ReadLine();
-        //            //TODO: actually pass in numbers not strings
-        //            bool isGoodInput = int.TryParse(response, out number);
-        //            myTestList.addNode(response);
-        //            Console.WriteLine("You have added {0} to the linkedlist", response);
-        //            myTestList.printNodes();
-        //            break;
-        //        case "2":
-        //        case "printnodes":
-        //            myTestList.printNodes();
-        //            break;
-        //            //                case "myarraytest":
-        //            //    myArrayTest();
-        //            //break;
+            //while (keepRunning)
+            //{
+            //    Console.WriteLine("\r\nNow add your own array. Type the name or the number 'printNodes', 'addnode', 'myArrayTest', (press 'q' to quit");
+            //    string response = Console.ReadLine().ToLower();
+            //    if (response.ToLower().Equals("q"))
+            //    {
+            //        keepRunning = false;
+            //    }
+            //    int number;
+            //    switch (response.ToLower())
+            //    {
+            //        case "1":
+            //        case "addnode":
+            //            Console.WriteLine("enter a number to add");
+            //            response = Console.ReadLine();
+            //            //TODO: actually pass in numbers not strings
+            //            bool isGoodInput = int.TryParse(response, out number);
+            //            myTestList.addNode(response);
+            //            Console.WriteLine("You have added {0} to the linkedlist", response);
+            //            myTestList.printNodes();
+            //            break;
+            //        case "2":
+            //        case "printnodes":
+            //            myTestList.printNodes();
+            //            break;
+            //            //                case "myarraytest":
+            //            //    myArrayTest();
+            //            //break;
 
-        //            //case "3":
-        //            //case "removenode":
+            //            //case "3":
+            //            //case "removenode":
 
-        //            //    myTestList.removeNode();
-
-
-        //    }
+            //            //    myTestList.removeNode();
 
 
+            //    }
 
-        //}
 
+
+            //}
+
+        }
     }
-}
 }
 
