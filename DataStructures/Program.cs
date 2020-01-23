@@ -49,6 +49,24 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            //priority queue exercise 12
+            hwPQueue myOwnPQueue = new hwPQueue(5);
+            myOwnPQueue.enqueue(25);
+            myOwnPQueue.enqueue(10);
+            myOwnPQueue.enqueue(20);
+            myOwnPQueue.enqueue(5);
+            myOwnPQueue.enqueue(15);
+            myOwnPQueue.enqueue(30); //should fail
+            myOwnPQueue.dequeue(); //remove 25
+
+            Console.WriteLine("Now printing the queue, which should have 5,10,15, and 20 \r\n");
+            while (myOwnPQueue.isEmpty() == false)
+            {
+                Console.WriteLine(myOwnPQueue.dequeue());
+            }
+            Console.ReadKey();
+
+
             //my own queue implementation (exercise 6)
             hwQueue myOwnQueue = new hwQueue(5);
             myOwnQueue.enqueue(5);
