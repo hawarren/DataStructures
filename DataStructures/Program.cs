@@ -49,6 +49,12 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+
+            //Populating binary search tree
+            int[] myBSTArray = { 10, 5, 15, 6, 1, 8, 12, 18, 17 };
+            hwTree myBSTree = new hwTree(myBSTArray);
+            Console.ReadKey();
+
             //priority queue exercise 12
             hwPQueue myOwnPQueue = new hwPQueue(5);
             myOwnPQueue.enqueue(25);

@@ -47,6 +47,7 @@
     <Compile Include="HWArray.cs" />
     <Compile Include="hwMergeSort.cs" />
     <Compile Include="HWPQueue.cs" />
+    <Compile Include="hwTree.cs" />
     <Compile Include="LinkedListv1 - Copy.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="Program.cs" />
