@@ -29,9 +29,13 @@ namespace DataStructures
             public Node left { get; set; }
             public Node right { get; set; }
 
-            public Node(int newData)
+            public Node(int data)
             {
-                data = newData;
+                this.data = data;
+            }
+            public override string ToString()
+            {
+                return "Node=" + this.data.ToString();
             }
         }
 
@@ -46,35 +50,43 @@ namespace DataStructures
             if (root == null)
             {
                 root = newNode;
-
+                return;
             }
             else if (currentNode != null) //traverse the node until we reach the parent with a null leaf insertion point
             {
-                while (newNode.data < currentNode.data)
+                while (true) //we'll tell it when to break out of the loop
                 {
-                    //digLeft();
-                    if (currentNode.left != null)
-                        currentNode = digLeft(currentNode);
-                    else
-                        break;
+                    if (newData < currentNode.data)
+                    {
+                        //digLeft();
+                        if (currentNode.left == null)
+
+                        {
+                            currentNode.left = new Node(newData); //we found our leaf, add it here
+                            break;
+                        }
+                        else
+                            currentNode = digLeft(currentNode); //find
+                    }
+
+
+                    if (newData >= currentNode.data)
+                    {
+                        //digRight();
+                        if (currentNode.right == null)
+                        {
+                            currentNode.right = newNode;
+                            break;
+                        }
+                        else
+                            currentNode = digRight(currentNode);
+                    }
+
                 }
 
-                while (newNode.data >= currentNode.data)
-                {
-                    //digRight();
-                    if (currentNode.right != null)
-                        currentNode = digRight(currentNode);
-                    else
-                        break;
-                }
-            if (newNode.data < currentNode.data)//we're at the parent of insertion point, add node to the left if appropriate
-            currentNode.left = newNode; //we found our leaf, add it here
-            if (newNode.data >= currentNode.data)
-                currentNode.right = newNode;
+
+
             }
-
-
-
         }
         public Node digLeft(Node startNode)
         {

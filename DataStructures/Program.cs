@@ -53,6 +53,7 @@ namespace DataStructures
             //Populating binary search tree
             int[] myBSTArray = { 10, 5, 15, 6, 1, 8, 12, 18, 17 };
             hwTree myBSTree = new hwTree(myBSTArray);
+            Console.WriteLine("myBSTree.root.ToString()");
             Console.ReadKey();
 
             //priority queue exercise 12
@@ -82,7 +83,7 @@ namespace DataStructures
             myOwnQueue.enqueue(25);
             myOwnQueue.enqueue(30); //should fail
             myOwnQueue.dequeue(); //remove 25
-               
+
                 Console.WriteLine("Now printing the queue, which should have 5,10,15, and 20 \r\n");
             while (myOwnQueue.isEmpty() == false)
             {
