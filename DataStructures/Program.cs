@@ -53,7 +53,16 @@ namespace DataStructures
             //Populating binary search tree
             int[] myBSTArray = { 10, 5, 15, 6, 1, 8, 12, 18, 17 };
             hwTree myBSTree = new hwTree(myBSTArray);
-            Console.WriteLine("myBSTree.root.ToString()");
+            hwTree hwBSTree = new hwTree();
+            hwBSTree.addNode(7);
+            hwBSTree.addNode(4);
+            hwBSTree.addNode(9);
+            hwBSTree.addNode(1);
+            hwBSTree.addNode(6);
+            hwBSTree.addNode(8);
+            hwBSTree.addNode(10);
+
+            Console.WriteLine("Is 10 in the tree? {0}",hwBSTree.find(10));
             Console.ReadKey();
 
             //priority queue exercise 12

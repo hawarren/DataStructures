@@ -23,6 +23,10 @@ namespace DataStructures
 
 
         }
+        public hwTree() {
+            root = null;
+        }
+
         public class Node
         {
             public int data { get; set; }
@@ -63,6 +67,7 @@ namespace DataStructures
 
                         {
                             currentNode.left = new Node(newData); //we found our leaf, add it here
+                            Console.WriteLine("Adding {0} to left node of parent {1}", newData, currentNode.ToString());
                             break;
                         }
                         else
@@ -76,6 +81,7 @@ namespace DataStructures
                         if (currentNode.right == null)
                         {
                             currentNode.right = newNode;
+                            Console.WriteLine("Adding {0} to left node of parent {1}", newData, currentNode.ToString());
                             break;
                         }
                         else
@@ -95,6 +101,32 @@ namespace DataStructures
         public Node digRight(Node startNode)
         {
             return startNode.right;
+        }
+        public Boolean find(int newData)
+        {
+            Node currentNode = root;
+            bool isPresent = false;
+            while (currentNode != null) //keep going until we've reached a null leaf
+            {
+                if (newData == currentNode.data)
+                {
+                    isPresent = true;
+                    break; //we found our value
+                }
+                if (newData < currentNode.data)
+                {
+                    currentNode = digLeft(currentNode);
+                    continue;
+                }
+
+                if (newData > currentNode.data)
+                {
+                    currentNode = digRight(currentNode);
+                    continue;
+                }
+            }
+            return isPresent;
+
         }
 
         //public void printNode(string order)
