@@ -23,7 +23,8 @@ namespace DataStructures
 
 
         }
-        public hwTree() {
+        public hwTree()
+        {
             root = null;
         }
 
@@ -128,6 +129,46 @@ namespace DataStructures
             return isPresent;
 
         }
+        public void traversePreOrder()
+        {
+            traversePreOrder(root);
+        }
+        public void traverseInOrder() {
+            traverseInOrder(root);
+        }
+        public void traversePostOrder() {
+            traversePostOrder(root);
+        }
+        //preorder traversal is root, left, right
+        private void traversePreOrder(Node root)
+        {
+            //base condition
+            if (root == null)
+                return;
+            Console.WriteLine(root.data);
+            traversePreOrder(root.left);
+            traversePreOrder(root.right);
+        }
+        //inorder traversal is left, root, right
+        private void traverseInOrder(Node root)
+        {
+            if (root == null) //base condition
+                return;
+            traverseInOrder(root.left);
+            Console.WriteLine(root.data);
+            traverseInOrder(root.right);
+        }
+        //postOrder traversal is left, right, root
+        private void traversePostOrder(Node root) {
+            if (root == null)
+                return;
+            traversePostOrder(root.left);
+            traversePostOrder(root.right);
+            Console.WriteLine(root.data);
+        }
+        //public void traverseLevelOrder(Node root) {
+
+        //}
 
         //public void printNode(string order)
         //{
