@@ -64,6 +64,7 @@ namespace DataStructures
 
             Console.WriteLine("Is 10 in the tree? {0}",hwBSTree.find(10));
             hwBSTree.traversePreOrder();
+            Console.WriteLine("Height is {0}",hwBSTree.height());
             Console.ReadKey();
 
             //priority queue exercise 12

@@ -192,6 +192,19 @@ namespace DataStructures
 
         //    Console.WriteLine("Print not implemented yet");
         //}
+        //find height of tree
+        //use recursion to break down each tree using postorder traversal (visits all the leaves first
+        private int height(Node root) {
+            if (root.left == null && root.right == null) 
+            return 0;
 
+            return 1 + Math.Max(height(root.left), height(root.right)); //get the height of the larger subtree
+        }
+        public int height() //public method to return height
+        {
+            if (root == null)
+                return -1;
+            return height(root);
+        }
     }
 }
