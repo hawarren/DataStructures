@@ -62,9 +62,19 @@ namespace DataStructures
             hwBSTree.addNode(8);
             hwBSTree.addNode(10);
 
+            hwTree hwBSTClone = new hwTree();
+            hwBSTClone.addNode(10);
+            hwBSTClone.addNode(7);
+            hwBSTClone.addNode(4);
+            hwBSTClone.addNode(9);
+            hwBSTClone.addNode(1);
+            hwBSTClone.addNode(6);
+            hwBSTClone.addNode(8);
+
             Console.WriteLine("Is 10 in the tree? {0}",hwBSTree.find(10));
             hwBSTree.traversePreOrder();
             Console.WriteLine("Height is {0}",hwBSTree.height());
+            Console.WriteLine("Are the 2 trees equal? {0}", hwBSTree.equals(hwBSTClone.root));
             Console.ReadKey();
 
             //priority queue exercise 12

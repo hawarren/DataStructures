@@ -45,7 +45,7 @@ namespace DataStructures
         }
 
 
-        public Node root { get; set; } //the root of our tree
+        public Node root { get; private set; } //the root of our tree
 
 
         public void addNode(int newData)
@@ -195,7 +195,7 @@ namespace DataStructures
         //find height of tree
         //use recursion to break down each tree using postorder traversal (visits all the leaves first
         private int height(Node root) {
-            if (root.left == null && root.right == null) 
+            if (root.left == null && root.right == null)
             return 0;
 
             return 1 + Math.Max(height(root.left), height(root.right)); //get the height of the larger subtree
@@ -205,6 +205,55 @@ namespace DataStructures
             if (root == null)
                 return -1;
             return height(root);
+        }
+
+        //for binary tree, runs in O(n) because traverses every node
+        private int min(Node root)
+        {
+            if (isLeaf(root))
+            return 0;
+            var left = min(root.left);
+            var right = min(root.right);
+            return Math.Min(left, right);
+        }
+
+        //method to determine if a node is a leaf (ie has no children)
+        private bool isLeaf(Node node)
+        {
+            return node.left == null && node.right == null;
+        }
+
+
+        //implementation for BST, runs in O(logN)
+        public int minbst()
+        {
+            var current = root;
+            var last = current;
+            while (current != null)
+            {
+                last = current;
+                current = current.left;
+            }
+            return last.data;
+        }
+
+        //check if 2 trees are equal
+        //compare the 2 roots, if equal then compare the left nodes to each other, if equal then compare right nodes to each other
+        private Boolean equals(Node root, Node secondRoot)
+        {
+            if (root == null && secondRoot == null)  //base condition
+                return true;
+            if (root != null && secondRoot != null)
+            return root.data == secondRoot.data && equals(root.left, secondRoot.left) && equals(root.right, secondRoot.right);
+
+            return false;
+
+            
+            
+        }
+        public Boolean equals(Node secondRoot) //for calling it outside the object
+        {
+            return equals(root, secondRoot);
         }
     }
 }
