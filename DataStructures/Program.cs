@@ -71,9 +71,9 @@ namespace DataStructures
             hwBSTClone.addNode(6);
             hwBSTClone.addNode(8);
 
-            Console.WriteLine("Is 10 in the tree? {0}",hwBSTree.find(10));
+            Console.WriteLine("Is 10 in the tree? {0}", hwBSTree.find(10));
             hwBSTree.traversePreOrder();
-            Console.WriteLine("Height is {0}",hwBSTree.height());
+            Console.WriteLine("Height is {0}", hwBSTree.height());
             Console.WriteLine("Are the 2 trees equal? {0}", hwBSTree.equals(hwBSTClone.root));
             Console.ReadKey();
 
@@ -105,7 +105,7 @@ namespace DataStructures
             myOwnQueue.enqueue(30); //should fail
             myOwnQueue.dequeue(); //remove 25
 
-                Console.WriteLine("Now printing the queue, which should have 5,10,15, and 20 \r\n");
+            Console.WriteLine("Now printing the queue, which should have 5,10,15, and 20 \r\n");
             while (myOwnQueue.isEmpty() == false)
             {
                 Console.WriteLine(myOwnQueue.dequeue());
@@ -118,10 +118,10 @@ namespace DataStructures
             queue.Enqueue(30);
             queue.Enqueue(40);
             reverse2(queue);
-            Console.WriteLine("The reversed queue is " );
-            while(queue.Count != 0)
+            Console.WriteLine("The reversed queue is ");
+            while (queue.Count != 0)
             {
-            Console.Write(" {0}, ", queue.Dequeue());
+                Console.Write(" {0}, ", queue.Dequeue());
             }
             Console.ReadKey();
             /*stack implementation*/
