@@ -30,7 +30,7 @@ namespace DataStructures
         {
             //get the midpoint, left, and right index of the array
             ; //left index is NOT always 0
-            if (l < r)
+            if (l < r) 
             {
                 int m = (l + r) / 2; // midpoint of this array
                 MergeSort(arr, l, m);
