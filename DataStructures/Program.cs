@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataStructures.Practice;
 
 namespace DataStructures
 {
@@ -49,27 +50,47 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-
-            //Testing mergesort reimplementation
-            Console.WriteLine("\r\nNow testing a mergesorted array");
-            MergeSortArray myMergeSort = new MergeSortArray();
-            int[] testArray = { 9, 7, 2, 5, 4, 3, 6, 1, 8 , 7, 5, 5, 3 , 5, 8, 11};
-            Console.WriteLine("\r\nStarting node list is");
+            //testing custom array
+            PracticeArray numbers = new PracticeArray(3);
+            numbers.insert(10);
             Console.ReadKey();
-            for (int i = 0; i < testArray.Length; i++)
-            {
-                Console.WriteLine(testArray[i]);
 
-            }
-            Console.WriteLine("\r\nSorting the array now");
-            myMergeSort.MergeSort(testArray, 0, testArray.Length - 1);
-            Console.WriteLine("\r\nThe newly merge sorted array is");
-            for (int i = 0; i < testArray.Length; i++)
-            {
-                Console.WriteLine(testArray[i]);
-
-            }
+            numbers.insert(20);
+            numbers.insert(30);
+            numbers.print();
             Console.ReadKey();
+            numbers.insert(40);
+            numbers.insert(50);
+            numbers.insert(60);
+            numbers.removeAt(3);
+
+            Console.WriteLine("Index of 30 is {0} ",numbers.IndexOf(30));
+            numbers.print();
+            Console.ReadKey();
+
+
+            //End testing custom array
+
+            ////Testing mergesort reimplementation
+            //Console.WriteLine("\r\nNow testing a mergesorted array");
+            //MergeSortArray myMergeSort = new MergeSortArray();
+            //int[] testArray = { 9, 7, 2, 5, 4, 3, 6, 1, 8 , 7, 5, 5, 3 , 5, 8, 11};
+            //Console.WriteLine("\r\nStarting node list is");
+            //Console.ReadKey();
+            //for (int i = 0; i < testArray.Length; i++)
+            //{
+            //    Console.WriteLine(testArray[i]);
+
+            //}
+            //Console.WriteLine("\r\nSorting the array now");
+            //myMergeSort.MergeSort(testArray, 0, testArray.Length - 1);
+            //Console.WriteLine("\r\nThe newly merge sorted array is");
+            //for (int i = 0; i < testArray.Length; i++)
+            //{
+            //    Console.WriteLine(testArray[i]);
+
+            //}
+            //Console.ReadKey();
 
 
 
