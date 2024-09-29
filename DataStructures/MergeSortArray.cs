@@ -8,22 +8,24 @@ namespace DataStructures
 {
     class MergeSortArray
     {
-        public MergeSortArray() {
+        public MergeSortArray()
+        {
 
         }
 
-        public void MergeSort(int[] arrayToSplit, int left, int right) {
+        public void MergeSort(int[] arrayToSplit, int left, int right)
+        {
             if (left < right) //ie the array is size 2, has a separate left and right side
             {
                 int mid = (left + right) / 2; // Find the midpoint of the array
                 MergeSort(arrayToSplit, left, mid); // recursively sort the left half
-                MergeSort(arrayToSplit, mid+1, right); //recursively sort the right half
+                MergeSort(arrayToSplit, mid + 1, right); //recursively sort the right half
                 Merge(arrayToSplit, left, mid, right); //combine the sorted blocks in proper order
 
             }
         }
 
-        public void Merge( int[] arrayToSort, int leftSide, int mid, int rightSide)
+        public void Merge(int[] arrayToSort, int leftSide, int mid, int rightSide)
         {
             int lLength = mid - leftSide + 1; // length of the left side of the array
             int rLength = rightSide - mid; // length of the right side
@@ -37,7 +39,7 @@ namespace DataStructures
 
             for (int ii = 0; ii < lLength; ii++)
             {
-                lArray[ii] = arrayToSort[ii];
+                lArray[ii] = arrayToSort[leftSide + ii];
             }
             for (int jj = 0; jj < rLength; jj++)
             {
@@ -63,7 +65,7 @@ namespace DataStructures
             {
                 arrayToSort[k] = lArray[i];
                 i++; //fill up array with remaining left side
-                k++; 
+                k++;
             }
             while (j < rLength)
             {

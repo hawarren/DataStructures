@@ -74,7 +74,7 @@ namespace DataStructures.Practice
         {
             var value = -1;
             value = _internalArray[indexToFind];
-                      
+
             return value;
         }
 
@@ -85,7 +85,7 @@ namespace DataStructures.Practice
             for (var i = 0; i < _itemsCount; i++)
                 if (_internalArray[0] != 0)
                 {
-                    Console.WriteLine("The index {0} : {1} ", i, _internalArray[i]);
+                    Console.WriteLine("Index {0} : {1} ", i, _internalArray[i]);
                 }
         }
         private void repackArrayAfterRemove(int deletedIndex = 0)
@@ -155,6 +155,18 @@ namespace DataStructures.Practice
             }
 
             return commonItems;
+        }
+
+        public void reverse()
+        {
+            Console.WriteLine("reversing array");
+            var newArray = new int[_internalArray.Length];
+            for (var i = 0; i < _itemsCount; i++)
+            {
+                newArray[_itemsCount - (i + 1)] = _internalArray[i];
+            }
+            _internalArray = newArray;
+            return;
         }
     }
 }

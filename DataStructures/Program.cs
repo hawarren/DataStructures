@@ -11,51 +11,13 @@ namespace DataStructures
     class Program
     {
 
-        public static void reverse(Queue<int> queue)
-        {//reverse the queue using only
-         //add (enqueue)
-         //remove (dequeue)
-         //isEmpty (.count ==0)
-         //Solution:  put queue in array the size of the queue. enqueue from the back of th array to the front
-            int[] tempQueue = new int[queue.Count];
-            while (queue.Count != 0)
-            {
-                tempQueue[queue.Count - 1] = queue.Dequeue(); //dequeue from front, but replace in back of array
-
-            }
-            foreach (int item in tempQueue)
-            {
-                queue.Enqueue(item);
-            }
-
-        }
-        public static void reverse2(Queue<int> queue)
-        {//reverse the queue using only
-         //add (enqueue)
-         //remove (dequeue)
-         //isEmpty (.count ==0)
-         //Solution:  put queue in array the size of the queue. enqueue from the back of th array to the front
-            Stack<int> stack = new Stack<int>();
-
-            while (queue.Count != 0)
-            {
-                stack.Push(queue.Dequeue()); //dequeue from front, but replace in back of array
-
-            }
-            while (stack.Count != 0)
-            {
-                queue.Enqueue(stack.Pop());
-            }
-
-        }
-
         static void Main(string[] args)
         {
             //testing custom array
             PracticeArray numbers = new PracticeArray(3);
             numbers.insert(10);
             numbers.insert(200);
-            numbers.insert(30);            
+            numbers.insert(30);
             numbers.insert(40);
             numbers.print();
 
@@ -63,46 +25,26 @@ namespace DataStructures
             numbers.removeAt(3);
             numbers.insert(60);
 
-            Console.WriteLine("Index of 30 is {0} ",numbers.IndexOf(30));
+            Console.WriteLine("Index of 30 is {0} ", numbers.IndexOf(30));
             Console.WriteLine("Index of 999 is {0} ", numbers.IndexOf(999));
             numbers.print();
             Console.WriteLine("Max value: {0}", numbers.max());
 
             Console.WriteLine("getting common items");
-            int[] sampleArray = new int[] { 40, 60, 200 };
+            int[] sampleArray = new int[] { 55, 60, 200 };
             int[] commonItems = numbers.intersect(sampleArray);
-            foreach (var item in commonItems)
-            {
-                if (item != 0)
-                    Console.WriteLine(item);
-            }
-            
-            Console.ReadKey();
+            Console.WriteLine(string.Join(", ", commonItems));
+            numbers.reverse();
+            numbers.print();
+
+
+            // Console.ReadKey();
 
             //End testing custom array
 
-            ////Testing mergesort reimplementation
-            //Console.WriteLine("\r\nNow testing a mergesorted array");
-            //MergeSortArray myMergeSort = new MergeSortArray();
-            //int[] testArray = { 9, 7, 2, 5, 4, 3, 6, 1, 8 , 7, 5, 5, 3 , 5, 8, 11};
-            //Console.WriteLine("\r\nStarting node list is");
-            //Console.ReadKey();
-            //for (int i = 0; i < testArray.Length; i++)
-            //{
-            //    Console.WriteLine(testArray[i]);
-
-            //}
-            //Console.WriteLine("\r\nSorting the array now");
-            //myMergeSort.MergeSort(testArray, 0, testArray.Length - 1);
-            //Console.WriteLine("\r\nThe newly merge sorted array is");
-            //for (int i = 0; i < testArray.Length; i++)
-            //{
-            //    Console.WriteLine(testArray[i]);
-
-            //}
-            //Console.ReadKey();
-
-
+            //merge sort implementation
+            testMergeSort();
+            Console.ReadKey();
 
 
 
@@ -344,6 +286,78 @@ namespace DataStructures
             //}
 
         }
+
+
+        public static void reverse(Queue<int> queue)
+        {//reverse the queue using only
+         //add (enqueue)
+         //remove (dequeue)
+         //isEmpty (.count ==0)
+         //Solution:  put queue in array the size of the queue. enqueue from the back of th array to the front
+            int[] tempQueue = new int[queue.Count];
+            while (queue.Count != 0)
+            {
+                tempQueue[queue.Count - 1] = queue.Dequeue(); //dequeue from front, but replace in back of array
+
+            }
+            foreach (int item in tempQueue)
+            {
+                queue.Enqueue(item);
+            }
+
+        }
+        public static void reverse2(Queue<int> queue)
+        {//reverse the queue using only
+         //add (enqueue)
+         //remove (dequeue)
+         //isEmpty (.count ==0)
+         //Solution:  put queue in array the size of the queue. enqueue from the back of th array to the front
+            Stack<int> stack = new Stack<int>();
+
+            while (queue.Count != 0)
+            {
+                stack.Push(queue.Dequeue()); //dequeue from front, but replace in back of array
+
+            }
+            while (stack.Count != 0)
+            {
+                queue.Enqueue(stack.Pop());
+            }
+
+        }
+        public static void testMergeSort()
+        {
+            //Testing mergesort reimplementation
+            Console.WriteLine("\r\nNow testing a mergesorted array");
+            MergeSortArray myMergeSort = new MergeSortArray();
+            int[] testArray = { 9, 7, 2, 5, 4, 3, 6, 1, 8, 7, 5, 5, 3, 5, 8, 11 };
+            Console.WriteLine("\r\nStarting node list is");
+            Console.ReadKey();
+            for (int i = 0; i < testArray.Length; i++)
+            {
+                Console.WriteLine(testArray[i]);
+
+            }
+            Console.WriteLine("\r\nSorting the array now");
+            myMergeSort.MergeSort(testArray, 0, testArray.Length - 1);
+            Console.WriteLine("\r\nThe newly merge sorted array is");
+            for (int i = 0; i < testArray.Length; i++)
+            {
+                Console.WriteLine(testArray[i]);
+
+            }
+
+            //sort testArray and print it out
+            Array.Sort(testArray);
+            Console.WriteLine("\r\nThe sorted array is");
+            for (int i = 0; i < testArray.Length; i++)
+            {
+                Console.WriteLine(testArray[i]);
+            }
+            Console.ReadKey();
+
+        }
+
     }
 }
 
