@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +67,16 @@ namespace DataStructures
             Console.WriteLine("Index of 999 is {0} ", numbers.IndexOf(999));
             numbers.print();
             Console.WriteLine("Max value: {0}", numbers.max());
+
+            Console.WriteLine("getting common items");
+            int[] sampleArray = new int[] { 40, 60, 200 };
+            int[] commonItems = numbers.intersect(sampleArray);
+            foreach (var item in commonItems)
+            {
+                if (item != 0)
+                    Console.WriteLine(item);
+            }
+            
             Console.ReadKey();
 
             //End testing custom array
