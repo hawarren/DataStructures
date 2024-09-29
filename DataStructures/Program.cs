@@ -53,21 +53,20 @@ namespace DataStructures
             //testing custom array
             PracticeArray numbers = new PracticeArray(3);
             numbers.insert(10);
-            Console.ReadKey();
-
-            numbers.insert(20);
-            numbers.insert(30);
-            numbers.print();
-            Console.ReadKey();
+            numbers.insert(200);
+            numbers.insert(30);            
             numbers.insert(40);
+            numbers.print();
+
             numbers.insert(50);
-            numbers.insert(60);
             numbers.removeAt(3);
+            numbers.insert(60);
 
             Console.WriteLine("Index of 30 is {0} ",numbers.IndexOf(30));
+            Console.WriteLine("Index of 999 is {0} ", numbers.IndexOf(999));
             numbers.print();
+            Console.WriteLine("Max value: {0}", numbers.max());
             Console.ReadKey();
-
 
             //End testing custom array
 
