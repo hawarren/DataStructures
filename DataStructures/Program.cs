@@ -37,6 +37,10 @@ namespace DataStructures
             numbers.reverse();
             numbers.print();
 
+            numbers.InsertAt(99, 2);
+            numbers.InsertAt(7681, 0);
+            numbers.InsertAt(555, 6);
+
 
             // Console.ReadKey();
 

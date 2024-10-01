@@ -168,5 +168,25 @@ namespace DataStructures.Practice
             _internalArray = newArray;
             return;
         }
+        public void InsertAt(int item, int index)
+        {
+            int offset = 0;
+            if (isFull())
+            {
+                _internalArray = resizeArray();
+
+            }
+            //start from end, moving each value up a cell
+            //when we reach our index, put in the blank value
+            for (int i = _itemsCount - 1; i > index; i--)
+            {
+                _internalArray[i] = _internalArray[i - 1];
+            }
+
+            _internalArray[index] = item;
+            _itemsCount++;
+
+            Console.WriteLine("Item inserted at index {0}, moved {1} to make room", index, _internalArray[index + 1]);
+        }
     }
 }
