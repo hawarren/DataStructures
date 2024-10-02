@@ -13,45 +13,19 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-            //testing custom array
-            PracticeArray numbers = new PracticeArray(3);
-            numbers.insert(10);
-            numbers.insert(200);
-            numbers.insert(30);
-            numbers.insert(40);
-            numbers.print();
 
-            numbers.insert(50);
-            numbers.removeAt(3);
-            numbers.insert(60);
-
-            Console.WriteLine("Index of 30 is {0} ", numbers.IndexOf(30));
-            Console.WriteLine("Index of 999 is {0} ", numbers.IndexOf(999));
-            numbers.print();
-            Console.WriteLine("Max value: {0}", numbers.max());
-
-            Console.WriteLine("getting common items");
-            int[] sampleArray = new int[] { 55, 60, 200 };
-            int[] commonItems = numbers.intersect(sampleArray);
-            Console.WriteLine(string.Join(", ", commonItems));
-            numbers.reverse();
-            numbers.print();
-
-            numbers.InsertAt(99, 2);
-            numbers.InsertAt(7681, 0);
-            numbers.InsertAt(555, 6);
+            TestLinkedList();
+            
 
 
-            // Console.ReadKey();
-
-            //End testing custom array
-
+            //test array
+            testArray();
             //merge sort implementation
             testMergeSort();
             Console.ReadKey();
 
 
-
+            
 
 
             ////Populating binary search tree
@@ -291,6 +265,53 @@ namespace DataStructures
 
         }
 
+        private static void TestLinkedList()
+        {
+            PracticeLinkedList practiceLinkedList = new PracticeLinkedList();
+            practiceLinkedList.addFirst(8);
+            practiceLinkedList.addLast(3);
+            practiceLinkedList.addLast(4);
+            practiceLinkedList.addLast(5);
+            practiceLinkedList.deleteFirst();
+            Console.WriteLine(practiceLinkedList.contains(4));
+            Console.WriteLine(practiceLinkedList.indexOf(4));
+            Console.ReadKey();
+        }
+
+        static void testArray() {
+            //testing custom array
+            PracticeArray numbers = new PracticeArray(3);
+            numbers.insert(10);
+            numbers.insert(200);
+            numbers.insert(30);
+            numbers.insert(40);
+            numbers.print();
+
+            numbers.insert(50);
+            numbers.removeAt(3);
+            numbers.insert(60);
+
+            Console.WriteLine("Index of 30 is {0} ", numbers.IndexOf(30));
+            Console.WriteLine("Index of 999 is {0} ", numbers.IndexOf(999));
+            numbers.print();
+            Console.WriteLine("Max value: {0}", numbers.max());
+
+            Console.WriteLine("getting common items");
+            int[] sampleArray = new int[] { 55, 60, 200 };
+            int[] commonItems = numbers.intersect(sampleArray);
+            Console.WriteLine(string.Join(", ", commonItems));
+            numbers.reverse();
+            numbers.print();
+
+            numbers.InsertAt(99, 2);
+            numbers.InsertAt(7681, 0);
+            numbers.InsertAt(555, 6);
+
+
+            // Console.ReadKey();
+
+            //End testing custom array
+        }
 
         public static void reverse(Queue<int> queue)
         {//reverse the queue using only
