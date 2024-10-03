@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Instrumentation;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -67,7 +68,7 @@ namespace DataStructures.Practice
             }
             if (_first == _last)
             {
-                _first = _last = null;                
+                _first = _last = null;
             }
             else
             {
@@ -154,16 +155,48 @@ namespace DataStructures.Practice
                 return null;
 
             int[] array = new int[_size];
-            var current = _first;            
-            array[0] = _first.Value;
+            var current = _first;
+            var index = 0;
 
-            for (var index = 1; index < _size; index++)
+            while (current != null)
             {
+                array[index++] = current.Value;
                 current = current.Next;
-                array[index] = current.Value;
             }
 
             return array;
+        }
+        public void reverse()
+        {
+            //dig from first to last
+            //maintain prev
+            //null out prev.next, last.next = prev
+            //dig from first to last again until next == null
+            //save prev
+            //....
+            var current = _last;
+            var prev = getPrevious(_last);
+            while (getPrevious(current) != null)
+            {
+                //point the current node to the previous node (starting from first).
+                //remove link from previous node to current node
+                //get the next previous node, and move to the end of the last node (starting from last to first)
+                current.Next = getPrevious(current);
+                current.Next.Next = null;
+
+                prev = getPrevious(current.Next);
+                current = current.Next;
+                //once no more nodes (ie we're at first node), switch first and last
+                if (prev == null)
+                {                    
+                    var newFirst = _last;
+                    var newLast = _first;
+                    _first = newFirst;
+                    _last = newLast;
+                    break;
+                }
+            }
+
         }
 
     }

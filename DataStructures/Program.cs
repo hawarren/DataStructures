@@ -267,6 +267,20 @@ namespace DataStructures
 
         private static void TestLinkedList()
         {
+            PracticeLinkedList reverseList = new PracticeLinkedList();
+            reverseList.addLast(1);
+            reverseList.addLast(2);
+            reverseList.addLast(3);
+            reverseList.addLast(4);
+            reverseList.addLast(5);
+            Console.WriteLine($"Before reverse: {string.Join(",",reverseList.ToArray())}");
+            reverseList.reverse();
+            Console.WriteLine($"After reverse: {string.Join(",", reverseList.ToArray())}");
+
+
+
+
+
             LinkedList<string> test = new LinkedList<string>();
 
             PracticeLinkedList practiceLinkedList = new PracticeLinkedList();
