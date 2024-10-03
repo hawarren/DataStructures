@@ -170,7 +170,7 @@ namespace DataStructures.Practice
         }
         public void InsertAt(int item, int index)
         {
-            int offset = 0;
+            
             if (isFull())
             {
                 _internalArray = resizeArray();

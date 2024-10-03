@@ -267,14 +267,38 @@ namespace DataStructures
 
         private static void TestLinkedList()
         {
+            LinkedList<string> test = new LinkedList<string>();
+
             PracticeLinkedList practiceLinkedList = new PracticeLinkedList();
-            practiceLinkedList.addFirst(8);
-            practiceLinkedList.addLast(3);
-            practiceLinkedList.addLast(4);
-            practiceLinkedList.addLast(5);
+            Console.WriteLine(practiceLinkedList.size());
+            practiceLinkedList.addFirst(76);
+            Console.WriteLine(practiceLinkedList.size());
             practiceLinkedList.deleteFirst();
+            Console.WriteLine(practiceLinkedList.size());
+
+            practiceLinkedList.addFirst(81);
+            Console.WriteLine(practiceLinkedList.size());
+            practiceLinkedList.deleteLast();
+            Console.WriteLine(practiceLinkedList.size());
+
+            practiceLinkedList.addFirst(8);
+            Console.WriteLine(practiceLinkedList.size());
+            practiceLinkedList.addLast(3);
+            Console.WriteLine(practiceLinkedList.size());
+            practiceLinkedList.addLast(4);
+            Console.WriteLine(practiceLinkedList.size());
+            practiceLinkedList.addLast(5);
+            Console.WriteLine(practiceLinkedList.size());
+            practiceLinkedList.deleteFirst();
+            Console.WriteLine(practiceLinkedList.size());
+            practiceLinkedList.deleteLast();
+            Console.WriteLine(practiceLinkedList.size());
+            
             Console.WriteLine(practiceLinkedList.contains(4));
             Console.WriteLine(practiceLinkedList.indexOf(4));
+            Console.WriteLine(practiceLinkedList.indexOf(57));
+            Console.WriteLine(string.Join(",",practiceLinkedList.ToArray()));
+
             Console.ReadKey();
         }
 
