@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     class hwQueue
     {
@@ -63,7 +63,7 @@ namespace DataStructures
                 head = (head + 1) % arrayQueue.Length; //move head to new first in line
                 return (int)removedItem;
             }
-            else throw new System.IndexOutOfRangeException("value is higher than this list length");
+            else throw new IndexOutOfRangeException("value is higher than this list length");
         }
         public int peek()
         {
@@ -71,7 +71,7 @@ namespace DataStructures
             {
                 return head;
             }
-            else throw new System.IndexOutOfRangeException("List is empty");
+            else throw new IndexOutOfRangeException("List is empty");
         }
 
     }

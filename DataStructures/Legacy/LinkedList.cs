@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     /*
      Mosh Coding Challenge:
@@ -249,7 +249,7 @@ namespace DataStructures
                     trav2 = trav2.next;
                     if (trav2 == null)   //stop if trav2 reaches the end of the LL, because the LL is less than K nodes long
                     {
-                        throw new System.ArgumentException("k is larger than linkedlist size", "trav2");
+                        throw new ArgumentException("k is larger than linkedlist size", "trav2");
 
                     }
                 }
@@ -263,7 +263,7 @@ namespace DataStructures
                 return trav1; //in case we need to pass it to another variable
             }
             else
-                throw new System.ArgumentOutOfRangeException("value is higher than this list length", "getKthFromtheEnd");
+                throw new ArgumentOutOfRangeException("value is higher than this list length", "getKthFromtheEnd");
 
         }
 

@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     class LotteryChallenge
     {
         //ExigerChallenge.cs
 
-// Given a list of unique lottery numbers and a number
-// Find all winning triplets from the list of lottery numbers such that the numbers in a triplet sum up to the given number
-// Your winning sets should not contain duplicates
-// [1, 2, 3]...winning number = 6, [1, 2, 3]
-// [1, 2, 3], [2, 3, 1] is invalid
+        // Given a list of unique lottery numbers and a number
+        // Find all winning triplets from the list of lottery numbers such that the numbers in a triplet sum up to the given number
+        // Your winning sets should not contain duplicates
+        // [1, 2, 3]...winning number = 6, [1, 2, 3]
+        // [1, 2, 3], [2, 3, 1] is invalid
 
         public static void Solve(string[] args)
         {

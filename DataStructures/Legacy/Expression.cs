@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     class Expression
     {
-        public bool isBalanced(String input)
+        public bool isBalanced(string input)
         {
             //push each left parentheses on the stack. iterate through the expression and when you find a matching right, pop the left off.
             //todo refactor the checks into booleans isMatching
@@ -36,10 +36,10 @@ namespace DataStructures
 
                     var top = stack.Pop();
                     if (
-                        (item == ')' && top != '(') ||
-                        (item == '>' && top != '<') ||
-                        (item == '}' && top != '{') ||
-                        (item == ']' && top != '[')
+                        item == ')' && top != '(' ||
+                        item == '>' && top != '<' ||
+                        item == '}' && top != '{' ||
+                        item == ']' && top != '['
                         )
                         return false; //don't just blindly pop. make sure the top symbol on the stack matches it's left symbol
                 }

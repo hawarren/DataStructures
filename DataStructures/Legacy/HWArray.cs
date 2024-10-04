@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     /*this dynamic array should support
      * creation, insert(),removeAt(someIndex), isEmpty()
@@ -36,7 +36,7 @@ namespace DataStructures
             internalArray = new int?[newArray.Length];
             for (int i = 0; i < newArray.Length; i++)
             {
-                this.insert(newArray[i]);
+                insert(newArray[i]);
             }
 
         }
@@ -193,8 +193,8 @@ namespace DataStructures
             int swapper;
             for (int i = 0; i < internalSize / 2; i++)
             {
-                swapper = (int)internalArray[(internalSize - 1) - i]; //save the value before taking it out, internalsize index is null, so 1 before that 1
-                internalArray[(internalSize - 1) - i] = internalArray[i]; //put the first value in place of the vacated last value
+                swapper = (int)internalArray[internalSize - 1 - i]; //save the value before taking it out, internalsize index is null, so 1 before that 1
+                internalArray[internalSize - 1 - i] = internalArray[i]; //put the first value in place of the vacated last value
                 internalArray[i] = swapper; //take the last value and put in place of the vacated first value
             }
             print();

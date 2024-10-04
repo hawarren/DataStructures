@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     class Stack //implementation using a linkedlist
     {
@@ -33,7 +33,7 @@ namespace DataStructures
             {
                 if (first == null)
                 {
-                    first = new DataStructures.Stack.Node();
+                    first = new Node();
                     first.data = charData[i].ToString();
                     first.next = null;
                 }
@@ -67,7 +67,7 @@ namespace DataStructures
         public string newString { get; set; }
         public StringReverser(string thisString)
         {
-            Stack<Char> stack = new Stack<Char>();
+            Stack<char> stack = new Stack<char>();
             char[] charString = thisString.ToCharArray();
             foreach (var item in charString)
             {
@@ -75,7 +75,7 @@ namespace DataStructures
             }
             string newString = "";
             while (stack.Count != 0)
-            { newString +=  stack.Pop(); }
+            { newString += stack.Pop(); }
             Console.WriteLine("constructing {0}", newString);
 
         }

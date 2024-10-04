@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataStructures.Legacy;
 using DataStructures.Practice;
 
 namespace DataStructures
@@ -268,16 +269,23 @@ namespace DataStructures
         private static void TestLinkedList()
         {
             PracticeLinkedList reverseList = new PracticeLinkedList();
-            reverseList.addLast(1);
             reverseList.addLast(2);
-            reverseList.addLast(3);
             reverseList.addLast(4);
-            reverseList.addLast(5);
+            reverseList.addLast(6);
+            reverseList.addLast(8);
+            reverseList.addLast(10);
             Console.WriteLine($"Before reverse: {string.Join(",",reverseList.ToArray())}");
             reverseList.reverse();
             Console.WriteLine($"After reverse: {string.Join(",", reverseList.ToArray())}");
 
+            Console.WriteLine(reverseList.getKthFromTheEnd(4));
+            //Console.WriteLine(reverseList.getKthFromTheEnd(6));
+            //Console.WriteLine(reverseList.getKthFromTheEnd(0));
+            Console.WriteLine(reverseList.getKthFromTheEnd(1));
+            Console.WriteLine($" The middle is {string.Join(",", reverseList.printMiddle())}");
 
+            reverseList.addLast(10);
+            Console.WriteLine($" The middle is {string.Join(",", reverseList.printMiddle())}");
 
 
 

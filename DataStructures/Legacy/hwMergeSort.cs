@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     class hwMergeSort
     {
@@ -14,7 +14,7 @@ namespace DataStructures
          if m == searchvalue that's the value
          if m < searchvalue, search left (set midpiont of l to m-1, and set
          if m > searchvalue search rght (set l to be m+1)
-         */ 
+         */
 
         //mergesort uses a merge() and a mergesort. Mergesort calls itself twice recursively, for the left array and the right side of the array
         //it then calls merge() after the 2 recursive calls come back.
@@ -30,7 +30,7 @@ namespace DataStructures
         {
             //get the midpoint, left, and right index of the array
             ; //left index is NOT always 0
-            if (l < r) 
+            if (l < r)
             {
                 int m = (l + r) / 2; // midpoint of this array
                 MergeSort(arr, l, m);
@@ -44,8 +44,8 @@ namespace DataStructures
         //this method splits the array into 2 arrays, then uses a double for loop to compare values and add to a new array
         public void merge(int[] arr, int l, int m, int r)
         {
-            int n1 = m-l+1; //length of the left side of the array
-            int n2 = r-m; //the right length
+            int n1 = m - l + 1; //length of the left side of the array
+            int n2 = r - m; //the right length
             int[] lArray = new int[n1]; //to hold split arrays
             int[] rArray = new int[n2];
 
@@ -56,7 +56,7 @@ namespace DataStructures
 
 
             for (int ii = 0; ii < n1; ii++)//populate the larray
-            { lArray[ii] = arr[l+ii]; }
+            { lArray[ii] = arr[l + ii]; }
             for (int jj = 0; jj < n2; jj++)//populate the rArray
             { rArray[jj] = arr[m + 1 + jj]; }
             //right array starts 1 over from the middle,increment starting there
@@ -69,11 +69,12 @@ namespace DataStructures
                     i++;
 
                 }
-                else {
+                else
+                {
                     arr[k] = rArray[j];
                     j++;
                 }
-                    k++;
+                k++;
 
 
 

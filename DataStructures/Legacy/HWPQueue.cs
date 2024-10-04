@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     class hwPQueue
     {
@@ -70,7 +70,7 @@ namespace DataStructures
             //when we reach the head, move it over and then assign it to the spot
             while (data < arrayQueue[newSpot - 1])//go from tail to the head, may wrap around queue
             {
-                arrayQueue[newSpot] = arrayQueue[newSpot-1]; //move higher value over 1 cell
+                arrayQueue[newSpot] = arrayQueue[newSpot - 1]; //move higher value over 1 cell
                 newSpot--; //decrement so we can try the next cell compare
                 if (newSpot == head)
                     break;
@@ -90,7 +90,7 @@ namespace DataStructures
                 head = head + 1; //move head to new first in line
                 return (int)removedItem;
             }
-            else throw new System.IndexOutOfRangeException("value is higher than this list length");
+            else throw new IndexOutOfRangeException("value is higher than this list length");
         }
         public int peek()
         {
@@ -98,7 +98,7 @@ namespace DataStructures
             {
                 return head;
             }
-            else throw new System.IndexOutOfRangeException("List is empty");
+            else throw new IndexOutOfRangeException("List is empty");
         }
 
     }

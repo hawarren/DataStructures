@@ -173,6 +173,9 @@ namespace DataStructures.Practice
             //dig from first to last again until next == null
             //save prev
             //....
+
+            if (isEmpty())
+                return;
             var current = _last;
             var prev = getPrevious(_last);
             while (getPrevious(current) != null)
@@ -187,7 +190,7 @@ namespace DataStructures.Practice
                 current = current.Next;
                 //once no more nodes (ie we're at first node), switch first and last
                 if (prev == null)
-                {                    
+                {
                     var newFirst = _last;
                     var newLast = _first;
                     _first = newFirst;
@@ -196,6 +199,61 @@ namespace DataStructures.Practice
                 }
             }
 
+        }
+        public int getKthFromTheEnd(int k)
+        {
+
+            if (k > _size || k <= 0)
+                throw new NullReferenceException(); ;
+            //use 2 pointers k-1 spaces apart
+            //move both forward until the 1st is at the end
+            var kMark = _first;
+            var endMark = _first;
+            //move leader k distance apart
+            for (var i = 0; i < k - 1; i++)
+            {
+                endMark = endMark.Next;
+
+
+            }
+
+            while (endMark != _last)
+            {
+                endMark = endMark.Next;
+                kMark = kMark.Next;
+
+            }
+            return kMark.Value;
+        }
+        public int?[] printMiddle()
+        {
+            if (_first == null)
+                return [null, null]; //instead of throwing exception
+            int?[] middleNumbers = new int?[2];
+            var midMark1 = _first;
+            PracticeNode midMark2 = null; //only needed if list is odd
+            var endMark = _first.Next;
+
+            //move endmark up 1 places, move midmark up 1 place.
+            //if not at end, move endmark up 1 place. move 2mark up from midmark 
+            //if at end, exit and return the number
+            //when midmark hits the end, print midMark1
+            while (endMark.Next != null)
+            {
+                midMark2 = null;
+                endMark = endMark.Next;
+                midMark1 = midMark1.Next;
+                if (endMark.Next != null)
+                {
+                    endMark = endMark.Next;
+                    midMark2 = midMark1.Next;
+                }
+            }
+            middleNumbers[0] = midMark1.Value;
+
+            middleNumbers[1] = midMark2 != null ? midMark2.Value : null;
+
+            return middleNumbers;
         }
 
     }

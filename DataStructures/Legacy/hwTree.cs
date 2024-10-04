@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace DataStructures.Legacy
 {
     class hwTree
     {
@@ -40,7 +40,7 @@ namespace DataStructures
             }
             public override string ToString()
             {
-                return "Node=" + this.data.ToString();
+                return "Node=" + data.ToString();
             }
         }
 
@@ -103,7 +103,7 @@ namespace DataStructures
         {
             return startNode.right;
         }
-        public Boolean find(int newData)
+        public bool find(int newData)
         {
             Node currentNode = root;
             bool isPresent = false;
@@ -133,10 +133,12 @@ namespace DataStructures
         {
             traversePreOrder(root);
         }
-        public void traverseInOrder() {
+        public void traverseInOrder()
+        {
             traverseInOrder(root);
         }
-        public void traversePostOrder() {
+        public void traversePostOrder()
+        {
             traversePostOrder(root);
         }
         //preorder traversal is root, left, right
@@ -159,7 +161,8 @@ namespace DataStructures
             traverseInOrder(root.right);
         }
         //postOrder traversal is left, right, root
-        private void traversePostOrder(Node root) {
+        private void traversePostOrder(Node root)
+        {
             if (root == null)
                 return;
             traversePostOrder(root.left);
@@ -194,9 +197,10 @@ namespace DataStructures
         //}
         //find height of tree
         //use recursion to break down each tree using postorder traversal (visits all the leaves first
-        private int height(Node root) {
+        private int height(Node root)
+        {
             if (root.left == null && root.right == null)
-            return 0;
+                return 0;
 
             return 1 + Math.Max(height(root.left), height(root.right)); //get the height of the larger subtree
         }
@@ -211,7 +215,7 @@ namespace DataStructures
         private int min(Node root)
         {
             if (isLeaf(root))
-            return 0;
+                return 0;
             var left = min(root.left);
             var right = min(root.right);
             return Math.Min(left, right);
@@ -239,19 +243,19 @@ namespace DataStructures
 
         //check if 2 trees are equal
         //compare the 2 roots, if equal then compare the left nodes to each other, if equal then compare right nodes to each other
-        private Boolean equals(Node root, Node secondRoot)
+        private bool equals(Node root, Node secondRoot)
         {
             if (root == null && secondRoot == null)  //base condition
                 return true;
             if (root != null && secondRoot != null)
-            return root.data == secondRoot.data && equals(root.left, secondRoot.left) && equals(root.right, secondRoot.right);
+                return root.data == secondRoot.data && equals(root.left, secondRoot.left) && equals(root.right, secondRoot.right);
 
             return false;
 
-            
-            
+
+
         }
-        public Boolean equals(Node secondRoot) //for calling it outside the object
+        public bool equals(Node secondRoot) //for calling it outside the object
         {
             return equals(root, secondRoot);
         }
