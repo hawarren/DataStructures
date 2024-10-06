@@ -24,6 +24,13 @@ namespace DataStructures.Practice
         public PracticeLinkedList()
         {
         }
+        public PracticeLinkedList(int[] array)
+        {
+            for (var i = 0; i < array.Length; i++)
+            {
+                addLast(i);
+            }
+        }
 
         public void addFirst(int newValue)
         {
@@ -257,20 +264,23 @@ namespace DataStructures.Practice
             return middleNumbers;
         }
 
-        public bool hasLoop() {
+        public bool hasLoop()
+        {
+            if (isEmpty())
+                return true;
             var slow = _first;
             var fast = _first.Next;
 
             if (slow == fast)
                 return true;
-            slow = slow.Next;
-            fast = fast.Next.Next;
+
+
             //move slow 1, fast 2, then compare
             //stop when fast reaches slow (ie a loop)
             //stop checking when fast = null (ie it finished the loop)
-            for (slow = slow; fast != null && fast != slow; slow = slow.Next)
+            for (slow = _first; fast != null && fast != slow; slow = slow.Next)
             {
-                
+
                 fast = fast.Next;
                 if (fast != null)
                     fast = fast.Next;
@@ -279,14 +289,19 @@ namespace DataStructures.Practice
             }
             return false;
         }
-        public void AddLoop() {
+        public void AddLoop()
+        {
+            if (isEmpty())
+                return;
+
             _last.Next = _first;
 
         }
-        public void RemoveLoop() {
+        public void RemoveLoop()
+        {
             _last.Next = null;
         }
-        
+
     }
 
 

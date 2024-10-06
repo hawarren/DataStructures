@@ -294,7 +294,19 @@ namespace DataStructures
             reverseList.addLast(10);
             Console.WriteLine($" The middle is {string.Join(",", reverseList.printMiddle())}");
 
+            PracticeLinkedList test1 = new([1]);
+            test1.AddLoop();
+            bool ans1 = test1.hasLoop();
 
+            Console.WriteLine($" test1 has loop? {ans1}");
+            PracticeLinkedList test2 = new([]);
+            test2.AddLoop();
+            bool ans2 = test2.hasLoop();
+            Console.WriteLine($" test2 has loop? {ans2}");
+            PracticeLinkedList test3 = new([1,2]);
+            test3.AddLoop();
+            bool ans3 = test3.hasLoop();
+            Console.WriteLine($" test1 has loop? {ans3}");
 
             LinkedList<string> test = new LinkedList<string>();
 
