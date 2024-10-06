@@ -243,6 +243,7 @@ namespace DataStructures.Practice
                 midMark2 = null;
                 endMark = endMark.Next;
                 midMark1 = midMark1.Next;
+
                 if (endMark.Next != null)
                 {
                     endMark = endMark.Next;
@@ -256,6 +257,36 @@ namespace DataStructures.Practice
             return middleNumbers;
         }
 
+        public bool hasLoop() {
+            var slow = _first;
+            var fast = _first.Next;
+
+            if (slow == fast)
+                return true;
+            slow = slow.Next;
+            fast = fast.Next.Next;
+            //move slow 1, fast 2, then compare
+            //stop when fast reaches slow (ie a loop)
+            //stop checking when fast = null (ie it finished the loop)
+            for (slow = slow; fast != null && fast != slow; slow = slow.Next)
+            {
+                
+                fast = fast.Next;
+                if (fast != null)
+                    fast = fast.Next;
+                if (slow == fast)
+                    return true;
+            }
+            return false;
+        }
+        public void AddLoop() {
+            _last.Next = _first;
+
+        }
+        public void RemoveLoop() {
+            _last.Next = null;
+        }
+        
     }
 
 

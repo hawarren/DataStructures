@@ -277,6 +277,13 @@ namespace DataStructures
             Console.WriteLine($"Before reverse: {string.Join(",",reverseList.ToArray())}");
             reverseList.reverse();
             Console.WriteLine($"After reverse: {string.Join(",", reverseList.ToArray())}");
+           
+            reverseList.hasLoop();
+            reverseList.AddLoop();
+            reverseList.hasLoop();
+            reverseList.RemoveLoop();
+            Console.WriteLine($"After adding and removing loop: {string.Join(",", reverseList.ToArray())}");
+
 
             Console.WriteLine(reverseList.getKthFromTheEnd(4));
             //Console.WriteLine(reverseList.getKthFromTheEnd(6));
