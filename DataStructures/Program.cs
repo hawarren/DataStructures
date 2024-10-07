@@ -14,7 +14,21 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            string testBalance = "[{}](){}";
+            PracticeStack BalanceChecker = new();
+            Console.WriteLine(BalanceChecker.checkIfBalanced(testBalance));
 
+
+
+
+            string str = "abcd";
+            string reversed = reverseString(str);
+            string reversedNull = reverseString(null);
+            string reversedEmpty = reverseString(string.Empty);
+            Console.WriteLine(reversed);
+
+
+            TestStack();
             TestLinkedList();
             
 
@@ -266,6 +280,15 @@ namespace DataStructures
 
         }
 
+        private static void TestStack()
+        {
+            Stack<int> classicStack = new();
+            classicStack.Push(10);
+            classicStack.Push(20);
+            classicStack.Push(30);
+            Console.WriteLine(string.Join(",",classicStack));
+        }
+
         private static void TestLinkedList()
         {
             PracticeLinkedList reverseList = new PracticeLinkedList();
@@ -448,6 +471,23 @@ namespace DataStructures
 
         }
 
+        private static string reverseString(string str) {
+            Stack<char> stringStack = new();
+            StringBuilder reversedString = new();
+            if (String.IsNullOrEmpty(str))
+                return "";
+
+            foreach (var item in str)
+            {
+                stringStack.Push(item);
+            }
+
+            while (stringStack.Count > 0)
+            {
+                reversedString.Append(stringStack.Pop());
+            }
+            return reversedString.ToString(); 
+        }
     }
 }
 
