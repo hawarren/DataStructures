@@ -10,7 +10,7 @@ namespace DataStructures.Practice
     {
         public PracticeStack()
         { }
-
+        
 
         //write a method to check if an expression is balanced
         //if item is [{(< , push onto stack
@@ -29,20 +29,34 @@ namespace DataStructures.Practice
             {
                 foreach (var item in str)
                 {
-                    if (reference.ContainsKey(item))
+                    if (isRightBracket(reference,item))  //check left brackets
                     {
                         Checker.Push(item);
                     }
-                    else if (reference.ContainsValue(item))
+                    else if (isLeftBracket(reference,item))
                     {
-                        if (reference[Checker.Peek()] == item)
+                        if (Checker.Count == 0)
+                            return false;
+
+                        if (bracketsMatch(reference, Checker, item))
                             Checker.Pop();
                         else return false;
                     }
                 }
             }
-            return true;
+            return Checker.Count == 0;
         }
 
+        public bool isRightBracket(Dictionary<char,char> reference, char item) {
+            
+            return reference.ContainsKey(item);
+        }
+        public bool isLeftBracket(Dictionary<char, char> reference, char item)
+        {
+            return reference.ContainsValue(item);
+        }
+        public bool bracketsMatch(Dictionary<char, char> reference, Stack<char> Checker, char item) {
+            return reference[Checker.Peek()] == item;
+        }
     }
 }

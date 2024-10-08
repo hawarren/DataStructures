@@ -14,9 +14,16 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-            string testBalance = "[{}](){}";
+            string testBalance = "[{adf}(adfd){asdfsad}]";
+            string testBalanceFalse = "[{}}](){}";
             PracticeStack BalanceChecker = new();
             Console.WriteLine(BalanceChecker.checkIfBalanced(testBalance));
+            Console.WriteLine(BalanceChecker.checkIfBalanced(testBalanceFalse));
+            //edge cases
+            Console.WriteLine(BalanceChecker.checkIfBalanced(("(")));
+            Console.WriteLine(BalanceChecker.checkIfBalanced(("(()")));
+            Console.WriteLine(BalanceChecker.checkIfBalanced((")(")));
+            Console.WriteLine(BalanceChecker.checkIfBalanced(("[)")));
 
 
 
