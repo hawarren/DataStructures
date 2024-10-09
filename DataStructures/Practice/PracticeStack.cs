@@ -10,53 +10,50 @@ namespace DataStructures.Practice
     {
         public PracticeStack()
         { }
-        
+
 
         //write a method to check if an expression is balanced
         //if item is [{(< , push onto stack
         //if item is closing >)}] AND the top stack item is the opener, pop from stack
         public bool checkIfBalanced(string str)
-        {
+        {          
+            PracticeArray referenceLeft = new PracticeArray(['[', '(', '{']);
+            PracticeArray referenceRight = new PracticeArray([']', ')', '}']);
 
-            Dictionary<char, char> reference = new Dictionary<char, char>{
-                {'[', ']' },
-                { '(', ')' },
-                { '{', '}' },
-
-            };
             Stack<char> Checker = new();
             if (!string.IsNullOrEmpty(str))
             {
                 foreach (var item in str)
                 {
-                    if (isRightBracket(reference,item))  //check left brackets
+                    if (isLeftBracket(referenceLeft, item))  //check left brackets
                     {
                         Checker.Push(item);
                     }
-                    else if (isLeftBracket(reference,item))
+                    else if (isRightBracket(referenceRight, item))
                     {
                         if (Checker.Count == 0)
                             return false;
 
-                        if (bracketsMatch(reference, Checker, item))
+                        if (bracketsMatch(referenceLeft, referenceRight, Checker, item))
                             Checker.Pop();
-                        else return false;
                     }
                 }
             }
             return Checker.Count == 0;
         }
 
-        public bool isRightBracket(Dictionary<char,char> reference, char item) {
-            
-            return reference.ContainsKey(item);
-        }
-        public bool isLeftBracket(Dictionary<char, char> reference, char item)
+        public bool isRightBracket(PracticeArray reference, char item)
         {
-            return reference.ContainsValue(item);
+            return reference.IndexOf((char)item) != -1;
         }
-        public bool bracketsMatch(Dictionary<char, char> reference, Stack<char> Checker, char item) {
-            return reference[Checker.Peek()] == item;
+        public bool isLeftBracket(PracticeArray reference, char item)
+        {
+            return reference.IndexOf((char)item) != -1;
+
+        }
+        public bool bracketsMatch(PracticeArray referenceLeft, PracticeArray referenceRight, Stack<char> Checker, char item)
+        {
+            return referenceLeft.IndexOf(Checker.Peek()) == referenceRight.IndexOf(item) && referenceLeft.IndexOf(Checker.Peek()) != -1;
         }
     }
 }
