@@ -14,6 +14,7 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            TestStack();
             string testBalance = "[{adf}(adfd){asdfsad}]";
             string testBalanceFalse = "[{}}](){}";
             PracticeStack BalanceChecker = new();
@@ -35,7 +36,6 @@ namespace DataStructures
             Console.WriteLine(reversed);
 
 
-            TestStack();
             TestLinkedList();
             
 
@@ -294,6 +294,25 @@ namespace DataStructures
             classicStack.Push(20);
             classicStack.Push(30);
             Console.WriteLine(string.Join(",",classicStack));
+
+            PracticeStack practiceStack = new();
+            Console.WriteLine($"Is stack empty? {practiceStack.isEmpty()}");
+            practiceStack.push(10);
+            practiceStack.push(20);
+            practiceStack.push(30);
+            practiceStack.printStack();
+            Console.WriteLine($" Peeking at {practiceStack.peek()}");
+            Console.WriteLine($"Popped {practiceStack.pop()} from the stack");
+            Console.WriteLine($"Now Is stack empty? {practiceStack.isEmpty()}");
+            practiceStack.printStack();
+            practiceStack.pop();
+            practiceStack.pop();
+            practiceStack.pop();
+            Console.WriteLine($"Now Is stack empty? {practiceStack.isEmpty()}");
+
+
+
+
         }
 
         private static void TestLinkedList()
