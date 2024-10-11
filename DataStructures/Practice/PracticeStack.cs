@@ -10,7 +10,7 @@ namespace DataStructures.Practice
     {
         public PracticeStack()
         {
-            _internalArray = new int[1];
+            _internalArray = new int[5];
             _count = 0;
 
         }
@@ -66,7 +66,7 @@ namespace DataStructures.Practice
         }
         public void push(int item) {
             if (_internalArray.Length == Count && Count > 0)
-                resizeArray();
+                throw new StackOverflowException();
             if (_internalArray != null)
             {
                 _internalArray[Count] = item;
@@ -76,7 +76,7 @@ namespace DataStructures.Practice
         public int pop() {
             if (_internalArray == null || Count == 0)
             {                
-                return -1;
+                throw new ArgumentException();
             }
 
             var retrievedValue = _internalArray[Count - 1];
@@ -96,26 +96,31 @@ namespace DataStructures.Practice
         public int peek() {
             if (_internalArray == null || Count == 0)
             {
-                return -1;
+                return Exception();
             }
-            var retrievedValue = _internalArray[Count - 1];
-            return retrievedValue;
+            
+            return _internalArray[Count - 1]; 
         }
         public bool isEmpty()
         {
 
-            return Count <= 0;
+            return Count == 0;
         }
         public void printStack() {
             Console.WriteLine("Printing the stack");
             for (var i = 0; i < Count; i++)
             {
                 Console.WriteLine(_internalArray[i]);
-            }
-            string resultsString = string.Join(",", _internalArray).Replace("0", "");
-            Console.WriteLine(resultsString);
+            }       
+            
             Console.WriteLine("Stack printed");
+            Console.WriteLine(this.ToString());
         }
+        public override string ToString()
+        {
+            return string.Join(",", _internalArray).Replace("0", "").Replace(",,","");
+        }
+        
 
     }
 }

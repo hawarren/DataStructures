@@ -48,7 +48,7 @@ namespace DataStructures
 
 
             
-
+            
 
             ////Populating binary search tree
             //int[] myBSTArray = { 10, 5, 15, 6, 1, 8, 12, 18, 17 };
@@ -294,6 +294,7 @@ namespace DataStructures
             classicStack.Push(20);
             classicStack.Push(30);
             Console.WriteLine(string.Join(",",classicStack));
+            classicStack.ToString();
 
             PracticeStack practiceStack = new();
             Console.WriteLine($"Is stack empty? {practiceStack.isEmpty()}");
