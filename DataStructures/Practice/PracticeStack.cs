@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DataStructures.Practice
 {
@@ -17,6 +18,7 @@ namespace DataStructures.Practice
 
         private int _count;
         private int[] internalArray;
+        private int[] internalSecondArray;
         private int[] _internalArray { get => internalArray; set => internalArray = value; }
         public int Count { get => _count; set => _count = value; }
 
@@ -96,7 +98,7 @@ namespace DataStructures.Practice
         public int peek() {
             if (_internalArray == null || Count == 0)
             {
-                return Exception();
+                throw new Exception("Cannot peek at empty array");
             }
             
             return _internalArray[Count - 1]; 
@@ -108,19 +110,24 @@ namespace DataStructures.Practice
         }
         public void printStack() {
             Console.WriteLine("Printing the stack");
-            for (var i = 0; i < Count; i++)
-            {
-                Console.WriteLine(_internalArray[i]);
-            }       
-            
-            Console.WriteLine("Stack printed");
             Console.WriteLine(this.ToString());
+
         }
         public override string ToString()
         {
             return string.Join(",", _internalArray).Replace("0", "").Replace(",,","");
         }
         
-
+//        1- Implement two stacks in one array.Support these operations:
+//push1() // to push in the first stack
+//push2() // to push in the second stack
+//pop1()
+//pop2()
+//isEmpty1()
+//isEmpty2()
+//isFull1()
+//isFull2()
+//Make sure your implementation is space efficient. (hint: do not allocate
+//the same amount of space by dividing the array in half.)
     }
 }

@@ -14,6 +14,7 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            TestDualStack();
             TestStack();
             string testBalance = "[{adf}(adfd){asdfsad}]";
             string testBalanceFalse = "[{}}](){}";
@@ -284,6 +285,29 @@ namespace DataStructures
 
 
             //}
+
+        }
+        private static void TestDualStack() {
+            
+
+            PracticeDualStack practiceStack = new();
+            Console.WriteLine($"Is stack empty? {practiceStack.isEmpty1()}");
+            Console.WriteLine($"Is stack empty? {practiceStack.isEmpty2()}");
+            practiceStack.push1(10);
+            practiceStack.push2(20);
+            practiceStack.push1(30);
+            practiceStack.push2(40);
+            practiceStack.printStack();
+            Console.WriteLine($" Peeking at {practiceStack.peek1()}");
+            Console.WriteLine($"Popped {practiceStack.pop1()} from the stack");
+            Console.WriteLine($"Now Is stack empty? {practiceStack.isEmpty1()}");
+            practiceStack.printStack();
+            practiceStack.pop1();
+            practiceStack.pop2();
+            Console.WriteLine($"Now Is stack empty? {practiceStack.isEmpty1()}");
+            Console.WriteLine($"Now Is stack empty? {practiceStack.isEmpty2()}");
+            practiceStack.pop1();
+
 
         }
 
