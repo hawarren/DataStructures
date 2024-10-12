@@ -18,7 +18,7 @@ namespace DataStructures.Practice
 
         private int _count;
         private int[] internalArray;
-        private int[] internalSecondArray;
+        private int _minimumValue;
         private int[] _internalArray { get => internalArray; set => internalArray = value; }
         public int Count { get => _count; set => _count = value; }
 
@@ -66,11 +66,13 @@ namespace DataStructures.Practice
         {
             return referenceLeft.IndexOf(Checker.Peek()) == referenceRight.IndexOf(item) && referenceLeft.IndexOf(Checker.Peek()) != -1;
         }
-        public void push(int item) {
+        public void push(int item) {            
             if (_internalArray.Length == Count && Count > 0)
                 throw new StackOverflowException();
             if (_internalArray != null)
             {
+                if (_internalArray[Count - 1] > item )
+                    _minimumValue = item;
                 _internalArray[Count] = item;
                 Count++;
             }

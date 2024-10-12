@@ -14,6 +14,10 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+
+
+
+            TestMinStack();
             TestDualStack();
             TestStack();
             string testBalance = "[{adf}(adfd){asdfsad}]";
@@ -286,6 +290,16 @@ namespace DataStructures
 
             //}
 
+        }
+        private static void TestMinStack() {
+            PracticeMinStack practiceMinStack = new();
+            practiceMinStack.push(5);
+            practiceMinStack.push(2);
+            practiceMinStack.push(10);
+            practiceMinStack.push(1);
+            practiceMinStack.min();
+            practiceMinStack.pop();
+            practiceMinStack.min();
         }
         private static void TestDualStack() {
             
