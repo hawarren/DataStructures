@@ -14,12 +14,14 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-
-
+            Queue<int> TestQueue1 = new Queue<int>(new int[] {1,2,3,4,5,6,7
+            });
+            reverseQueue(TestQueue1);
 
             TestMinStack();
             TestDualStack();
             TestStack();
+
             string testBalance = "[{adf}(adfd){asdfsad}]";
             string testBalanceFalse = "[{}}](){}";
             PracticeStack BalanceChecker = new();
@@ -42,7 +44,7 @@ namespace DataStructures
 
 
             TestLinkedList();
-            
+
 
 
             //test array
@@ -54,7 +56,26 @@ namespace DataStructures
 
 
         }
-        private static void TestMinStack() {
+
+        private static void reverseQueue(Queue<int> queue)
+        {
+            var tempStack = new Stack<int>();
+            while (queue.Count() > 0)
+            {
+                tempStack.Push(queue.Dequeue());
+            }
+            while (tempStack.Count > 0)
+            {
+                queue.Enqueue(tempStack.Pop());
+            }
+            Console.WriteLine(string.Join(',', queue.ToArray()));
+            
+
+        }
+        
+
+        private static void TestMinStack()
+        {
             PracticeMinStack practiceMinStack = new();
             practiceMinStack.push(5);
             practiceMinStack.push(2);
@@ -64,8 +85,9 @@ namespace DataStructures
             practiceMinStack.pop();
             practiceMinStack.min();
         }
-        private static void TestDualStack() {
-            
+        private static void TestDualStack()
+        {
+
 
             PracticeDualStack practiceStack = new();
             Console.WriteLine($"Is stack empty? {practiceStack.isEmpty1()}");
@@ -94,7 +116,7 @@ namespace DataStructures
             classicStack.Push(10);
             classicStack.Push(20);
             classicStack.Push(30);
-            Console.WriteLine(string.Join(",",classicStack));
+            Console.WriteLine(string.Join(",", classicStack));
             classicStack.ToString();
 
             PracticeStack practiceStack = new();
@@ -125,10 +147,10 @@ namespace DataStructures
             reverseList.addLast(6);
             reverseList.addLast(8);
             reverseList.addLast(10);
-            Console.WriteLine($"Before reverse: {string.Join(",",reverseList.ToArray())}");
+            Console.WriteLine($"Before reverse: {string.Join(",", reverseList.ToArray())}");
             reverseList.reverse();
             Console.WriteLine($"After reverse: {string.Join(",", reverseList.ToArray())}");
-           
+
             reverseList.hasLoop();
             reverseList.AddLoop();
             reverseList.hasLoop();
@@ -154,7 +176,7 @@ namespace DataStructures
             test2.AddLoop();
             bool ans2 = test2.hasLoop();
             Console.WriteLine($" test2 has loop? {ans2}");
-            PracticeLinkedList test3 = new([1,2]);
+            PracticeLinkedList test3 = new([1, 2]);
             test3.AddLoop();
             bool ans3 = test3.hasLoop();
             Console.WriteLine($" test1 has loop? {ans3}");
@@ -185,16 +207,17 @@ namespace DataStructures
             Console.WriteLine(practiceLinkedList.size());
             practiceLinkedList.deleteLast();
             Console.WriteLine(practiceLinkedList.size());
-            
+
             Console.WriteLine(practiceLinkedList.contains(4));
             Console.WriteLine(practiceLinkedList.indexOf(4));
             Console.WriteLine(practiceLinkedList.indexOf(57));
-            Console.WriteLine(string.Join(",",practiceLinkedList.ToArray()));
+            Console.WriteLine(string.Join(",", practiceLinkedList.ToArray()));
 
             Console.ReadKey();
         }
 
-        static void testArray() {
+        static void testArray()
+        {
             //testing custom array
             PracticeArray numbers = new PracticeArray(3);
             numbers.insert(10);
@@ -299,7 +322,8 @@ namespace DataStructures
 
         }
 
-        private static string reverseString(string str) {
+        private static string reverseString(string str)
+        {
             Stack<char> stringStack = new();
             StringBuilder reversedString = new();
             if (String.IsNullOrEmpty(str))
@@ -314,9 +338,10 @@ namespace DataStructures
             {
                 reversedString.Append(stringStack.Pop());
             }
-            return reversedString.ToString(); 
+            return reversedString.ToString();
         }
-        private static void legacyTests() {
+        private static void legacyTests()
+        {
 
 
 
