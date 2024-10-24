@@ -47,8 +47,9 @@ namespace DataStructures.Practice
         }
         public int pop1() {
             if (isEmpty1())
-            {                
-                throw new ArgumentException();
+            {
+                // throw new ArgumentException();
+                return -1;
             }
 
             var retrievedValue = _internalArray[LeftCount - 1];

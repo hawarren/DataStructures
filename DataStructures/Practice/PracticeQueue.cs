@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataStructures.Practice
 {
-    internal class Practice
+    internal class PracticeQueue
     {
 
-       //HOW DO i USE C# QUEUE
+       //HOW DO i USE C# double ended QUEUE
 
     }
 }

@@ -14,13 +14,15 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            printArrayQueue();
+
             Queue<int> TestQueue1 = new Queue<int>(new int[] {1,2,3,4,5,6,7
             });
             reverseQueue(TestQueue1);
 
             TestMinStack();
-            TestDualStack();
-            TestStack();
+           // TestDualStack();
+           //TestStack();
 
             string testBalance = "[{adf}(adfd){asdfsad}]";
             string testBalanceFalse = "[{}}](){}";
@@ -56,6 +58,27 @@ namespace DataStructures
 
 
         }
+        private static void printArrayQueue()
+        {
+            ArrayQueue practiceArrayQueue = new();
+
+            practiceArrayQueue.enqueue(1);
+            practiceArrayQueue.enqueue(2);
+            practiceArrayQueue.enqueue(3);
+            practiceArrayQueue.enqueue(4);
+            practiceArrayQueue.enqueue(5);
+            practiceArrayQueue.dequeue();
+            practiceArrayQueue.dequeue();
+
+            practiceArrayQueue.enqueue(1);
+            practiceArrayQueue.enqueue(2);
+            practiceArrayQueue.enqueue(3);
+            practiceArrayQueue.dequeue();
+            practiceArrayQueue.enqueue(5);
+            practiceArrayQueue.enqueue(4);
+
+
+        }
 
         private static void reverseQueue(Queue<int> queue)
         {
@@ -69,10 +92,10 @@ namespace DataStructures
                 queue.Enqueue(tempStack.Pop());
             }
             Console.WriteLine(string.Join(',', queue.ToArray()));
-            
+
 
         }
-        
+
 
         private static void TestMinStack()
         {
