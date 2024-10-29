@@ -17,9 +17,9 @@ namespace DataStructures.Practice
         private int _headPosition;
         private int _tailPosition;
         private int _count;
-        public ArrayQueue()
+        public ArrayQueue(int capacity = 5)
         {
-            _internalArray = new int[5];
+            _internalArray = new int[capacity];
             _headPosition = 0;
             _tailPosition = 0;
             _count = 0;
@@ -59,7 +59,7 @@ namespace DataStructures.Practice
                 }
             }
             else {
-                Console.WriteLine($"The array is is Full {isFull()}");
+                Console.WriteLine($"Is array full? {isFull()}. Cannot add {item} ");
             }
         }
         public bool isEmpty()
@@ -75,7 +75,7 @@ namespace DataStructures.Practice
             if (isOutOfBounds(_tailPosition))
                 _tailPosition = getIndex(_tailPosition);
 
-            var removedItem = -1;
+            var removedItem = 0;
             if (!isEmpty())
             {
 
@@ -107,6 +107,9 @@ namespace DataStructures.Practice
         private bool isOutOfBounds(int index)
         {
             return index >= _internalArray.Length || index < 0;
+        }
+        public override string ToString() {
+            return String.Join(",", _internalArray);
         }
 
     }
