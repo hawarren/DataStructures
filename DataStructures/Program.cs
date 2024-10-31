@@ -14,69 +14,111 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-            printArrayQueue();
+            createQueueReverser();
+            createPriorityQueue();
+           // printStackQueue();
 
-            Queue<int> TestQueue1 = new Queue<int>(new int[] {1,2,3,4,5,6,7
-            });
-            reverseQueue(TestQueue1);
+           // printArrayQueue();
 
-            TestMinStack();
-           // TestDualStack();
-           //TestStack();
+           // Queue<int> TestQueue1 = new Queue<int>(new int[] {1,2,3,4,5,6,7
+           // });
+           // reverseQueue(TestQueue1);
 
-            string testBalance = "[{adf}(adfd){asdfsad}]";
-            string testBalanceFalse = "[{}}](){}";
-            PracticeStack BalanceChecker = new();
-            Console.WriteLine(BalanceChecker.checkIfBalanced(testBalance));
-            Console.WriteLine(BalanceChecker.checkIfBalanced(testBalanceFalse));
-            //edge cases
-            Console.WriteLine(BalanceChecker.checkIfBalanced(("(")));
-            Console.WriteLine(BalanceChecker.checkIfBalanced(("(()")));
-            Console.WriteLine(BalanceChecker.checkIfBalanced((")(")));
-            Console.WriteLine(BalanceChecker.checkIfBalanced(("[)")));
+           // TestMinStack();
+           //// TestDualStack();
+           ////TestStack();
 
-
-
-
-            string str = "abcd";
-            string reversed = reverseString(str);
-            string reversedNull = reverseString(null);
-            string reversedEmpty = reverseString(string.Empty);
-            Console.WriteLine(reversed);
-
-
-            TestLinkedList();
+           // string testBalance = "[{adf}(adfd){asdfsad}]";
+           // string testBalanceFalse = "[{}}](){}";
+           // PracticeStack BalanceChecker = new();
+           // Console.WriteLine(BalanceChecker.checkIfBalanced(testBalance));
+           // Console.WriteLine(BalanceChecker.checkIfBalanced(testBalanceFalse));
+           // //edge cases
+           // Console.WriteLine(BalanceChecker.checkIfBalanced(("(")));
+           // Console.WriteLine(BalanceChecker.checkIfBalanced(("(()")));
+           // Console.WriteLine(BalanceChecker.checkIfBalanced((")(")));
+           // Console.WriteLine(BalanceChecker.checkIfBalanced(("[)")));
 
 
 
-            //test array
-            testArray();
-            //merge sort implementation
-            testMergeSort();
+
+           // string str = "abcd";
+           // string reversed = reverseString(str);
+           // string reversedNull = reverseString(null);
+           // string reversedEmpty = reverseString(string.Empty);
+           // Console.WriteLine(reversed);
+
+
+           // TestLinkedList();
+
+
+
+           // //test array
+           // testArray();
+           // //merge sort implementation
+           // testMergeSort();
             Console.ReadKey();
 
 
 
         }
+
+        private static void createQueueReverser()
+        {
+            PracticeQueueReverser practiceQueueReverser = new();            
+            Console.WriteLine(practiceQueueReverser.ToString());
+            practiceQueueReverser.reverse(3);
+            Console.WriteLine(practiceQueueReverser.ToString());
+        }
+
+        private static void createPriorityQueue()
+        {
+            PracticePriorityQueue priorityQueue = new PracticePriorityQueue();
+            priorityQueue.enqueue(5);
+            priorityQueue.enqueue(3);
+            priorityQueue.enqueue(6);
+            priorityQueue.enqueue(1);
+            priorityQueue.enqueue(4);
+            priorityQueue.dequeue();
+
+        }
+
+        private static void printStackQueue()
+        {
+            StackQueue stackQueue = new();
+            stackQueue.enqueue(10);
+            stackQueue.enqueue(20);
+            stackQueue.enqueue(30);
+            stackQueue.enqueue(40);
+            Console.WriteLine($"The stack contains these values: {stackQueue.ToString()}");
+            stackQueue.dequeue();
+            stackQueue.enqueue(50);
+            Console.WriteLine($"The stack contains these values: {stackQueue.ToString()}");
+
+        }
+
         private static void printArrayQueue()
         {
             ArrayQueue practiceArrayQueue = new();
 
-            practiceArrayQueue.enqueue(1);
+            practiceArrayQueue.enqueue(10);
+            practiceArrayQueue.enqueue(20);
+            practiceArrayQueue.enqueue(30);
+            
+            Console.WriteLine($"Removing {practiceArrayQueue.dequeue()}");
+            Console.WriteLine($"Removing {practiceArrayQueue.dequeue()}");
+            practiceArrayQueue.enqueue(40);
+            practiceArrayQueue.enqueue(50);
+            Console.WriteLine(practiceArrayQueue.ToString());
+            practiceArrayQueue.enqueue(60);
+            Console.WriteLine(practiceArrayQueue.ToString());
             practiceArrayQueue.enqueue(2);
             practiceArrayQueue.enqueue(3);
-            practiceArrayQueue.enqueue(4);
-            practiceArrayQueue.enqueue(5);
-            practiceArrayQueue.dequeue();
-            practiceArrayQueue.dequeue();
-
-            practiceArrayQueue.enqueue(1);
-            practiceArrayQueue.enqueue(2);
-            practiceArrayQueue.enqueue(3);
+            Console.WriteLine(practiceArrayQueue.ToString());
             practiceArrayQueue.dequeue();
             practiceArrayQueue.enqueue(5);
             practiceArrayQueue.enqueue(4);
-
+            Console.WriteLine(practiceArrayQueue.ToString());
 
         }
 
