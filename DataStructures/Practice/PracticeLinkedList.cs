@@ -9,7 +9,10 @@ namespace DataStructures.Practice
 {
     public class PracticeLinkedList
     {
-        private class PracticeNode
+        private PracticeNode _first;
+        private PracticeNode _last;
+
+        public class PracticeNode
         {
             public int Value { get; set; }
             public PracticeNode Next { get; set; }
@@ -18,8 +21,8 @@ namespace DataStructures.Practice
                 this.Value = value;
             }
         }
-        private PracticeNode _first { get; set; }
-        private PracticeNode _last { get; set; }
+        public PracticeNode first { get => _first; set => _first = value; }
+        public PracticeNode last { get => _last; set => _last = value; }
         private int _size { get; set; }
         public PracticeLinkedList()
         {
@@ -37,13 +40,13 @@ namespace DataStructures.Practice
             PracticeNode newNode = new PracticeNode(newValue);
             if (isEmpty())
             {
-                _first = newNode;
-                _last = newNode;
+                first = newNode;
+                last = newNode;
             }
             else
             {
-                newNode.Next = this._first;
-                this._first = newNode;
+                newNode.Next = this.first;
+                this.first = newNode;
 
             }
             _size++;
@@ -53,14 +56,14 @@ namespace DataStructures.Practice
             PracticeNode newNode = new PracticeNode(newValue);
             if (isEmpty())
             {
-                _first = newNode;
-                _last = newNode;
+                first = newNode;
+                last = newNode;
             }
             else
             {
                 //point last to new node, then make newnode the last node
-                _last.Next = newNode;
-                _last = newNode;
+                last.Next = newNode;
+                last = newNode;
             }
             _size++;
 
@@ -72,18 +75,18 @@ namespace DataStructures.Practice
             {
                 throw new System.InvalidOperationException("The LinkedList is empty.");
             }
-            if (_first == _last)
+            if (first == last)
             {
-                _first = _last = null;
+                first = last = null;
             }
             else
             {
                 //find second value
                 //save pointer to second value
                 //make second value the first
-                var second = this._first.Next;
-                _first.Next = null;
-                this._first = second;
+                var second = this.first.Next;
+                first.Next = null;
+                this.first = second;
             }
             _size--;
         }
@@ -94,24 +97,24 @@ namespace DataStructures.Practice
             {
                 throw new System.InvalidOperationException("The LinkedList is empty.");
             }
-            if (_first == _last)
+            if (first == last)
             {
-                _first = _last = null;
+                first = last = null;
             }
             else
             {
                 //find the 2nd to last node
                 //delete the last node
                 //set last  to prior 2ndToLast value
-                var previous = getPrevious(_last);
-                _last = previous;
-                _last.Next = null;
+                var previous = getPrevious(last);
+                last = previous;
+                last.Next = null;
             }
             _size--;
         }
         private PracticeNode getPrevious(PracticeNode node)
         {
-            var current = _first;
+            var current = first;
             while (current != null)
             {
                 if (current.Next == node)
@@ -129,9 +132,9 @@ namespace DataStructures.Practice
         public int indexOf(int searchValue)
         {
             int index = 0;
-            var startingNode = this._first;
+            var startingNode = this.first;
 
-            if (this._first.Value == searchValue)
+            if (this.first.Value == searchValue)
             {
                 return index;
 
@@ -148,7 +151,7 @@ namespace DataStructures.Practice
         }
         private bool isEmpty()
         {
-            return _first == null;
+            return first == null;
         }
         public int size()
         {
@@ -161,7 +164,7 @@ namespace DataStructures.Practice
                 return null;
 
             int[] array = new int[_size];
-            var current = _first;
+            var current = first;
             var index = 0;
 
             while (current != null)
@@ -183,8 +186,8 @@ namespace DataStructures.Practice
 
             if (isEmpty())
                 return;
-            var current = _last;
-            var prev = getPrevious(_last);
+            var current = last;
+            var prev = getPrevious(last);
             while (getPrevious(current) != null)
             {
                 //point the current node to the previous node (starting from first).
@@ -198,10 +201,10 @@ namespace DataStructures.Practice
                 //once no more nodes (ie we're at first node), switch first and last
                 if (prev == null)
                 {
-                    var newFirst = _last;
-                    var newLast = _first;
-                    _first = newFirst;
-                    _last = newLast;
+                    var newFirst = last;
+                    var newLast = first;
+                    first = newFirst;
+                    last = newLast;
                     break;
                 }
             }
@@ -214,8 +217,8 @@ namespace DataStructures.Practice
                 throw new NullReferenceException(); ;
             //use 2 pointers k-1 spaces apart
             //move both forward until the 1st is at the end
-            var kMark = _first;
-            var endMark = _first;
+            var kMark = first;
+            var endMark = first;
             //move leader k distance apart
             for (var i = 0; i < k - 1; i++)
             {
@@ -224,7 +227,7 @@ namespace DataStructures.Practice
 
             }
 
-            while (endMark != _last)
+            while (endMark != last)
             {
                 endMark = endMark.Next;
                 kMark = kMark.Next;
@@ -234,12 +237,12 @@ namespace DataStructures.Practice
         }
         public int?[] printMiddle()
         {
-            if (_first == null)
+            if (first == null)
                 return [null, null]; //instead of throwing exception
             int?[] middleNumbers = new int?[2];
-            var midMark1 = _first;
+            var midMark1 = first;
             PracticeNode midMark2 = null; //only needed if list is odd
-            var endMark = _first.Next;
+            var endMark = first.Next;
 
             //move endmark up 1 places, move midmark up 1 place.
             //if not at end, move endmark up 1 place. move 2mark up from midmark 
@@ -268,8 +271,8 @@ namespace DataStructures.Practice
         {
             if (isEmpty())
                 return true;
-            var slow = _first;
-            var fast = _first.Next;
+            var slow = first;
+            var fast = first.Next;
 
             if (slow == fast)
                 return true;
@@ -278,7 +281,7 @@ namespace DataStructures.Practice
             //move slow 1, fast 2, then compare
             //stop when fast reaches slow (ie a loop)
             //stop checking when fast = null (ie it finished the loop)
-            for (slow = _first; fast != null && fast != slow; slow = slow.Next)
+            for (slow = first; fast != null && fast != slow; slow = slow.Next)
             {
 
                 fast = fast.Next;
@@ -294,12 +297,12 @@ namespace DataStructures.Practice
             if (isEmpty())
                 return;
 
-            _last.Next = _first;
+            last.Next = first;
 
         }
         public void RemoveLoop()
         {
-            _last.Next = null;
+            last.Next = null;
         }
 
     }

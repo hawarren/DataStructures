@@ -14,6 +14,7 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            createLinkedListQueue();
             createQueueReverser();
             createPriorityQueue();
            // printStackQueue();
@@ -61,6 +62,18 @@ namespace DataStructures
 
 
 
+        }
+
+        private static void createLinkedListQueue()
+        {
+            PracticeLinkedListQueue practiceLinkedListQueue = new PracticeLinkedListQueue();
+            practiceLinkedListQueue.enqueue(1); // O(1) since we know where the last item is
+            practiceLinkedListQueue.enqueue(2); 
+            practiceLinkedListQueue.enqueue(3);
+            practiceLinkedListQueue.enqueue(4);
+            practiceLinkedListQueue.peek(); //O(1) since we know where first item is
+            practiceLinkedListQueue.dequeue(); 
+            practiceLinkedListQueue.size();
         }
 
         private static void createQueueReverser()

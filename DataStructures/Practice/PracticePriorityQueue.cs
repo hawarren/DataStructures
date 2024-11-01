@@ -35,13 +35,11 @@ namespace DataStructures.Practice
             else
             {
                 if (isFull())
-                    throw new Exception("PriorityQueue is full");
+                    resize();
                 int i = ShiftItemsToInsert(item);
-                _internalArray[i + 1] = item;
+                _internalArray[i] = item;
                 _tail++;
                 _count++;
-
-
             }
 
             int ShiftItemsToInsert(int item)
@@ -61,7 +59,7 @@ namespace DataStructures.Practice
                     }
                 }
 
-                return i;
+                return i+1;
             }
         }
         public int dequeue() {
@@ -72,7 +70,12 @@ namespace DataStructures.Practice
         }
         public void resize()
         {
-
+            int[] newArray = new int[_internalArray.Length * 2];
+            for (var i = 0; i <= _count; i++)
+            {
+                newArray[i] = _internalArray[i];
+            }
+            _internalArray = newArray;
         }
         public bool isFull() {
             return _count == _internalArray.Length;
