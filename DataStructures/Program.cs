@@ -14,6 +14,7 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            PracticeDualQueueStackTest();
             createLinkedListQueue();
             createQueueReverser();
             createPriorityQueue();
@@ -62,6 +63,19 @@ namespace DataStructures
 
 
 
+        }
+
+        private static void PracticeDualQueueStackTest()
+        {
+            PracticeDualQueueStack practiceDualQueueStack = new PracticeDualQueueStack();
+            practiceDualQueueStack.push(1);
+            practiceDualQueueStack.push(2);
+            practiceDualQueueStack.push(3);
+           Console.Write($" complete queue is {practiceDualQueueStack.ToString()}");
+
+            practiceDualQueueStack.pop();
+            practiceDualQueueStack.pop();
+            practiceDualQueueStack.pop();
         }
 
         private static void createLinkedListQueue()
