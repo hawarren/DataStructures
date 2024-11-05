@@ -14,6 +14,8 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+
+            CheckForNoRepeatingString();
             PracticeDualQueueStackTest();
             createLinkedListQueue();
             createQueueReverser();
@@ -63,6 +65,15 @@ namespace DataStructures
 
 
 
+        }
+
+        private static void CheckForNoRepeatingString()
+        {
+            string testString = "a green apple";
+            PracticeNonRepeatingCharacter practiceCheck = new PracticeNonRepeatingCharacter(testString);
+            Console.WriteLine($"First non repeat is {practiceCheck.CheckForNonRepeat(testString)}");
+
+            throw new NotImplementedException();
         }
 
         private static void PracticeDualQueueStackTest()
