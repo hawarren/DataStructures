@@ -14,7 +14,7 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-
+            createHashSet();
             CheckForNoRepeatingString();
             PracticeDualQueueStackTest();
             createLinkedListQueue();
@@ -67,11 +67,23 @@ namespace DataStructures
 
         }
 
+        private static void createHashSet()
+        {
+            HashSet<int> hashSet = new();
+            int[] numbers =  { 1, 2, 3, 3, 2, 1, 4 };
+            foreach (int number in numbers)
+            {
+                hashSet.Add(number);
+            }
+            Console.WriteLine(string.Join(",",hashSet));
+        }
+
         private static void CheckForNoRepeatingString()
         {
             string testString = "a green apple";
             PracticeNonRepeatingCharacter practiceCheck = new PracticeNonRepeatingCharacter(testString);
             Console.WriteLine($"First non repeat is {practiceCheck.CheckForNonRepeat(testString)}");
+            Console.WriteLine($"First non repeat is {practiceCheck.CheckForRepeat(testString)}");
 
             throw new NotImplementedException();
         }

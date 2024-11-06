@@ -19,13 +19,28 @@ namespace DataStructures.Practice
             // increment by 1 for each letter
             foreach (var item in mystring)
             {
-                myDictionary[item] = myDictionary.TryGetValue(item, out int? value) ? value + 1 : 1;
+                myDictionary[item] = myDictionary.TryGetValue(item, out int? value) ? value + 1 : 1; //avoid double lookup
             }
+            Console.WriteLine(String.Join(",", myDictionary));
             for (var i = 0; i <= mystring.Length; i++)
             {
                 if (myDictionary[mystring[i]] == 1)
                     return mystring[i];
                 i++;
+            }
+            return ("").ToCharArray()[0];
+        }
+        public char CheckForRepeat(string myString)
+        {
+            HashSet<char> mySet = new();
+            foreach (var letter in myString)
+            {
+                if (mySet.Contains(letter))
+                {
+                    return letter;
+                }
+                mySet.Add(letter);
+
             }
 
             return ("").ToCharArray()[0];
