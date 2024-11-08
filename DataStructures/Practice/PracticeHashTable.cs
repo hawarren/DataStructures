@@ -30,17 +30,34 @@ namespace DataStructures.Practice
                 newList.AddLast(newNode);
                 _InternalArray[newPostion] = newList;
             }
-            else
+            //check linkedlist at index and look for existing key
+            var bucket = _InternalArray[newPostion];
+            foreach (var entry in bucket)
             {
-                var chainPointer = _InternalArray[newPostion];
-                chainPointer.AddLast(newNode);
+                if (entry.key == key)
+                {
+                    entry.value = value;
+                    return;
+                }
             }
+            //if no key found above, add new entry to the end
+            var chainPointer = _InternalArray[newPostion];
+            chainPointer.AddLast(newNode);
         }
-        public Entry get(int key)
+        public string get(int key)
         {
-            var myEntry = getNode(key);
+            var myEntry = _InternalArray[getEntryPosition(key)];
+            if (myEntry != null)
+            {
+                foreach (var entry in myEntry)
+                {
+                    if (entry.key == key)
+                        return entry.value;
+                }
+            }
+            Console.WriteLine($"Unable to locate value for key {key}");
+            return null;
 
-            return myEntry.Value;
         }
         public LinkedListNode<Entry> getNode(int key)
         {
@@ -62,18 +79,30 @@ namespace DataStructures.Practice
         }
         public Entry remove(int key)
         {
-            var myEntry = getNode(key);
-           _InternalArray[getEntryPosition(key)].Remove(myEntry);
-
-            return null;
+            var index = getEntryPosition(key);
+            var bucket = _InternalArray[getEntryPosition(key)];
+            if (bucket == null)
+            {
+                throw new Exception("Item not found");
+            }
+            foreach (var item in bucket)
+            {
+                if (item.key == key) 
+                {
+                    bucket.Remove(item);
+                    return item;
+                }
+            }
+            throw new Exception("Item not found");
+            
         }
 
 
         public int getEntryPosition(int key)
         {
-            return key % _InternalArray.Length;
+            return Math.Abs(key) % _InternalArray.Length;
         }
-        
+
     }
     public class Entry
     {

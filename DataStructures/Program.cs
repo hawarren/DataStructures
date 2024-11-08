@@ -71,10 +71,11 @@ namespace DataStructures
         private static void createHashTable()
         {
             PracticeHashTable practiceHashTable = new();
-            practiceHashTable.put(1, "one");
-            practiceHashTable.put(2, "two");
-            practiceHashTable.put(3, "three");
-            practiceHashTable.put(4, "four");
+            practiceHashTable.put(6, "A");
+            practiceHashTable.put(8, "B");
+            practiceHashTable.put(11, "C");
+            practiceHashTable.put(6, "A+");
+            Console.WriteLine(practiceHashTable.get(6));
             practiceHashTable.put(5, "five");
             practiceHashTable.put(6, "six");
             practiceHashTable.remove(2);
