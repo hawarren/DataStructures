@@ -71,6 +71,8 @@ namespace DataStructures
         private static void createHashTable()
         {
             PracticeHashTable practiceHashTable = new();
+            practiceHashTable.mostFrequent([1,2,3,3,3,3,4 ]);
+            Console.WriteLine($"The most frequent number in [1,2,3,3,3,3,4 ] is ...... {practiceHashTable.mostFrequent([1, 2, 3, 3, 3, 3, 4])}");
             practiceHashTable.put(6, "A");
             practiceHashTable.put(8, "B");
             practiceHashTable.put(11, "C");

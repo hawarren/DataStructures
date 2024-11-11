@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -87,20 +88,47 @@ namespace DataStructures.Practice
             }
             foreach (var item in bucket)
             {
-                if (item.key == key) 
+                if (item.key == key)
                 {
                     bucket.Remove(item);
                     return item;
                 }
             }
             throw new Exception("Item not found");
-            
+
         }
 
 
         public int getEntryPosition(int key)
         {
             return Math.Abs(key) % _InternalArray.Length;
+        }
+        public int mostFrequent(int[] testArray)
+        {
+            Dictionary<int, int> myDict = new Dictionary<int, int>();
+            foreach (var item in testArray)
+            { //check if in dictionary, if so then increment value
+                //if not then add 1
+                if (myDict.TryGetValue(item, out int value))
+                {
+                    myDict[item] = value + 1;
+                }
+                else
+                {
+                    myDict.Add(item, 1);
+                }
+            }
+            //iterate thru keys and check the quantity (value)
+            //if value is higher than existing candidate, then replace it
+            //otherwise continue
+            int candidateKey = testArray[0];
+            foreach (var item in myDict.Keys.OrderDescending())
+            {
+                if (myDict[item] > myDict[candidateKey])
+                    candidateKey = item;
+            }
+            
+            return candidateKey;
         }
 
     }
