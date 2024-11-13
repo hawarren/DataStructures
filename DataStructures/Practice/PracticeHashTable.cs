@@ -127,8 +127,34 @@ namespace DataStructures.Practice
                 if (myDict[item] > myDict[candidateKey])
                     candidateKey = item;
             }
-            
+
             return candidateKey;
+        }
+        public int countPairsWithDiff(int[] array, int gap)
+        {
+            //sort array lowest to highest
+            //make a dictionary of all possible entry combinations, using array's lower number as key
+            Array.Sort(array);
+            int pairCount = 0;
+            Dictionary<int, int> arrayDictionary = new();
+            foreach (var item in array)
+            {
+                if (!arrayDictionary.TryGetValue(item, out int value))
+                    {
+                    arrayDictionary.Add(item, item + gap);
+                }
+            }
+            //loop thru array and check if item+2 is in the dictionary
+            //if present, increment pairCount
+            foreach (var item in arrayDictionary.Keys) {
+                if (arrayDictionary.TryGetValue(item+gap, out int value))
+                {
+                    pairCount++;
+                }
+            }
+
+
+            return pairCount;
         }
 
     }
