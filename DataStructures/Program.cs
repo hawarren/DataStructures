@@ -14,6 +14,7 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            createHashMap();
             createHashTable();
             createHashSet();
             CheckForNoRepeatingString();
@@ -65,6 +66,22 @@ namespace DataStructures
             Console.ReadKey();
 
 
+
+        }
+
+        private static void createHashMap()
+        {
+            PracticeHashMap practiceHashMap = new();
+            practiceHashMap.put(1, "one");
+            practiceHashMap.put(6, "A");
+            practiceHashMap.put(8, "B");
+            practiceHashMap.put(11, "C");
+            practiceHashMap.put(6, "A+");
+            Console.WriteLine(practiceHashMap.get(6));
+            practiceHashMap.put(5, "five");
+            practiceHashMap.put(6, "six");
+            practiceHashMap.remove(8);
+            practiceHashMap.remove(2);
 
         }
 
