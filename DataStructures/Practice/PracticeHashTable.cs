@@ -140,14 +140,15 @@ namespace DataStructures.Practice
             foreach (var item in array)
             {
                 if (!arrayDictionary.TryGetValue(item, out int value))
-                    {
+                {
                     arrayDictionary.Add(item, item + gap);
                 }
             }
             //loop thru array and check if item+2 is in the dictionary
             //if present, increment pairCount
-            foreach (var item in arrayDictionary.Keys) {
-                if (arrayDictionary.TryGetValue(item+gap, out int value))
+            foreach (var item in arrayDictionary.Keys)
+            {
+                if (arrayDictionary.TryGetValue(item + gap, out int value))
                 {
                     pairCount++;
                 }
@@ -155,6 +156,28 @@ namespace DataStructures.Practice
 
 
             return pairCount;
+        }
+        public void twoSum(int[] array, int target)
+        {
+            Dictionary<int, int> twoSumDictionary = new();
+            Dictionary<int, int> indexDictionary = new();
+            //make dictionary with key = arrayindex, value = target - arrayindex
+            //loop thru array, 
+            //if the value at the key is also a key, return that value, else continue
+            for (var item = 0; item < array.Length; item++)
+            {
+                twoSumDictionary.Add(array[item], target - array[item]);
+                indexDictionary.Add(array[item], item);
+                if (twoSumDictionary.TryGetValue(array[item], out int value))
+                {
+                    //check if match is there already
+                    if (twoSumDictionary.TryGetValue(value, out int value2))
+                    {
+                        Console.WriteLine($"Found matching values at {indexDictionary[value]} and {indexDictionary[value2]}");
+                        return;
+                    }
+                }
+            }
         }
 
     }
