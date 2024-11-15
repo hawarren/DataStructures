@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataStructures.Legacy;
 using DataStructures.Practice;
+using DataStructures.Practice.Part2;
 
 namespace DataStructures
 {
@@ -14,6 +15,7 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+            createPracticeBinarySearchTree();
             createHashMap();
             createHashTable();
             createHashSet();
@@ -22,51 +24,64 @@ namespace DataStructures
             createLinkedListQueue();
             createQueueReverser();
             createPriorityQueue();
-           // printStackQueue();
+            // printStackQueue();
 
-           // printArrayQueue();
+            // printArrayQueue();
 
-           // Queue<int> TestQueue1 = new Queue<int>(new int[] {1,2,3,4,5,6,7
-           // });
-           // reverseQueue(TestQueue1);
+            // Queue<int> TestQueue1 = new Queue<int>(new int[] {1,2,3,4,5,6,7
+            // });
+            // reverseQueue(TestQueue1);
 
-           // TestMinStack();
-           //// TestDualStack();
-           ////TestStack();
+            // TestMinStack();
+            //// TestDualStack();
+            ////TestStack();
 
-           // string testBalance = "[{adf}(adfd){asdfsad}]";
-           // string testBalanceFalse = "[{}}](){}";
-           // PracticeStack BalanceChecker = new();
-           // Console.WriteLine(BalanceChecker.checkIfBalanced(testBalance));
-           // Console.WriteLine(BalanceChecker.checkIfBalanced(testBalanceFalse));
-           // //edge cases
-           // Console.WriteLine(BalanceChecker.checkIfBalanced(("(")));
-           // Console.WriteLine(BalanceChecker.checkIfBalanced(("(()")));
-           // Console.WriteLine(BalanceChecker.checkIfBalanced((")(")));
-           // Console.WriteLine(BalanceChecker.checkIfBalanced(("[)")));
-
-
-
-
-           // string str = "abcd";
-           // string reversed = reverseString(str);
-           // string reversedNull = reverseString(null);
-           // string reversedEmpty = reverseString(string.Empty);
-           // Console.WriteLine(reversed);
-
-
-           // TestLinkedList();
+            // string testBalance = "[{adf}(adfd){asdfsad}]";
+            // string testBalanceFalse = "[{}}](){}";
+            // PracticeStack BalanceChecker = new();
+            // Console.WriteLine(BalanceChecker.checkIfBalanced(testBalance));
+            // Console.WriteLine(BalanceChecker.checkIfBalanced(testBalanceFalse));
+            // //edge cases
+            // Console.WriteLine(BalanceChecker.checkIfBalanced(("(")));
+            // Console.WriteLine(BalanceChecker.checkIfBalanced(("(()")));
+            // Console.WriteLine(BalanceChecker.checkIfBalanced((")(")));
+            // Console.WriteLine(BalanceChecker.checkIfBalanced(("[)")));
 
 
 
-           // //test array
-           // testArray();
-           // //merge sort implementation
-           // testMergeSort();
+
+            // string str = "abcd";
+            // string reversed = reverseString(str);
+            // string reversedNull = reverseString(null);
+            // string reversedEmpty = reverseString(string.Empty);
+            // Console.WriteLine(reversed);
+
+
+            // TestLinkedList();
+
+
+
+            // //test array
+            // testArray();
+            // //merge sort implementation
+            // testMergeSort();
             Console.ReadKey();
 
 
 
+        }
+
+        private static void createPracticeBinarySearchTree()
+        {
+            PracticeBinarySearchTree practiceBinarySearchTree = new();
+            practiceBinarySearchTree.insert(7);
+            practiceBinarySearchTree.insert(4);
+            practiceBinarySearchTree.insert(9);
+            practiceBinarySearchTree.insert(1);
+            practiceBinarySearchTree.insert(8);
+            practiceBinarySearchTree.insert(10);
+            practiceBinarySearchTree.insert(6);
+            Console.WriteLine("Done");
         }
 
         private static void createHashMap()
