@@ -16,4 +16,7 @@
   <ItemGroup>
     <Compile Remove="PracticeArray.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Practice\diagrams\" />
+  </ItemGroup>
 </Project>

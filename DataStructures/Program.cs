@@ -73,15 +73,16 @@ namespace DataStructures
 
         private static void createPracticeBinarySearchTree()
         {
-            PracticeBinarySearchTree practiceBinarySearchTree = new();
-            practiceBinarySearchTree.insert(7);
-            practiceBinarySearchTree.insert(4);
-            practiceBinarySearchTree.insert(9);
-            practiceBinarySearchTree.insert(1);
-            practiceBinarySearchTree.insert(8);
-            practiceBinarySearchTree.insert(10);
-            practiceBinarySearchTree.insert(6);
-            Console.WriteLine("Done");
+            PracticeBinarySearchTree tree = new();
+            tree.insert(7);
+            tree.insert(4);
+            tree.insert(9);
+            tree.insert(1);
+            tree.insert(6);
+            tree.insert(8);
+            tree.insert(10);
+            Console.WriteLine($"{tree.find(10)}");
+            Console.WriteLine($"{tree.find(11)}");
         }
 
         private static void createHashMap()

@@ -17,7 +17,7 @@ namespace DataStructures.Practice.Part2
         {
             PracticeNode valueNode = new PracticeNode(value);
             if (root == null)
-            { 
+            {
                 root = valueNode;
                 return;
             }
@@ -62,30 +62,26 @@ namespace DataStructures.Practice.Part2
             //else if currentvalue is more than value, dig right
             bool foundLocation = false;
             var current = root;
-            while (!foundLocation)
+            while (current != null)
             {
-                if (current.value == value)
-                    return true;
 
                 if (value < current.value)
                 {
-                    if (current.leftChild != null)
-                    {
-                        current = current.leftChild;
-                    }
 
+                    current = current.leftChild;
                 }
-                if (value > current.value)
+                else if (value > current.value)
                 {
-                    if (current.rightChild != null)
-                    {
-                        current = current.rightChild;
-                    }
+                    current = current.rightChild;
+                }
+                else
+                {
+                    return true;
                 }
             }
             return foundLocation;
         }
-        
+
 
         public class PracticeNode
         {
