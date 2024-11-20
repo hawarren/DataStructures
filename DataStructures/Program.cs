@@ -15,6 +15,9 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
+
+            
+            createFactorial();
             createPracticeBinarySearchTree();
             createHashMap();
             createHashTable();
@@ -71,6 +74,25 @@ namespace DataStructures
 
         }
 
+        private static void createFactorial()
+        {
+            Console.WriteLine(factorialRecursive(4));
+        }
+        private static int factorialLoop(int n) {
+            //4! 4*3*2*1
+            //3! 3*2*1
+            var factorial = 1;
+            for (var i = n; i > 1; i--)
+                factorial *= i;
+            return factorial;
+        }
+        public static int factorialRecursive(int n) {
+            if (n == 0)
+                return 1;
+            return n *  factorialRecursive(n - 1);
+        }
+
+
         private static void createPracticeBinarySearchTree()
         {
             PracticeBinarySearchTree tree = new();
@@ -83,6 +105,13 @@ namespace DataStructures
             tree.insert(10);
             Console.WriteLine($"{tree.find(10)}");
             Console.WriteLine($"{tree.find(11)}");
+            Console.WriteLine("Preorder");
+            tree.traversePreOrder();
+            Console.WriteLine("In order");
+            tree.traverseInOrder();
+            Console.WriteLine("Post order");
+            tree.traversePostOrder();
+
         }
 
         private static void createHashMap()
