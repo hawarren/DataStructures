@@ -95,6 +95,25 @@ namespace DataStructures.Practice.Part2
         {
             traversePreOrder(root);
         }
+        public bool equals(PracticeBinarySearchTree newTree)
+        {
+
+            if (newTree == null)
+                return false;
+
+            return equals(root,newTree.root);
+        }
+        public bool equals(PracticeNode oldNode, PracticeNode newNode)
+        {   
+            if (oldNode == null && newNode == null)
+                return true;
+            //compare old root to newroot, oldleft to newleft, then oldright to newright
+            if (oldNode != null || newNode != null)
+            return oldNode.value == newNode.value &&
+                equals(oldNode.leftChild, newNode.leftChild) && equals(oldNode.rightChild, newNode.rightChild);
+
+            return false;
+        }
         public void traversePostOrder(PracticeNode root)
         {
             if (root == null)
@@ -104,6 +123,7 @@ namespace DataStructures.Practice.Part2
             traversePostOrder(root.rightChild);
             Console.WriteLine(root);
         }
+        
 
         public void traversePostOrder()
         {
@@ -121,6 +141,54 @@ namespace DataStructures.Practice.Part2
         {
             traverseInOrder(root);
         }
+
+        public int height()
+        {
+            return height(root);
+        }
+
+        private int height(PracticeNode root)
+        {
+            if (root == null)
+            { return -1; }
+            if (root.leftChild == null && root.rightChild == null)
+                return 0;
+
+            return 1 + Math.Max(height(root.leftChild), height(root.rightChild));
+
+        }
+        public int min() {
+            return min(root);
+        }
+        private int min(PracticeNode root)
+        {
+            if (isLeaf(root))
+                return root.value;
+
+            var left = min(root.leftChild);
+            var right = min(root.rightChild);
+
+            return Math.Min(Math.Min(left, right), root.value);
+        }
+        public int minSearchTree() {
+            if (root == null)
+                return -1;
+
+            var current = root;
+            var last = current;
+            while (current != null) {
+                last = current;
+                current = current.leftChild;
+            }
+
+            return last.value;
+        }
+        private bool isLeaf(PracticeNode node)
+        {
+            return node.leftChild == null && node.rightChild == null;
+        }
+
+        
 
         public class PracticeNode
         {

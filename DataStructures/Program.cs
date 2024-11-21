@@ -95,6 +95,15 @@ namespace DataStructures
 
         private static void createPracticeBinarySearchTree()
         {
+            PracticeBinarySearchTree secondtree = new();
+            secondtree.insert(7);
+            secondtree.insert(4);
+            secondtree.insert(9);
+            secondtree.insert(1);
+            secondtree.insert(6);
+            secondtree.insert(8);
+            secondtree.insert(10);
+
             PracticeBinarySearchTree tree = new();
             tree.insert(7);
             tree.insert(4);
@@ -103,8 +112,12 @@ namespace DataStructures
             tree.insert(6);
             tree.insert(8);
             tree.insert(10);
+            Console.WriteLine($"Are the trees equal? : {tree.equals(secondtree)}");
             Console.WriteLine($"{tree.find(10)}");
             Console.WriteLine($"{tree.find(11)}");
+            Console.WriteLine($"height: {tree.height()}");
+            Console.WriteLine($"minimum: {tree.min()}");
+
             Console.WriteLine("Preorder");
             tree.traversePreOrder();
             Console.WriteLine("In order");
