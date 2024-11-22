@@ -187,9 +187,36 @@ namespace DataStructures.Practice.Part2
         {
             return node.leftChild == null && node.rightChild == null;
         }
+        public void swapNodes()
+        {
+            int left = root.leftChild.value;
+            
+            root.leftChild.value = root.rightChild.value;
+            root.rightChild.value = left;
+        }
+        public bool isBinarySearchTree() {
+            return isBinarySearchTree(root, int.MinValue, int.MaxValue);
+        }
+        public bool isBinarySearchTree(PracticeNode root, int min, int max)
+        {
+            //check root node
+            //check left node is in range < parent
+            //check if right node is in range > parent
+            if (root == null)
+                return true;
 
-        
+            //stop if the root is higher or lower than range
+            if (min > root.value || root.value > max)
+            {
+                return false; //root is in main
+            }
+           
 
+            return isBinarySearchTree(root.leftChild, min, root.value - 1) &&
+            isBinarySearchTree(root.rightChild, root.value + 1, max);
+            
+            
+        }
         public class PracticeNode
         {
             public int value { get; set; }

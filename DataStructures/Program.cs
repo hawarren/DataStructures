@@ -103,7 +103,9 @@ namespace DataStructures
             secondtree.insert(6);
             secondtree.insert(8);
             secondtree.insert(10);
-
+            Console.WriteLine($"Is this is BST? : {secondtree.isBinarySearchTree()}");
+            secondtree.swapNodes();
+            Console.WriteLine($"Is this is BST after swapping nodes? : {secondtree.isBinarySearchTree()}");
             PracticeBinarySearchTree tree = new();
             tree.insert(7);
             tree.insert(4);
