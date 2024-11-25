@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -106,6 +107,8 @@ namespace DataStructures
             Console.WriteLine($"Is this is BST? : {secondtree.isBinarySearchTree()}");
             secondtree.swapNodes();
             Console.WriteLine($"Is this is BST after swapping nodes? : {secondtree.isBinarySearchTree()}");
+            ArrayList list = secondtree.getNodesAtDistance(2);
+            Console.WriteLine(String.Join(",", list));
             PracticeBinarySearchTree tree = new();
             tree.insert(7);
             tree.insert(4);
@@ -641,7 +644,7 @@ namespace DataStructures
             Console.ReadKey();
 
 
-            Stack demoStack = new Stack();
+            Legacy.Stack demoStack = new Legacy.Stack();
             Console.WriteLine("Now adding 'abcd' to the stack");
             demoStack.push("abcd");
             Console.WriteLine("The reversed string is {0}", demoStack.pop());

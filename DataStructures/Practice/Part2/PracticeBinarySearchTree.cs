@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,16 @@ namespace DataStructures.Practice.Part2
         //node(value, leftchild,rightchild
         //insert(value)
         //find(value)
-        private PracticeNode root;
+        private PracticeNode _root;
         public void insert(int value)
         {
             PracticeNode valueNode = new PracticeNode(value);
-            if (root == null)
+            if (_root == null)
             {
-                root = valueNode;
+                _root = valueNode;
                 return;
             }
-            var current = root;
+            var current = _root;
             //if value is less than current and current.left is null,put value there, else move to leftchild, 
             //if value is more than current, if current.right is null, put value there. Else move to rightChild
             bool foundLocation = false;
@@ -55,13 +56,13 @@ namespace DataStructures.Practice.Part2
         }
         public bool find(int value)
         {
-            if (root == null)
+            if (_root == null)
                 return false;
             //if currentvalue matches value, return true
             //else if currentvalue is less than value, dig left
             //else if currentvalue is more than value, dig right
             bool foundLocation = false;
-            var current = root;
+            var current = _root;
             while (current != null)
             {
 
@@ -93,7 +94,7 @@ namespace DataStructures.Practice.Part2
         }
         public void traversePreOrder()
         {
-            traversePreOrder(root);
+            traversePreOrder(_root);
         }
         public bool equals(PracticeBinarySearchTree newTree)
         {
@@ -101,16 +102,16 @@ namespace DataStructures.Practice.Part2
             if (newTree == null)
                 return false;
 
-            return equals(root,newTree.root);
+            return equals(_root, newTree._root);
         }
         public bool equals(PracticeNode oldNode, PracticeNode newNode)
-        {   
+        {
             if (oldNode == null && newNode == null)
                 return true;
             //compare old root to newroot, oldleft to newleft, then oldright to newright
             if (oldNode != null || newNode != null)
-            return oldNode.value == newNode.value &&
-                equals(oldNode.leftChild, newNode.leftChild) && equals(oldNode.rightChild, newNode.rightChild);
+                return oldNode.value == newNode.value &&
+                    equals(oldNode.leftChild, newNode.leftChild) && equals(oldNode.rightChild, newNode.rightChild);
 
             return false;
         }
@@ -123,11 +124,11 @@ namespace DataStructures.Practice.Part2
             traversePostOrder(root.rightChild);
             Console.WriteLine(root);
         }
-        
+
 
         public void traversePostOrder()
         {
-            traversePostOrder(root);
+            traversePostOrder(_root);
         }
         public void traverseInOrder(PracticeNode root)
         {
@@ -139,12 +140,12 @@ namespace DataStructures.Practice.Part2
         }
         public void traverseInOrder()
         {
-            traverseInOrder(root);
+            traverseInOrder(_root);
         }
 
         public int height()
         {
-            return height(root);
+            return height(_root);
         }
 
         private int height(PracticeNode root)
@@ -157,8 +158,9 @@ namespace DataStructures.Practice.Part2
             return 1 + Math.Max(height(root.leftChild), height(root.rightChild));
 
         }
-        public int min() {
-            return min(root);
+        public int min()
+        {
+            return min(_root);
         }
         private int min(PracticeNode root)
         {
@@ -170,13 +172,15 @@ namespace DataStructures.Practice.Part2
 
             return Math.Min(Math.Min(left, right), root.value);
         }
-        public int minSearchTree() {
-            if (root == null)
+        public int minSearchTree()
+        {
+            if (_root == null)
                 return -1;
 
-            var current = root;
+            var current = _root;
             var last = current;
-            while (current != null) {
+            while (current != null)
+            {
                 last = current;
                 current = current.leftChild;
             }
@@ -189,13 +193,14 @@ namespace DataStructures.Practice.Part2
         }
         public void swapNodes()
         {
-            int left = root.leftChild.value;
-            
-            root.leftChild.value = root.rightChild.value;
-            root.rightChild.value = left;
+            int left = _root.leftChild.value;
+
+            _root.leftChild.value = _root.rightChild.value;
+            _root.rightChild.value = left;
         }
-        public bool isBinarySearchTree() {
-            return isBinarySearchTree(root, int.MinValue, int.MaxValue);
+        public bool isBinarySearchTree()
+        {
+            return isBinarySearchTree(_root, int.MinValue, int.MaxValue);
         }
         public bool isBinarySearchTree(PracticeNode root, int min, int max)
         {
@@ -210,12 +215,46 @@ namespace DataStructures.Practice.Part2
             {
                 return false; //root is in main
             }
-           
+
 
             return isBinarySearchTree(root.leftChild, min, root.value - 1) &&
             isBinarySearchTree(root.rightChild, root.value + 1, max);
-            
-            
+
+
+        }
+
+
+        public List<int> getNodesAtDistance(int k)
+        {
+            List<int> list = new List<int>();
+            if (_root != null)
+                list = getNodesAtDistance(_root, k, list);
+            return list;
+            //Console.WriteLine(String.Join(",", list));
+
+
+        }
+        public List<int> getNodesAtDistance(PracticeNode root, int k, ArrayList list)
+        {
+            //print node if kth distance from root
+            //if not, call printkthNode on left and decrement distance
+            //call printkthnode on right and decrement distance
+            var currentNode = root;
+            if (currentNode == null)
+                currentNode = _root;
+
+            var distance = k;
+            if (distance == 0)
+            {
+                Console.WriteLine($"{k}th node from root: {currentNode.value}");
+                list.Add(currentNode.value);                
+            }
+            if (currentNode.leftChild != null)
+                getNodesAtDistance(currentNode.leftChild, k-1, list);
+            if (currentNode.rightChild != null)
+                getNodesAtDistance(currentNode.rightChild, k-1, list);
+
+            return list;
         }
         public class PracticeNode
         {
