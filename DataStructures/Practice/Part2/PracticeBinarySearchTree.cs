@@ -234,7 +234,7 @@ namespace DataStructures.Practice.Part2
 
 
         }
-        public List<int> getNodesAtDistance(PracticeNode root, int k, ArrayList list)
+        public List<int> getNodesAtDistance(PracticeNode root, int k, List<int> list)
         {
             //print node if kth distance from root
             //if not, call printkthNode on left and decrement distance
@@ -255,6 +255,13 @@ namespace DataStructures.Practice.Part2
                 getNodesAtDistance(currentNode.rightChild, k-1, list);
 
             return list;
+        }
+        public void traverseNodes() {
+            for (var i = 0; i <= height(); i++)
+            {
+                List<int> list = getNodesAtDistance(i);
+                Console.WriteLine(String.Join(",", list));
+            }
         }
         public class PracticeNode
         {
