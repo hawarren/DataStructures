@@ -105,6 +105,8 @@ namespace DataStructures
             secondtree.insert(8);
             secondtree.insert(10);
             secondtree.traverseNodes();
+            Console.WriteLine($" tree size is {secondtree.size()}");
+            Console.WriteLine($" tree leaves size is {secondtree.countLeaves()}");
             Console.WriteLine($"Is this is BST? : {secondtree.isBinarySearchTree()}");
             secondtree.swapNodes();
             Console.WriteLine($"Is this is BST after swapping nodes? : {secondtree.isBinarySearchTree()}");

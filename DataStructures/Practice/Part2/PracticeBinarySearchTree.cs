@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -234,6 +236,31 @@ namespace DataStructures.Practice.Part2
 
 
         }
+        public int countLeaves()
+        {
+            List<PracticeNode> leaves = new();
+            var countOfLeaf = 0;
+            var leafs = countLeaves(_root, height(), leaves);
+            return leafs.Count;
+        }
+        public List<PracticeNode> countLeaves(PracticeNode root, int k, List<PracticeNode> leaves)
+        {
+            var count = 0;
+            var currentNode = root;
+            var distance = k;
+            //base condition, node has no left or right children, add to count
+            //digleft recursively
+            //digright
+
+            if (root.leftChild == null && root.rightChild == null)
+                leaves.Add(root);
+            
+            if (root.leftChild != null)
+               countLeaves(root.leftChild, k - 1, leaves);
+            if (root.rightChild != null)
+                countLeaves(root.rightChild, k - 1, leaves);
+            return leaves;
+        }
         public List<int> getNodesAtDistance(PracticeNode root, int k, List<int> list)
         {
             //print node if kth distance from root
@@ -247,22 +274,37 @@ namespace DataStructures.Practice.Part2
             if (distance == 0)
             {
                 Console.WriteLine($"{k}th node from root: {currentNode.value}");
-                list.Add(currentNode.value);                
+                list.Add(currentNode.value);
             }
             if (currentNode.leftChild != null)
-                getNodesAtDistance(currentNode.leftChild, k-1, list);
+                getNodesAtDistance(currentNode.leftChild, k - 1, list);
             if (currentNode.rightChild != null)
-                getNodesAtDistance(currentNode.rightChild, k-1, list);
+                getNodesAtDistance(currentNode.rightChild, k - 1, list);
 
             return list;
         }
-        public void traverseNodes() {
+        public void traverseNodes()
+        {
             for (var i = 0; i <= height(); i++)
             {
                 List<int> list = getNodesAtDistance(i);
                 Console.WriteLine(String.Join(",", list));
             }
         }
+        public int size()
+        {
+            int total = 0;
+            //use level order traversal, gather all nodes
+            for (int i = 0; i <= height(); i++)
+            {
+                List<int> list = getNodesAtDistance(i);
+                total += list.Count;
+            }
+
+            return total;
+        }
+
+
         public class PracticeNode
         {
             public int value { get; set; }
