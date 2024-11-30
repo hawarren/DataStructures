@@ -32,6 +32,7 @@ namespace DataStructures.Practice.Part2
             {
                 if (value <= current.value)
                 {
+                    Console.WriteLine($"Checking the left child of {current}");
                     if (current.leftChild != null)
                     {
                         current = current.leftChild;
@@ -40,10 +41,13 @@ namespace DataStructures.Practice.Part2
                     {
                         current.leftChild = valueNode;
                         foundLocation = true;
+                        Console.WriteLine($"Inserted {value} at left node of {current}");
+
                     }
                 }
                 if (value > current.value)
                 {
+                    Console.WriteLine($"Checking the right child of {current}");
                     if (current.rightChild != null)
                     {
                         current = current.rightChild;
@@ -52,6 +56,7 @@ namespace DataStructures.Practice.Part2
                     {
                         current.rightChild = valueNode;
                         foundLocation = true;
+                        Console.WriteLine($"Inserted {value} at right node of {current}");
                     }
                 }
             }
@@ -70,11 +75,12 @@ namespace DataStructures.Practice.Part2
 
                 if (value < current.value)
                 {
-
+                    Console.WriteLine($"since {value} is less than {current.value}, moving to left node");
                     current = current.leftChild;
                 }
                 else if (value > current.value)
                 {
+                    Console.WriteLine($"since {value} is greater than {current.value}, moving to right node");
                     current = current.rightChild;
                 }
                 else
@@ -84,13 +90,33 @@ namespace DataStructures.Practice.Part2
             }
             return foundLocation;
         }
+        public bool Contains(int value)
+        {
+            return Contains(_root, value);
+        }
+        public bool Contains(PracticeNode root, int value)
+        {
+            if (root == null)
+                return false;
+
+            if (root.value == value)
+                return true;
+            if (value < root.value)
+                return Contains(root.leftChild, value);
+            if (value > root.value)
+                return Contains(root.rightChild, value);
+
+            return false;
+        }
         public void traversePreOrder(PracticeNode root)
         {
             if (root == null)
                 return;
             //root print
             Console.WriteLine(root);
+            Console.WriteLine($"traversing {root} and {root.leftChild}");
             traversePreOrder(root.leftChild);
+            Console.WriteLine($"traversing {root} and {root.rightChild}");
             traversePreOrder(root.rightChild);
 
         }
@@ -121,8 +147,9 @@ namespace DataStructures.Practice.Part2
         {
             if (root == null)
                 return;
-
+            Console.WriteLine($"traversing {root} and {root.leftChild}");
             traversePostOrder(root.leftChild);
+            Console.WriteLine($"traversing {root} and {root.rightChild}");
             traversePostOrder(root.rightChild);
             Console.WriteLine(root);
         }
@@ -136,8 +163,10 @@ namespace DataStructures.Practice.Part2
         {
             if (root == null)
                 return;
+            Console.WriteLine($"traversing {root} and {root.leftChild}");
             traverseInOrder(root.leftChild);
             Console.WriteLine(root);
+            Console.WriteLine($"traversing {root} and {root.rightChild}");
             traverseInOrder(root.rightChild);
         }
         public void traverseInOrder()
@@ -174,7 +203,23 @@ namespace DataStructures.Practice.Part2
 
             return Math.Min(Math.Min(left, right), root.value);
         }
-        public int minSearchTree()
+        public int Max()
+        {
+            return Max(_root);
+        }
+        /// <summary>Returns the max value in binary search tree.</summary>
+        /// <param name="root">The first of two native signed integers to compare.</param>
+
+        /// <returns>Parameter <paramref name="root" /></returns>
+        public int Max(PracticeNode root)
+        {
+            if (isLeaf(root))
+                return root.value;
+            return Max(root.rightChild);
+
+        }
+        
+        public int MinSearchTree()
         {
             if (_root == null)
                 return -1;
@@ -212,6 +257,7 @@ namespace DataStructures.Practice.Part2
             if (root == null)
                 return true;
 
+            Console.WriteLine($"Checking if node {root} is between {min} and {max}");
             //stop if the root is higher or lower than range
             if (min > root.value || root.value > max)
             {
@@ -230,7 +276,10 @@ namespace DataStructures.Practice.Part2
         {
             List<int> list = new List<int>();
             if (_root != null)
+            {
                 list = getNodesAtDistance(_root, k, list);
+                Console.WriteLine($"current list is  {String.Join(",", list.ToArray())}");
+            }
             return list;
             //Console.WriteLine(String.Join(",", list));
 
@@ -238,12 +287,15 @@ namespace DataStructures.Practice.Part2
         }
         public int countLeaves()
         {
+            if (_root == null)
+                return 0;
+
             List<PracticeNode> leaves = new();
             var countOfLeaf = 0;
             var leafs = countLeaves(_root, height(), leaves);
             return leafs.Count;
         }
-        public List<PracticeNode> countLeaves(PracticeNode root, int k, List<PracticeNode> leaves)
+        private List<PracticeNode> countLeaves(PracticeNode root, int k, List<PracticeNode> leaves)
         {
             var count = 0;
             var currentNode = root;
@@ -253,12 +305,22 @@ namespace DataStructures.Practice.Part2
             //digright
 
             if (root.leftChild == null && root.rightChild == null)
+            {
+                Console.WriteLine($"Adding leaf {root.value}");
                 leaves.Add(root);
-            
+
+            }
             if (root.leftChild != null)
-               countLeaves(root.leftChild, k - 1, leaves);
+            {
+                Console.WriteLine($"Calling method for left node of {root}");
+                countLeaves(root.leftChild, k - 1, leaves);
+            }
             if (root.rightChild != null)
+            {
+                Console.WriteLine($"Calling method for right node of {root}");
                 countLeaves(root.rightChild, k - 1, leaves);
+            }
+            Console.WriteLine($"returning from method with {leaves.Count} nodes so far");
             return leaves;
         }
         public List<int> getNodesAtDistance(PracticeNode root, int k, List<int> list)

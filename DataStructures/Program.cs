@@ -18,8 +18,8 @@ namespace DataStructures
         {
 
             
-            createFactorial();
             createPracticeBinarySearchTree();
+            createFactorial();
             createHashMap();
             createHashTable();
             createHashSet();
