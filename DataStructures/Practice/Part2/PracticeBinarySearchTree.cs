@@ -124,6 +124,27 @@ namespace DataStructures.Practice.Part2
         {
             traversePreOrder(_root);
         }
+        public bool areSiblings(PracticeNode parent, int leftNode, int rightNode)
+        {
+            if (parent == null)
+                return false;
+            if (parent.leftChild.value == leftNode && parent.rightChild.value == rightNode)
+                return true;
+            else if (parent.leftChild.value == leftNode)
+            {
+               return areSiblings(parent.leftChild, leftNode, rightNode);
+            }
+            else if (parent.rightChild.value == leftNode)
+            {
+                return areSiblings(parent.rightChild, leftNode, rightNode);
+            }
+
+            return false;
+        }
+        public bool areSiblings(int leftNode, int rightNode)
+        {
+            return areSiblings(_root, leftNode, rightNode);
+        }
         public bool equals(PracticeBinarySearchTree newTree)
         {
 
@@ -218,7 +239,7 @@ namespace DataStructures.Practice.Part2
             return Max(root.rightChild);
 
         }
-        
+
         public int MinSearchTree()
         {
             if (_root == null)

@@ -104,6 +104,8 @@ namespace DataStructures
             secondtree.insert(6);
             secondtree.insert(8);
             secondtree.insert(10);
+            Console.WriteLine($"Are 4 and 9 siblings? {secondtree.areSiblings(4, 9)}");
+            Console.WriteLine($"Are 4 and 8 siblings? {secondtree.areSiblings(4, 8)}");
             secondtree.traverseNodes();
             Console.WriteLine($" tree size is {secondtree.size()}");
             Console.WriteLine($" tree leaves size is {secondtree.countLeaves()}");
