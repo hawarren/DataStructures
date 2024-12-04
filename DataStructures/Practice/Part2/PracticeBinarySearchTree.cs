@@ -61,9 +61,9 @@ namespace DataStructures.Practice.Part2
                 }
             }
         }
-        public bool find(int value)
+        public bool find(int value, PracticeNode root = null)
         {
-            if (_root == null)
+            if (root == null && _root == null)
                 return false;
             //if currentvalue matches value, return true
             //else if currentvalue is less than value, dig left
@@ -108,6 +108,39 @@ namespace DataStructures.Practice.Part2
 
             return false;
         }
+        public List<int> getAncestors(int value)
+        {
+            List<int> ancestors = new List<int>();
+            if (_root != null)
+                ancestors.Add(_root.value);
+            getAncestors(_root, value, ancestors);
+            return ancestors;
+        }
+        public void getAncestors(PracticeNode root, int searchValue, List<int> ancestors)
+        {
+
+            if (root == null)
+                return;
+            if (searchValue == root.value)
+                return;
+            if (searchValue < root.value)
+            {
+                if (root.leftChild != null && searchValue < root.leftChild.value)
+                {
+                    ancestors.Add(root.leftChild.value);
+                    getAncestors(root.leftChild, searchValue, ancestors);
+                }
+            }
+            else
+            {
+                if (root.rightChild != null && searchValue < root.rightChild.value)
+                {
+                    ancestors.Add(root.rightChild.value);
+                    getAncestors(root.rightChild, searchValue, ancestors);
+                }
+            }
+
+        }
         public void traversePreOrder(PracticeNode root)
         {
             if (root == null)
@@ -132,7 +165,7 @@ namespace DataStructures.Practice.Part2
                 return true;
             else if (parent.leftChild.value == leftNode)
             {
-               return areSiblings(parent.leftChild, leftNode, rightNode);
+                return areSiblings(parent.leftChild, leftNode, rightNode);
             }
             else if (parent.rightChild.value == leftNode)
             {
