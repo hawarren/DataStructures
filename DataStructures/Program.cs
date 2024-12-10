@@ -17,7 +17,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
 
-            
+            createAVLTree();
             createPracticeBinarySearchTree();
             createFactorial();
             createHashMap();
@@ -73,6 +73,15 @@ namespace DataStructures
 
 
 
+        }
+
+        private static void createAVLTree()
+        {
+            var tree = new AVLTree();
+            tree.insert(10);
+            tree.insert(20);
+            tree.insert(30);
+            
         }
 
         private static void createFactorial()

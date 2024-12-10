@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace DataStructures.Practice.Part2
     internal class AVLTree
     {
         private AVLNode _root;
+        private int height;
         public AVLTree()
         {
         }
@@ -31,24 +33,37 @@ namespace DataStructures.Practice.Part2
             }
             insert(newValue, current);
         }
-        private void insert(int newValue, AVLNode newRoot)
+        private AVLNode insert(int newValue, AVLNode newRoot)
         {
             var current = newRoot;
             //if it's a leaf, insert there
             //if it's less than current, dig left
             // if it's more than current, dig right
-            if (current.nodeValue == 0) // Updated condition to check if nodeValue is 0
+            //if this node is empty, then insert object here and return to previous step
+            if (newRoot == null)
             {
-                current.nodeValue = newValue;
+                return new AVLNode(newValue);
             }
-            if (newValue < current.nodeValue)
+            else if (newValue < current.nodeValue)
             {
-                insert(newValue, current.leftNode);
+               newRoot.leftNode = insert(newValue, current.leftNode);
             }
             else if (newValue > current.nodeValue)
             {
-                insert(newValue, current.rightNode);
+                newRoot.rightNode = insert(newValue, current.rightNode);
             }
+
+            return newRoot;
+        }
+        private int getHeight(AVLNode leftNode, AVLNode rightNode)
+        {
+            //check if it's a leaf node
+            //if so return the height of that root from the node
+            //if not recurse:
+            //left if smaller
+            //right if larger
+            
+            return 0;
         }
     }
     internal class AVLNode
@@ -56,6 +71,7 @@ namespace DataStructures.Practice.Part2
         private int _nodeValue;
         private AVLNode _leftNode;
         private AVLNode _rightNode;
+        public int _height;
 
         public int nodeValue { get => _nodeValue; set => _nodeValue = value; }
         public AVLNode leftNode { get => _leftNode; set => _leftNode = value; }
