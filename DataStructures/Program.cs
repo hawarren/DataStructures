@@ -81,7 +81,16 @@ namespace DataStructures
             tree.insert(10);
             tree.insert(20);
             tree.insert(30);
-            
+            Console.WriteLine($"Height of first tree is {tree.getHeight()}");
+            AVLTree secondtree = new();
+            secondtree.insert(7);
+            secondtree.insert(4);
+            secondtree.insert(9);
+            secondtree.insert(6);
+            secondtree.insert(8);
+            secondtree.insert(10);
+            Console.WriteLine($"Height of second tree is {secondtree.getHeight()}");
+
         }
 
         private static void createFactorial()

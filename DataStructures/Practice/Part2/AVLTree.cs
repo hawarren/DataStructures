@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DataStructures.Practice.Part2
 {
@@ -52,19 +53,39 @@ namespace DataStructures.Practice.Part2
             {
                 newRoot.rightNode = insert(newValue, current.rightNode);
             }
-
+            newRoot._height = getHeight(newRoot);
             return newRoot;
         }
-        private int getHeight(AVLNode leftNode, AVLNode rightNode)
+        public int getHeight()
         {
             //check if it's a leaf node
             //if so return the height of that root from the node
             //if not recurse:
             //left if smaller
             //right if larger
-            
-            return 0;
+
+            return getHeight(_root);
         }
+        private int getHeight(AVLNode nodeToCheck)
+        {
+            //check if it's a leaf node
+            //if so return the height of that root from the node
+            //if not recurse:
+            //left if smaller
+            //right if larger
+            if (nodeToCheck == null)
+                return -1;
+            if (isLeaf(nodeToCheck))
+                return 0;
+
+            return 1 + Math.Max(getHeight(nodeToCheck.leftNode), getHeight(nodeToCheck.rightNode));           
+            
+        }
+        private bool isLeaf(AVLNode nodeToCheck) {
+            return nodeToCheck.leftNode == null && nodeToCheck.rightNode == null;
+
+        }
+        
     }
     internal class AVLNode
     {
@@ -80,6 +101,10 @@ namespace DataStructures.Practice.Part2
         public AVLNode(int value)
         {
             _nodeValue = value;
+        }
+        public override string ToString()
+        {
+            return "Node=" + nodeValue.ToString();
         }
     }
 }
