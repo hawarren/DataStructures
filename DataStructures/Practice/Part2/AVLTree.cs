@@ -54,7 +54,33 @@ namespace DataStructures.Practice.Part2
                 newRoot.rightNode = insert(newValue, current.rightNode);
             }
             newRoot._height = getHeight(newRoot);
+
+            //balanceFactor = height(L) - height(R)
+            //> 1 => left heavy (left rotation
+            //< -1 => right heavy
+            
+            var balanceFactor = this.balanceFactor(newRoot);
+
+            if (isLeftHeavy(newRoot))
+                Console.WriteLine($"Tree starting at {newRoot} is left heavy. Left {getHeight(newRoot.leftNode)} vs.right {getHeight(newRoot.rightNode)}");
+            else if (isRightHeavy(newRoot))
+                Console.WriteLine($"Tree starting at {newRoot} is right heavy. Left {getHeight(newRoot.leftNode)} vs.right {getHeight(newRoot.rightNode)}");
+            else
+                Console.WriteLine("Tree is balanced");
+            
             return newRoot;
+        }
+        private int balanceFactor(AVLNode node)
+        {
+            return node == null ? 0 : getHeight(node.leftNode) - getHeight(node.rightNode);
+        }
+        private bool isLeftHeavy(AVLNode node)
+        {
+            return balanceFactor(node) > 1;
+        }
+        private bool isRightHeavy(AVLNode node)
+        {
+            return balanceFactor(node) < -1;
         }
         public int getHeight()
         {
