@@ -61,10 +61,23 @@ namespace DataStructures.Practice.Part2
             
             var balanceFactor = this.balanceFactor(newRoot);
 
-            if (isLeftHeavy(newRoot))
+            if (isRightHeavy(newRoot))
+            {
                 Console.WriteLine($"Tree starting at {newRoot} is left heavy. Left {getHeight(newRoot.leftNode)} vs.right {getHeight(newRoot.rightNode)}");
-            else if (isRightHeavy(newRoot))
+                if (isRightHeavy(newRoot.leftNode))
+                    Console.WriteLine($"We need a left rotation of {newRoot.rightNode}");
+                Console.WriteLine($"We need a right rotation of {newRoot}");
+
+            }
+
+            else if (isLeftHeavy(newRoot))
+            { 
                 Console.WriteLine($"Tree starting at {newRoot} is right heavy. Left {getHeight(newRoot.leftNode)} vs.right {getHeight(newRoot.rightNode)}");
+                if (isLeftHeavy(newRoot.rightNode))
+                    Console.WriteLine($"We need a right rotation of {newRoot}");
+                Console.WriteLine($" We need a left rotation of {newRoot}");
+
+            }
             else
                 Console.WriteLine("Tree is balanced");
             

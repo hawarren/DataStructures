@@ -78,9 +78,13 @@ namespace DataStructures
         private static void createAVLTree()
         {
             var tree = new AVLTree();
-            tree.insert(30);
             tree.insert(10);
             tree.insert(20);
+            tree.insert(30);
+            var thirdTree = new AVLTree();
+            thirdTree.insert(10);
+            thirdTree.insert(30);
+            thirdTree.insert(20);
             Console.WriteLine($"Height of first tree is {tree.getHeight()}");
             AVLTree secondtree = new();
             secondtree.insert(7);
